@@ -1372,6 +1372,38 @@ body.w.p #pager {
   gap: 8px;
   padding: 6px 12px 0;
 }
+.bmr[data-narrow] .up.opt {
+  width: auto;
+  min-width: 0;
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 4px 14px;
+  white-space: nowrap;
+}
+.bmr[data-narrow] .up.opt .n {
+  white-space: nowrap;
+}
+#wside .stp .bmr[data-narrow] {
+  padding: 0;
+  margin: 0;
+}
+#wside .stp .bmr[data-narrow] .up.opt {
+  min-height: 34px;
+  height: 34px;
+  width: 100%;
+  flex: 1 1 auto;
+  padding: 0 14px;
+  justify-content: center;
+}
+#wside .stp .bmr[data-narrow] .up.opt .h {
+  padding: 0;
+  justify-content: center;
+}
+#wside .stp .bmr[data-narrow] .up.opt .n {
+  padding: 0;
+  text-align: center;
+  white-space: nowrap;
+}
 .bmr .up.opt {
   min-height: 40px;
   padding: 6px 8px;
@@ -4724,9 +4756,9 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         return { n: n, t: tot };
     }
     var bmBtns = [];
-    function mkBm(bmBox, s0, key) {
+    function mkBm(bmBox, s0, key, only) {
         key = key || "bm";
-        [{ v: "1", k: "b1" }, { v: "n", k: "bn" }, { v: "x", k: "bx" }].forEach(function (o, i) {
+        [{ v: "1", k: "b1" }, { v: "n", k: "bn" }, { v: "x", k: "bx" }].filter(function (o) { return !only || only.indexOf(o.v) >= 0; }).forEach(function (o, i) {
             var b = document.createElement("button");
             b.type = "button";
             b.className = "up opt";
@@ -6177,6 +6209,11 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         } };
         p1.appendChild(ci);
         stRb.push(ci);
+        var cbm = document.createElement("div");
+        cbm.className = "bmr";
+        cbm.style.display = "grid"; cbm.style.gridTemplateColumns = "1fr 1fr"; cbm.style.gap = "8px"; cbm.style.width = "100%"; cbm.style.boxSizing = "border-box"; cbm.setAttribute("data-narrow", "1");
+        p2.appendChild(cbm);
+        mkBm(cbm, 77, "bmw", ["1", "x"]);
         [[1, 0.25, 1e4], [2, 5, 1e6], [3, 100, 1e8]].forEach(function (o, i) {
             var k = "c" + o[0], cost = o[2];
             var b = mkb(p2, 31510 + i, CLI[i], "stc" + i, function () { stBuyC(k, cost); });
