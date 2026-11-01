@@ -4238,14 +4238,14 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             rcx = rcv.getContext("2d");
         }
         var CW = Math.min(W * .7, H * 1.2, 420), B = rcBuild(CW), cl = B.c, UP = B.up, PX = [.30, .72];
-        var sz = Math.round(W) + "_" + Math.round(H) + "_" + UP + "_" + dpr;
+        var sz = Math.round(W) + "_" + Math.round(H) + "_" + UP + "_" + dpr + "_" + ZF;
         if (sz !== rcSZ) {
             rcSZ = sz;
             var cw2 = Math.round(W) + RC_SIDE * 2;
-            rcv.style.left = -RC_SIDE + "px";
-            rcv.style.top = -UP + "px";
-            rcv.style.width = cw2 + "px";
-            rcv.style.height = (UP + Math.round(H)) + "px";
+            rcv.style.left = -RC_SIDE / ZF + "px";
+            rcv.style.top = -UP / ZF + "px";
+            rcv.style.width = cw2 / ZF + "px";
+            rcv.style.height = (UP + Math.round(H)) / ZF + "px";
             rcv.width = Math.round(cw2 * dpr);
             rcv.height = Math.round((UP + Math.round(H)) * dpr);
         }
