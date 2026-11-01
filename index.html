@@ -3793,7 +3793,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     catch (e) {
         return false;
     } })(), NOSAVE = !LOADSAVE, GROW = 4, RU = 32;
-    var SETK = "lug_settings_v1", SET = { lang: "en", not: "mix", bm: "1", bmw: "1", fps: "0", anim: "1", fxa: "1", fxp: "1", st: "0", fi: 49, as: 10, ui: 250 };
+    var SETK = "lug_settings_v1", SET = { lang: "en", not: "mix", bm: "1", bmw: "1", bmc: "1", fps: "0", anim: "1", fxa: "1", fxp: "1", st: "0", fi: 49, as: 10, ui: 250 };
     try {
         var sr = JSON.parse(localStorage.getItem(SETK) || "null");
         if (sr) {
@@ -3805,6 +3805,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                 SET.bm = sr.bm;
             if (sr.bmw === "1" || sr.bmw === "n" || sr.bmw === "x")
                 SET.bmw = sr.bmw;
+            if (sr.bmc === "1" || sr.bmc === "x")
+                SET.bmc = sr.bmc;
             if (sr.fps === "0" || sr.fps === "1")
                 SET.fps = sr.fps;
             if (sr.anim === "0" || sr.anim === "1" || sr.anim === "2")
@@ -6055,7 +6057,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         return base; var G = stG(), s = stTier(own), d = Math.round(Math.log10(s)); var m = Math.pow(G, 9 * (d - 2)) * Math.pow(G, Math.floor(own / s)) * Math.pow(10, Math.max(0, d - 2)); return base * m; }
     function stBuyC(k, base) {
         var own = S[k], n = 0;
-        if (SET.bmw === "x") {
+        if (SET.bmc === "x") {
             var st = S.steam;
             for (var g = 0; g < 5000; g++) {
                 var p = stCP(base, own + n), stp = Math.max(100, stTier(own + n)), room = stp - ((own + n) % stp), q = Math.min(room, Math.floor(st / p));
@@ -6213,7 +6215,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         cbm.className = "bmr";
         cbm.style.display = "grid"; cbm.style.gridTemplateColumns = "1fr 1fr"; cbm.style.gap = "8px"; cbm.style.width = "100%"; cbm.style.boxSizing = "border-box"; cbm.setAttribute("data-narrow", "1");
         p2.appendChild(cbm);
-        mkBm(cbm, 77, "bmw", ["1", "x"]);
+        mkBm(cbm, 77, "bmc", ["1", "x"]);
         [[1, 0.25, 1e4], [2, 5, 1e6], [3, 100, 1e8]].forEach(function (o, i) {
             var k = "c" + o[0], cost = o[2];
             var b = mkb(p2, 31510 + i, CLI[i], "stc" + i, function () { stBuyC(k, cost); });
