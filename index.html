@@ -26,7 +26,7 @@ setTimeout(function () { document.documentElement.classList.remove("ldg"); }, 80
 
 </script>
 <style>:root{--vw:1vw;--vh:1vh}html.fz{width:560px!important}html.fz,html.fz body{height:var(--fh)!important}</style>
-<style>#app{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}#start .stdec svg.sdh{overflow:visible;z-index:1}#start .stdec .sdst,#start .stdec .sdc,#start .stdec .sdm{z-index:0}#start .stdec .sdf{z-index:2}#app>*{flex-shrink:0}#app{scrollbar-width:none;-ms-overflow-style:none;max-width:none!important;width:100%;margin:0!important;padding-left:max(0px,calc((100% - 560px)/2))!important;padding-right:max(0px,calc((100% - 560px)/2))!important}#app::-webkit-scrollbar{display:none;width:0;height:0}</style>
+<style>#app{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}#start .stdec svg.sdh{overflow:visible;z-index:1}#start .stdec .sdst,#start .stdec .sdc,#start .stdec .sdm{z-index:0}#start .stdec .sdf{z-index:2}#app>*{flex-shrink:0}#pgW .in{max-width:none!important;width:100%;margin:0!important;box-sizing:border-box;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:0 max(0px,calc((100% - 560px)/2)) 70px!important}#pgW .in::-webkit-scrollbar{display:none;width:0;height:0}#pgW .in>*{flex-shrink:0}#app{scrollbar-width:none;-ms-overflow-style:none;max-width:none!important;width:100%;margin:0!important;padding-left:max(0px,calc((100% - 560px)/2))!important;padding-right:max(0px,calc((100% - 560px)/2))!important}#app::-webkit-scrollbar{display:none;width:0;height:0}</style>
 <style>
 .sca{position:fixed;left:50%;width:40px;height:40px;margin-left:-20px;z-index:2147483647;display:flex;align-items:center;justify-content:center;color:var(--ink);background:color-mix(in srgb,var(--bg) 78%,transparent);border:2px solid var(--line);border-radius:50%;opacity:0;pointer-events:none;transition:opacity .25s;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .sca.on{opacity:.6;pointer-events:auto}
@@ -7459,16 +7459,20 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
 
 </script>
 <script>
-(function(){var app=document.getElementById("app"),pg=document.getElementById("pgM");if(!app||!pg)return;
+(function(){
+function init(app,pg){if(!app||!pg)return;
 function mk(c,d){var b=document.createElement("div");b.className="sca "+c;b.setAttribute("aria-hidden","true");
 b.innerHTML='<svg viewBox="0 0 24 24" width="26" height="26"><path d="'+d+'" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';document.body.appendChild(b);return b}
 var up=mk("up","M5 15l7-7 7 7"),dn=mk("dn","M5 9l7 7 7-7");
 function go(dir){app.scrollBy({top:dir*Math.max(160,app.clientHeight*.5),behavior:"smooth"})}
 up.addEventListener("click",function(){go(-1)});dn.addEventListener("click",function(){go(1)});
-var SCROLL_MIN=60;function upd(){var m=app.scrollHeight-app.clientHeight,t=app.scrollTop,vis=Math.abs(pg.getBoundingClientRect().left)<20&&app.offsetParent!==null;up.classList.toggle("on",vis&&t>SCROLL_MIN);dn.classList.toggle("on",vis&&m-t>SCROLL_MIN)}
+var SCROLL_MIN=60;
+function upd(){var m=app.scrollHeight-app.clientHeight,t=app.scrollTop,vis=Math.abs(pg.getBoundingClientRect().left)<20&&app.offsetParent!==null;up.classList.toggle("on",vis&&t>SCROLL_MIN);dn.classList.toggle("on",vis&&m-t>SCROLL_MIN)}
 app.addEventListener("scroll",upd,{passive:true});window.addEventListener("resize",upd);
 if(window.ResizeObserver)new ResizeObserver(upd).observe(app);
-setInterval(upd,500);upd();
+setInterval(upd,500);upd();}
+init(document.getElementById("app"),document.getElementById("pgM"));
+init(document.querySelector("#pgW .in"),document.getElementById("pgW"));
 })();
 </script>
 </body>
