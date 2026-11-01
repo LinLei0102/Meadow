@@ -3972,10 +3972,10 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         c.l = l;
         c.v = c.d.val(l);
     } return c.v; }
-    var cv = document.getElementById("cv"), ctx = cv.getContext("2d"), W = 300, H = 300, dpr = 1;
+    var cv = document.getElementById("cv"), ctx = cv.getContext("2d"), W = 300, H = 300, dpr = 1, ZF = 1;
     var C = {};
     function colors() { var cs = getComputedStyle(document.documentElement); ["blade", "ripe", "acc"].forEach(function (k) { C[k] = cs.getPropertyValue("--" + k).trim(); }); }
-    function resize() { dpr = Math.min(2, window.devicePixelRatio || 1); var r = cv.getBoundingClientRect(); W = r.width; H = r.height; var nw = Math.round(W * dpr), nh = Math.round(H * dpr); if (cv.width !== nw || cv.height !== nh) {
+    function resize() { dpr = Math.min(2, window.devicePixelRatio || 1); var r = cv.getBoundingClientRect(); W = r.width; H = r.height; ZF = cv.offsetWidth > 0 ? Math.min(1, Math.max(.3, r.width / cv.offsetWidth)) : 1; var nw = Math.round(W * dpr), nh = Math.round(H * dpr); if (cv.width !== nw || cv.height !== nh) {
         cv.width = nw;
         cv.height = nh;
     } colors(); }
@@ -4077,7 +4077,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     } S.water = Math.round((S.water + n) * 100) / 100; S.grass = 0; DEFS.forEach(function (d) { S.up[d.id] = 0; }); S.dewOn = true; S.dewXP = 0; S.dewLv = 0; blades = []; for (var i = 0; i < 8; i++)
         blades.push(mk(1)); texts = []; acc = 0; save(); ui(); }
     function hit(x, y) {
-        var R = V("rad") * RU, n = 0, nc = 0, k = V("boost"), keep = [];
+        var R = V("rad") * RU * ZF, n = 0, nc = 0, k = V("boost"), keep = [];
         for (var i = 0; i < blades.length; i++) {
             var b = blades[i];
             if (b.g >= 1) {
@@ -4428,7 +4428,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             ctx.strokeStyle = C.acc;
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.arc(ptr.x, ptr.y, V("rad") * RU, 0, 6.283);
+            ctx.arc(ptr.x, ptr.y, V("rad") * RU * ZF, 0, 6.283);
             ctx.stroke();
             ctx.globalAlpha = ptr.a * .12;
             ctx.fillStyle = C.acc;
