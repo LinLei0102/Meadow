@@ -4100,8 +4100,11 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         cv.setPointerCapture(e.pointerId);
     }
     catch (_) { } hit(q.x, q.y); });
-    cv.addEventListener("pointermove", function (e) { if (!ptr.down)
-        return; var q = pos(e); ptr.x = q.x; ptr.y = q.y; hit(q.x, q.y); });
+    cv.addEventListener("pointermove", function (e) { var ms = e.pointerType === "mouse"; if (!ptr.down && !ms)
+        return; var q = pos(e); ptr.x = q.x; ptr.y = q.y; if (ms)
+        ptr.down = true; hit(q.x, q.y); });
+    cv.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse")
+        ptr.down = false; });
     function up() { ptr.down = false; }
     cv.addEventListener("pointerup", up);
     cv.addEventListener("pointercancel", up);
