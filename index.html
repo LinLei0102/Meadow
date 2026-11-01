@@ -25,10 +25,21 @@
 setTimeout(function () { document.documentElement.classList.remove("ldg"); }, 8000);
 
 </script>
+<style>:root{--vw:1vw;--vh:1vh}html.fz{width:560px!important}html.fz,html.fz body{height:var(--fh)!important}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><script>
 (function () { var m = document.querySelector('meta[name=viewport]'); function f() { var sw = Math.min(screen.width || 9999, screen.height || 9999), land = window.matchMedia && matchMedia("(orientation:landscape)").matches; var w = land ? Math.max(screen.width || 0, screen.height || 0) : sw; m.setAttribute("content", w > 0 && w < 560 ? "width=560, user-scalable=no, viewport-fit=cover" : "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"); } f(); window.addEventListener("orientationchange", function () { setTimeout(f, 200); }); })();
 
 </script>
+<script>
+(function(){var d=document.documentElement;
+function fit(){var w=window.innerWidth,h=window.innerHeight;
+ if(w>0&&w<560){var z=w/560;d.classList.add("fz");d.style.zoom=z;d.style.setProperty("--vw","5.6px");
+  var fh=h/z;d.style.setProperty("--fh",fh+"px");d.style.setProperty("--vh",(fh/100)+"px");}
+ else{d.classList.remove("fz");d.style.zoom="";d.style.removeProperty("--vw");d.style.removeProperty("--vh");d.style.removeProperty("--fh");}}
+fit();window.addEventListener("resize",fit);window.addEventListener("orientationchange",function(){setTimeout(fit,200)});
+})();
+</script>
+
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 <title>Meadow</title>
 <style>
@@ -1843,7 +1854,7 @@ body.tn3 #wleft.lp {
 @media (max-width:1279px) {
   body.lx #wleft,
   body.lx.tn3 #pgW::before {
-    transform: translateX(100vw);
+    transform: translateX(calc(100*var(--vw)));
     transition: transform .55s cubic-bezier(.3,.8,.25,1);
   }
   body.lx #pgM {
@@ -1937,7 +1948,7 @@ body.tn3 #wleft.lp {
   }
 }
 #start .sttl {
-  font-size: clamp(56px,17vw,96px);
+  font-size: clamp(56px,calc(17*var(--vw)),96px);
   line-height: 1.1;
   letter-spacing: 1px;
   margin-bottom: 22px;
@@ -1979,7 +1990,7 @@ body.tn3 #wleft.lp {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  width: min(300px,80vw);
+  width: min(300px,calc(80*var(--vw)));
 }
 #start .up {
   align-items: center;
@@ -1997,7 +2008,7 @@ body.tn3 #wleft.lp {
   display: none;
   flex-direction: column;
   gap: 12px;
-  width: min(420px,92vw);
+  width: min(420px,calc(92*var(--vw)));
 }
 #start.sls .stsl {
   display: flex;
@@ -2010,7 +2021,7 @@ body.tn3 #wleft.lp {
   height: 84px;
 }
 #start.sls .sttl {
-  font-size: clamp(40px,12vw,64px);
+  font-size: clamp(40px,calc(12*var(--vw)),64px);
   margin-bottom: 8px;
 }
 #start .stlr0 {
@@ -2066,7 +2077,7 @@ body.tn3 #wleft.lp {
   height: 64px;
 }
 #start.sls .sttl {
-  font-size: clamp(34px,9vw,48px);
+  font-size: clamp(34px,calc(9*var(--vw)),48px);
   margin-bottom: 4px;
 }
 #start .stsl {
@@ -2117,8 +2128,8 @@ body.tn3 #wleft.lp {
   margin-right: auto;
 }
 #start .stcd {
-  flex: 0 0 min(330px,76vw);
-  height: min(400px,60vh);
+  flex: 0 0 min(330px,calc(76*var(--vw)));
+  height: min(400px,calc(60*var(--vh)));
   min-height: 300px;
   padding: 14px;
   gap: 10px;
@@ -2132,8 +2143,8 @@ body.tn3 #wleft.lp {
 }
 #start .stcd .stci {
   display: block;
-  width: clamp(96px,17vh,150px);
-  height: clamp(96px,17vh,150px);
+  width: clamp(96px,calc(17*var(--vh)),150px);
+  height: clamp(96px,calc(17*var(--vh)),150px);
   margin: 0 auto;
   flex: none;
 }
@@ -2241,7 +2252,7 @@ body.tn3 #wleft.lp {
   object-fit: contain;
 }
 #start .stbk {
-  width: min(300px,80vw);
+  width: min(300px,calc(80*var(--vw)));
 }
 #sback {
   display: none;
@@ -2250,7 +2261,7 @@ body.tn3 #wleft.lp {
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: min(300px,80vw);
+  width: min(300px,calc(80*var(--vw)));
   z-index: 90001;
   align-items: center;
   justify-content: center;
@@ -2290,7 +2301,7 @@ body:has(#start:not(.off)) #sback {
   display: flex;
 }
 #start .stlb {
-  width: min(260px,70vw);
+  width: min(260px,calc(70*var(--vw)));
   height: 14px;
   border: 2.5px solid var(--ink);
   border-radius: 10px;
@@ -2919,7 +2930,7 @@ body.sfs>*:not(#pager):not(#start):not(#sback):not(#bgg):not(#fps):not(script):n
 }
 body.sfs #start.off .stwrap,
 body.sfs #start.off .stdec {
-  transform: translateX(100vw);
+  transform: translateX(calc(100*var(--vw)));
   opacity: 0;
 }
 body.sfs #start.off.rtn {
@@ -3028,7 +3039,7 @@ body.sfs:not(.sbk) #sback {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: clamp(250px,56vh,620px);
+  height: clamp(250px,calc(56*var(--vh)),620px);
   display: block;
 }
 #start .sdh .sdg {
@@ -3052,9 +3063,9 @@ body.sfs:not(.sbk) #sback {
 }
 #start .stdec .sdm {
   position: absolute;
-  right: 11vw;
-  top: 15vh;
-  width: clamp(54px,11vh,116px);
+  right: calc(11*var(--vw));
+  top: calc(15*var(--vh));
+  width: clamp(54px,calc(11*var(--vh)),116px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: repeating-linear-gradient(135deg,rgba(255,255,255,.12) 0 2px,transparent 2px 9px),var(--moonf);
@@ -3064,7 +3075,7 @@ body.sfs:not(.sbk) #sback {
 #start .stdec .sdc {
   position: absolute;
   left: 0;
-  width: clamp(110px,14vw,180px);
+  width: clamp(110px,calc(14*var(--vw)),180px);
   height: auto;
   overflow: visible;
   fill: var(--cf);
@@ -3080,7 +3091,7 @@ body.sfs:not(.sbk) #sback {
     transform: translateX(-25vw);
   }
   to {
-    transform: translateX(110vw);
+    transform: translateX(calc(110*var(--vw)));
   }
 }
 #start .stdec .sdst {
@@ -3237,7 +3248,7 @@ body.sfs:not(.sbk) #sback {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: max(110px,min(26.4vw,40vh));
+  height: max(110px,min(calc(26.4*var(--vw)),calc(40*var(--vh))));
   display: block;
 }
 .sdbg {
@@ -3339,7 +3350,7 @@ html.nopart #start .stdec img.sdst.p {
   display: none!important;
 }
 #start .stdm {
-  font-size: clamp(20px,6vw,28px);
+  font-size: clamp(20px,calc(6*var(--vw)),28px);
   letter-spacing: 1px;
   color: #fff;
   text-shadow: 0 0 3px rgba(18,28,12,.95),0 0 3px rgba(18,28,12,.95),0 0 8px rgba(255,255,255,.45);
@@ -3356,7 +3367,7 @@ html.nopart #start .stdec img.sdst.p {
   right: 0;
   margin: 0 auto;
   bottom: calc(env(safe-area-inset-bottom,0px) + 32px);
-  width: min(220px,60vw);
+  width: min(220px,calc(60*var(--vw)));
   min-height: 46px;
   z-index: 3;
 }
@@ -3770,8 +3781,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
     }
     catch (e) { }
-    var T = { en: { st: "Style", st0: "Hand-drawn", st0e: "High quality, weak optimization", st1: "Simple", st1e: "Lower quality, good optimization\nRecommended", fxi: "Animation and particle update", demo_tag: "[Demo]", upd: "Updates", upd_t: "Updates", fxa: "All animations", fxp: "Particles", fxon: "On", fxone: "", fxoff: "Off", fxoffe: "", demo_t: "End of the demo", demo_b: "This is the end of the demo version. Thanks for playing! This version is only an approximate demonstration of the game. Beta versions and the full release will come in the future, but not all at once: gradually, and only if people like the game. The game was inspired by Grass Cutting Incremental.", stc_gen: "Make steam", tn_name: "Worldwide Tornado", tn_mk: "Create tornado", tn_e: "Resets clouds, steam, water, rain cloud → lv 1, dew harvest\n+50% cloud boosts · min steam 20→35 · +3 max Cheap Dew base", tn_on: "Active", tn_off: "Not created", tn_cnt: "Created: ", tn_e2: "Resets clouds, steam, water, rain cloud → lv 1, dew harvest", tn_x1: "Extra bonuses: x30 steam per tornado", tn_x2: " · x10 water per tornado (from 3)", ss: "Stage (replaces current save)", ss0: "From the start", ss0e: "Fresh game", ss1: "Water unlocked", ss1e: "1K grass", ss2: "Clouds unlocked", ss2e: "1000 water · 100M grass", ssy: "Tap again to confirm", tn_lock: "Locked", tn_lke: "Reach 1B water to unlock", tn_ms1: "Milestone 1 · 1 tornado: unlocks Air clover", tn_ms2: "Milestone 2 · 2 tornadoes: each tornado gives x30 steam", rf_tn: "tornadoes", tn_ms3: "Milestone 3 · 3 tornadoes: unlocks Ocean and Tsunami, each tornado from the 3rd gives x10 water", tn_ms4: "Milestone 4 · 4 tornadoes: unlocks ocean upgrades (located to the right →)", tn_g4: "3 tornadoes", tn_g5: "Open the ocean", ts_name: "Tsunami", st_play: "Play", st_cont: "Continue", st_new: "New game", st_slots: "Save slots", sl_slot: "Slot ", sl_empty: "Empty", sl_del: "Delete", sl_sure: "Sure?", sl_back: "Back", sl_ttl: "Choose a slot", sl_cur: " · current", tsp: "Power: ", tsb: "Donate water", tsmn: "Needs ", tsgv: "Available: ", tsdd: "Donated: ", oc_name: "Ocean", ms_n: "Milestone ", ms_e5: "Grass gain ^1.25 (clouds now boost grass)", ms_e6: "+9 max levels of Calm waters, but their cost starts at 1 DTg (growth back to x100)\nWater boost formula 1.5^log₂ → 2^log₂\n+90 m³ to the filling slowdown step", ms_e7: "Opens a new ocean upgrade\nx2.50K water", ms_e1: "Weakens the filling slowdown per m³: x0.95 → x0.975", ms_e2: "While the rain cloud is over the field, a cloud also appears above the ocean and pours drops in: boost x10\nStrengthens the power formula: log₅₀₀₀ → log₁₀₀₀\nEvery second generates steam from 1% of current water (water is not spent)", ms_e3: "Generates steam from 5% of current water (instead of 1%)\nx100 water", ms_e4: "Cost growth of every ocean upgrade is 10x smaller\nUnlocks tornado milestone 5", tn_ms5: "Milestone 5 · 5 tornadoes and ocean milestone 4: unlocks the Worldwide Floor upgrade (water upgrades)", fl_name: "Worldwide Floor", fl_e: "Water boost: x2 per level\n", fl_now: "Boost: ", fl_cost: " water", ms_need: "Need ", ms_km: "km³", oc_lk: "Needs Tsunami power 1+", oc_a: "Volume: ", oc_v: "Liters: ", oc_r: "Fill speed: ", oc_b: "Boost: x", oc_u1: "m³", oc_u2: "L", oc_u3: "m³/s", oc_w: "Water boost: x", rf_oc: "ocean", oc_e: "Each m³ slows filling x0.95\nEvery doubling of volume: x1.5 water\n1000 L = 1 m³", ac_name: "Air clover", ac_e: "Chance to spawn a clover\nworth x10 grass: ", ac_now: "Chance: ", stc_stop: "Stop steam", stc_gd: "-{n} water/s → +{a}–{b} steam/s", stc_ps: "steam/s", stc_c1: "Small cloud", stc_c2: "Medium cloud", stc_c3: "Large cloud", stc_w: "to water", stc_water: "Water: ", stc_tot: "Clouds bonus: ", stc_cl: "clouds", stc_nw: "Not enough water", stc_n1: "S", stc_n2: "M", stc_n3: "L", unl: "Unlocks ???", f2: "Unlocks a new feature", f6: "Unlocks milestone 2", f7: "Unlocks milestone 4. First water push", f8: "Unlocks milestone 6", f9: "Unlocks milestone 7", gr: "grass", wa: "water", rt: "Start rain", rd: "Floods your field, resetting grass upgrades and grass amount. And makes dew appear.", rn: "Requires: ", gg: "Give grass", gw: "Give water", rs: "Resets grass, grass upgrades and dew", rf: "Water = (1 + log₃(grass / 1000)) · 1.5^log₁₀(grass / 1000) · 2.5^log₁₀₀₀(grass / 1000)", rg: " grass", rb: "Reset", dew: "Dew lv ", set: "Settings", lang: "Language", not: "Notation", mix: "Mixed", sci: "Scientific", std: "Standard", eng: "Engineering", enge: "123e6", mixe: "up to e303", scie: "1.23e5", stde: "1.23K", blade: "per blade: ", onf: " · on field: ", max: "MAX · lv ", lv: " · lv ", done: "done!", ps: "/s", bl: " blades", n_spawn: "Growth speed", n_max: "Meadow size", n_rad: "Touch radius", n_boost: "Grass base", n_wg: "Water grass", n_dg: "Dew boost", n_cs: "Cheap Growth speed", n_cm: "Cheap Meadow size", n_cr: "Cheap Touch radius", n_cb: "Cheap Grass base", lk: "Requires dew lv 10", bst: "Boost: ", bf: "Boost = 2^log₁₀(water)", n_dewb: "Dew base", fps: "FPS counter", anim: "Prestige animation", an1: "Normal", an1e: "", an2: "2x faster", an2e: "", an0: "Off", an0e: "", fpso: "On", fpsoe: "", fpsf: "Off", fpsfe: "", n_cd: "Cheap Dew base", lk15: "Requires dew lv 15", b1: "Buy 1", bn: "Buy next", bx: "Buy max", rc_name: "Rain cloud", rc_lv: "Lv ", rc_lock: "Buy level 1 to summon it", rc_on: "Raining: ", rc_next: "Next cloud in ", rc_s: " s", rc_e: "x2 grass growth & dew\nevery 60 s · ", rc_w: " water", rc_g: " grass", dq_name: "Dew harvest", dq_d: "Dew lvl ", dq_per: "per 5 dew levels", dq_now: "Now: x" },
-        ru: { st: "Стиль", st0: "Рисованный", st0e: "Высокое качество, слабая оптимизация", st1: "Простой", st1e: "Низкое качество, хорошая оптимизация\nРекомендуется", fxi: "Обновление анимаций и частиц", demo_tag: "[Демо]", upd: "Обновления", upd_t: "Обновления", fxa: "Все анимации", fxp: "Частицы", fxon: "Вкл", fxone: "", fxoff: "Выкл", fxoffe: "", demo_t: "Конец демо-версии", demo_b: "На этом демо-версия заканчивается. Спасибо, что играли! Эта версия является лишь примерной демонстрацией игры. Бета-версии и полный релиз выйдут в будущем, но не сразу, а постепенно, и только если игра понравится людям. Игра была вдохновлена Grass Cutting Incremental.", stc_gen: "Делать пар", tn_name: "Мировое торнадо", tn_mk: "Создать торнадо", tn_e: "Сбрасывает облака, пар, воду, тучу → ур. 1, урожай росы\n+50% к бустам облаков · мин. пара 20→35 · +3 к макс. Дешёвой базы росы", tn_on: "Активно", tn_off: "Не создано", tn_cnt: "Создано: ", tn_e2: "Сбрасывает облака, пар, воду, тучу → ур. 1, урожай росы", tn_x1: "Доп. бонусы: x30 к пару за торнадо", tn_x2: " · x10 к воде за торнадо (от 3)", ss: "Этап (заменяет текущее сохранение)", ss0: "С самого начала", ss0e: "Новая игра", ss1: "Открытие воды", ss1e: "1K травы", ss2: "Открытие облаков", ss2e: "1000 воды · 100M травы", ssy: "Нажмите ещё раз", tn_lock: "Заблокировано", tn_lke: "Достигните 1B воды, чтобы открыть", tn_ms1: "Веха 1 · 1 торнадо: открывает Воздушный клевер", tn_ms2: "Веха 2 · 2 торнадо: каждое торнадо даёт x30 к пару", rf_tn: "торнадо", tn_ms3: "Веха 3 · 3 торнадо: открывает Океан и Цунами, каждое торнадо, начиная с 3-го, даёт x10 к воде", tn_ms4: "Веха 4 · 4 торнадо: открывает улучшения океана (находятся справа →)", tn_g4: "3 торнадо", tn_g5: "Открыть океан", ts_name: "Цунами", st_play: "Играть", st_cont: "Продолжить", st_new: "Новая игра", st_slots: "Слоты сохранений", sl_slot: "Слот ", sl_empty: "Пусто", sl_del: "Удалить", sl_sure: "Точно?", sl_back: "Назад", sl_ttl: "Выберите слот", sl_cur: " · текущий", tsp: "Сила: ", tsb: "Пожертвовать воду", tsmn: "Нужно ", tsgv: "Доступно: ", tsdd: "Пожертвовано: ", oc_name: "Океан", ms_n: "Веха ", ms_e5: "Прирост травы ^1,25 (облака теперь бустят траву)", ms_e6: "+9 макс. уровней Спокойных вод, но их стоимость начинается с 1 DTg (рост снова x100)\nФормула буста воды 1,5^log₂ → 2^log₂\n+90 м³ к шагу замедления заполнения", ms_e7: "Открывает новое улучшение океана\nx2,50K к воде", ms_e1: "Ослабляет замедление заполнения за каждый м³: x0,95 → x0,975", ms_e2: "Пока над полем идёт дождь, туча появляется и над океаном и льёт в него капли: буст x10\nУсиливает формулу силы: log₅₀₀₀ → log₁₀₀₀\nКаждую секунду генерирует пар из 1% текущей воды (вода не тратится)", ms_e3: "Генерирует пар из 5% текущей воды (вместо 1%)\nx100 к воде", ms_e4: "Рост стоимости каждого улучшения океана уменьшается в 10x\nОткрывает веху 5 для торнадо", tn_ms5: "Веха 5 · 5 торнадо и веха 4 океана: открывает улучшение «Всемирный потоп» (во вкладке улучшений)", fl_name: "Всемирный потоп", fl_e: "Буст к воде: x2 за уровень\n", fl_now: "Буст: ", fl_cost: " воды", ms_need: "Нужно ", ms_km: "км³", oc_lk: "Нужна сила цунами 1+", oc_a: "Объём: ", oc_v: "В литрах: ", oc_r: "Скорость заполнения: ", oc_b: "Буст: x", oc_u1: "м³", oc_u2: "л", oc_u3: "м³/с", oc_w: "Буст воды: x", rf_oc: "океан", oc_e: "Каждый м³ замедляет заполнение в 0,95 раза\nКаждое удвоение объёма: x1,5 к воде\n1000 л = 1 м³", ac_name: "Воздушный клевер", ac_e: "Шанс появления клевера\nс x10 травы: ", ac_now: "Шанс: ", stc_stop: "Остановить пар", stc_gd: "-{n} воды/с → +{a}–{b} пара/с", stc_ps: "пара/с", stc_c1: "Малое облако", stc_c2: "Среднее облако", stc_c3: "Большое облако", stc_w: "к воде", stc_water: "Вода: ", stc_tot: "Бонус облаков: ", stc_cl: "облака", stc_nw: "Не хватает воды", stc_n1: "М", stc_n2: "С", stc_n3: "Б", unl: "Разблокирует ???", f2: "Разблокирует новую фичу", f6: "Разблокирует веху 2", f7: "Разблокирует веху 4. Первый водяной пуш", f8: "Разблокирует веху 6", f9: "Разблокирует веху 7", gr: "травы", wa: "воды", rt: "Начать дождь", rd: "Затапливает ваше поле, сбрасывая улучшения травы и количество травы. И обеспечивает появление росы.", rn: "Нужно: ", gg: "Выдать траву", gw: "Выдать воду", rs: "Сбрасывает траву, улучшения травы и росу", rf: "Вода = (1 + log₃(трава / 1000)) · 1.5^log₁₀(трава / 1000) · 2.5^log₁₀₀₀(трава / 1000)", rg: " травы", rb: "Сбросить", dew: "Роса ур. ", set: "Настройки", lang: "Язык", not: "Нотация", mix: "Смешанная", sci: "Научная", std: "Стандартная", eng: "Инженерная", enge: "123e6", mixe: "до e303", scie: "1.23e5", stde: "1.23K", blade: "за травинку: ", onf: " · на поле: ", max: "МАКС · ур. ", lv: " · ур. ", done: "готово!", ps: "/с", bl: " травинок", n_spawn: "Скорость роста", n_max: "Размер луга", n_rad: "Радиус касания", n_boost: "База травы", n_wg: "Водная трава", n_dg: "Больше росы", n_cs: "Дешёвая скорость роста", n_cm: "Дешёвый размер луга", n_cr: "Дешёвый радиус касания", n_cb: "Дешёвая база травы", lk: "Нужна роса ур. 10", bst: "Буст: ", bf: "Буст = 2^log₁₀(вода)", n_dewb: "База росы", fps: "Счётчик FPS", anim: "Анимация престижа", an1: "Обычная", an1e: "", an2: "Быстрее в 2 раза", an2e: "", an0: "Выкл", an0e: "", fpso: "Вкл", fpsoe: "", fpsf: "Выкл", fpsfe: "", n_cd: "Дешёвая база росы", lk15: "Нужна роса ур. 15", b1: "Купить 1", bn: "Купить след.", bx: "Купить макс.", rc_name: "Дождливая туча", rc_lv: "Ур. ", rc_lock: "Купите ур. 1, чтобы призвать", rc_on: "Идёт дождь: ", rc_next: "Следующая через ", rc_s: " с", rc_e: "x2 рост травы и роса\nраз в 60 с · ", rc_w: " воды", rc_g: " травы", dq_name: "Урожай росы", dq_d: "Роса ур. ", dq_per: "за каждые 5 ур. росы", dq_now: "Сейчас: x" } };
+    var T = { en: { st: "Style", st0: "Hand-drawn", st0e: "High quality, weak optimization", st1: "Simple", st1e: "Lower quality, good optimization\nRecommended", fxi: "Animation and particle update", demo_tag: "[Alpha]", upd: "Updates", upd_t: "Updates", fxa: "All animations", fxp: "Particles", fxon: "On", fxone: "", fxoff: "Off", fxoffe: "", demo_t: "End of the Alpha", demo_b: "This is the end of the Alpha version. Thanks for playing! This version is still a work in progress. Updates and the full release will come in the future, but not all at once: gradually, and only if people like the game. The game was inspired by Grass Cutting Incremental.", stc_gen: "Make steam", tn_name: "Worldwide Tornado", tn_mk: "Create tornado", tn_e: "Resets clouds, steam, water, rain cloud → lv 1, dew harvest\n+50% cloud boosts · min steam 20→35 · +3 max Cheap Dew base", tn_on: "Active", tn_off: "Not created", tn_cnt: "Created: ", tn_e2: "Resets clouds, steam, water, rain cloud → lv 1, dew harvest", tn_x1: "Extra bonuses: x30 steam per tornado", tn_x2: " · x10 water per tornado (from 3)", ss: "Stage (replaces current save)", ss0: "From the start", ss0e: "Fresh game", ss1: "Water unlocked", ss1e: "1K grass", ss2: "Clouds unlocked", ss2e: "1000 water · 100M grass", ssy: "Tap again to confirm", tn_lock: "Locked", tn_lke: "Reach 1B water to unlock", tn_ms1: "Milestone 1 · 1 tornado: unlocks Air clover", tn_ms2: "Milestone 2 · 2 tornadoes: each tornado gives x30 steam", rf_tn: "tornadoes", tn_ms3: "Milestone 3 · 3 tornadoes: unlocks Ocean and Tsunami, each tornado from the 3rd gives x10 water", tn_ms4: "Milestone 4 · 4 tornadoes: unlocks ocean upgrades (located to the right →)", tn_g4: "3 tornadoes", tn_g5: "Open the ocean", ts_name: "Tsunami", st_play: "Play", st_cont: "Continue", st_new: "New game", st_slots: "Save slots", sl_slot: "Slot ", sl_empty: "Empty", sl_del: "Delete", sl_sure: "Sure?", sl_back: "Back", sl_ttl: "Choose a slot", sl_cur: " · current", tsp: "Power: ", tsb: "Donate water", tsmn: "Needs ", tsgv: "Available: ", tsdd: "Donated: ", oc_name: "Ocean", ms_n: "Milestone ", ms_e5: "Grass gain ^1.25 (clouds now boost grass)", ms_e6: "+9 max levels of Calm waters, but their cost starts at 1 DTg (growth back to x100)\nWater boost formula 1.5^log₂ → 2^log₂\n+90 m³ to the filling slowdown step", ms_e7: "Opens a new ocean upgrade\nx2.50K water", ms_e1: "Weakens the filling slowdown per m³: x0.95 → x0.975", ms_e2: "While the rain cloud is over the field, a cloud also appears above the ocean and pours drops in: boost x10\nStrengthens the power formula: log₅₀₀₀ → log₁₀₀₀\nEvery second generates steam from 1% of current water (water is not spent)", ms_e3: "Generates steam from 5% of current water (instead of 1%)\nx100 water", ms_e4: "Cost growth of every ocean upgrade is 10x smaller\nUnlocks tornado milestone 5", tn_ms5: "Milestone 5 · 5 tornadoes and ocean milestone 4: unlocks the Worldwide Floor upgrade (water upgrades)", fl_name: "Worldwide Floor", fl_e: "Water boost: x2 per level\n", fl_now: "Boost: ", fl_cost: " water", ms_need: "Need ", ms_km: "km³", oc_lk: "Needs Tsunami power 1+", oc_a: "Volume: ", oc_v: "Liters: ", oc_r: "Fill speed: ", oc_b: "Boost: x", oc_u1: "m³", oc_u2: "L", oc_u3: "m³/s", oc_w: "Water boost: x", rf_oc: "ocean", oc_e: "Each m³ slows filling x0.95\nEvery doubling of volume: x1.5 water\n1000 L = 1 m³", ac_name: "Air clover", ac_e: "Chance to spawn a clover\nworth x10 grass: ", ac_now: "Chance: ", stc_stop: "Stop steam", stc_gd: "-{n} water/s → +{a}–{b} steam/s", stc_ps: "steam/s", stc_c1: "Small cloud", stc_c2: "Medium cloud", stc_c3: "Large cloud", stc_w: "to water", stc_water: "Water: ", stc_tot: "Clouds bonus: ", stc_cl: "clouds", stc_nw: "Not enough water", stc_n1: "S", stc_n2: "M", stc_n3: "L", unl: "Unlocks ???", f2: "Unlocks a new feature", f6: "Unlocks milestone 2", f7: "Unlocks milestone 4. First water push", f8: "Unlocks milestone 6", f9: "Unlocks milestone 7", gr: "grass", wa: "water", rt: "Start rain", rd: "Floods your field, resetting grass upgrades and grass amount. And makes dew appear.", rn: "Requires: ", gg: "Give grass", gw: "Give water", rs: "Resets grass, grass upgrades and dew", rf: "Water = (1 + log₃(grass / 1000)) · 1.5^log₁₀(grass / 1000) · 2.5^log₁₀₀₀(grass / 1000)", rg: " grass", rb: "Reset", dew: "Dew lv ", set: "Settings", lang: "Language", not: "Notation", mix: "Mixed", sci: "Scientific", std: "Standard", eng: "Engineering", enge: "123e6", mixe: "up to e303", scie: "1.23e5", stde: "1.23K", blade: "per blade: ", onf: " · on field: ", max: "MAX · lv ", lv: " · lv ", done: "done!", ps: "/s", bl: " blades", n_spawn: "Growth speed", n_max: "Meadow size", n_rad: "Touch radius", n_boost: "Grass base", n_wg: "Water grass", n_dg: "Dew boost", n_cs: "Cheap Growth speed", n_cm: "Cheap Meadow size", n_cr: "Cheap Touch radius", n_cb: "Cheap Grass base", lk: "Requires dew lv 10", bst: "Boost: ", bf: "Boost = 2^log₁₀(water)", n_dewb: "Dew base", fps: "FPS counter", anim: "Prestige animation", an1: "Normal", an1e: "", an2: "2x faster", an2e: "", an0: "Off", an0e: "", fpso: "On", fpsoe: "", fpsf: "Off", fpsfe: "", n_cd: "Cheap Dew base", lk15: "Requires dew lv 15", b1: "Buy 1", bn: "Buy next", bx: "Buy max", rc_name: "Rain cloud", rc_lv: "Lv ", rc_lock: "Buy level 1 to summon it", rc_on: "Raining: ", rc_next: "Next cloud in ", rc_s: " s", rc_e: "x2 grass growth & dew\nevery 60 s · ", rc_w: " water", rc_g: " grass", dq_name: "Dew harvest", dq_d: "Dew lvl ", dq_per: "per 5 dew levels", dq_now: "Now: x" },
+        ru: { st: "Стиль", st0: "Рисованный", st0e: "Высокое качество, слабая оптимизация", st1: "Простой", st1e: "Низкое качество, хорошая оптимизация\nРекомендуется", fxi: "Обновление анимаций и частиц", demo_tag: "[Альфа]", upd: "Обновления", upd_t: "Обновления", fxa: "Все анимации", fxp: "Частицы", fxon: "Вкл", fxone: "", fxoff: "Выкл", fxoffe: "", demo_t: "Конец альфа-версии", demo_b: "На этом альфа-версия заканчивается. Спасибо, что играли! Эта версия ещё в разработке. Обновления и полный релиз выйдут в будущем, но не сразу, а постепенно, и только если игра понравится людям. Игра была вдохновлена Grass Cutting Incremental.", stc_gen: "Делать пар", tn_name: "Мировое торнадо", tn_mk: "Создать торнадо", tn_e: "Сбрасывает облака, пар, воду, тучу → ур. 1, урожай росы\n+50% к бустам облаков · мин. пара 20→35 · +3 к макс. Дешёвой базы росы", tn_on: "Активно", tn_off: "Не создано", tn_cnt: "Создано: ", tn_e2: "Сбрасывает облака, пар, воду, тучу → ур. 1, урожай росы", tn_x1: "Доп. бонусы: x30 к пару за торнадо", tn_x2: " · x10 к воде за торнадо (от 3)", ss: "Этап (заменяет текущее сохранение)", ss0: "С самого начала", ss0e: "Новая игра", ss1: "Открытие воды", ss1e: "1K травы", ss2: "Открытие облаков", ss2e: "1000 воды · 100M травы", ssy: "Нажмите ещё раз", tn_lock: "Заблокировано", tn_lke: "Достигните 1B воды, чтобы открыть", tn_ms1: "Веха 1 · 1 торнадо: открывает Воздушный клевер", tn_ms2: "Веха 2 · 2 торнадо: каждое торнадо даёт x30 к пару", rf_tn: "торнадо", tn_ms3: "Веха 3 · 3 торнадо: открывает Океан и Цунами, каждое торнадо, начиная с 3-го, даёт x10 к воде", tn_ms4: "Веха 4 · 4 торнадо: открывает улучшения океана (находятся справа →)", tn_g4: "3 торнадо", tn_g5: "Открыть океан", ts_name: "Цунами", st_play: "Играть", st_cont: "Продолжить", st_new: "Новая игра", st_slots: "Слоты сохранений", sl_slot: "Слот ", sl_empty: "Пусто", sl_del: "Удалить", sl_sure: "Точно?", sl_back: "Назад", sl_ttl: "Выберите слот", sl_cur: " · текущий", tsp: "Сила: ", tsb: "Пожертвовать воду", tsmn: "Нужно ", tsgv: "Доступно: ", tsdd: "Пожертвовано: ", oc_name: "Океан", ms_n: "Веха ", ms_e5: "Прирост травы ^1,25 (облака теперь бустят траву)", ms_e6: "+9 макс. уровней Спокойных вод, но их стоимость начинается с 1 DTg (рост снова x100)\nФормула буста воды 1,5^log₂ → 2^log₂\n+90 м³ к шагу замедления заполнения", ms_e7: "Открывает новое улучшение океана\nx2,50K к воде", ms_e1: "Ослабляет замедление заполнения за каждый м³: x0,95 → x0,975", ms_e2: "Пока над полем идёт дождь, туча появляется и над океаном и льёт в него капли: буст x10\nУсиливает формулу силы: log₅₀₀₀ → log₁₀₀₀\nКаждую секунду генерирует пар из 1% текущей воды (вода не тратится)", ms_e3: "Генерирует пар из 5% текущей воды (вместо 1%)\nx100 к воде", ms_e4: "Рост стоимости каждого улучшения океана уменьшается в 10x\nОткрывает веху 5 для торнадо", tn_ms5: "Веха 5 · 5 торнадо и веха 4 океана: открывает улучшение «Всемирный потоп» (во вкладке улучшений)", fl_name: "Всемирный потоп", fl_e: "Буст к воде: x2 за уровень\n", fl_now: "Буст: ", fl_cost: " воды", ms_need: "Нужно ", ms_km: "км³", oc_lk: "Нужна сила цунами 1+", oc_a: "Объём: ", oc_v: "В литрах: ", oc_r: "Скорость заполнения: ", oc_b: "Буст: x", oc_u1: "м³", oc_u2: "л", oc_u3: "м³/с", oc_w: "Буст воды: x", rf_oc: "океан", oc_e: "Каждый м³ замедляет заполнение в 0,95 раза\nКаждое удвоение объёма: x1,5 к воде\n1000 л = 1 м³", ac_name: "Воздушный клевер", ac_e: "Шанс появления клевера\nс x10 травы: ", ac_now: "Шанс: ", stc_stop: "Остановить пар", stc_gd: "-{n} воды/с → +{a}–{b} пара/с", stc_ps: "пара/с", stc_c1: "Малое облако", stc_c2: "Среднее облако", stc_c3: "Большое облако", stc_w: "к воде", stc_water: "Вода: ", stc_tot: "Бонус облаков: ", stc_cl: "облака", stc_nw: "Не хватает воды", stc_n1: "М", stc_n2: "С", stc_n3: "Б", unl: "Разблокирует ???", f2: "Разблокирует новую фичу", f6: "Разблокирует веху 2", f7: "Разблокирует веху 4. Первый водяной пуш", f8: "Разблокирует веху 6", f9: "Разблокирует веху 7", gr: "травы", wa: "воды", rt: "Начать дождь", rd: "Затапливает ваше поле, сбрасывая улучшения травы и количество травы. И обеспечивает появление росы.", rn: "Нужно: ", gg: "Выдать траву", gw: "Выдать воду", rs: "Сбрасывает траву, улучшения травы и росу", rf: "Вода = (1 + log₃(трава / 1000)) · 1.5^log₁₀(трава / 1000) · 2.5^log₁₀₀₀(трава / 1000)", rg: " травы", rb: "Сбросить", dew: "Роса ур. ", set: "Настройки", lang: "Язык", not: "Нотация", mix: "Смешанная", sci: "Научная", std: "Стандартная", eng: "Инженерная", enge: "123e6", mixe: "до e303", scie: "1.23e5", stde: "1.23K", blade: "за травинку: ", onf: " · на поле: ", max: "МАКС · ур. ", lv: " · ур. ", done: "готово!", ps: "/с", bl: " травинок", n_spawn: "Скорость роста", n_max: "Размер луга", n_rad: "Радиус касания", n_boost: "База травы", n_wg: "Водная трава", n_dg: "Больше росы", n_cs: "Дешёвая скорость роста", n_cm: "Дешёвый размер луга", n_cr: "Дешёвый радиус касания", n_cb: "Дешёвая база травы", lk: "Нужна роса ур. 10", bst: "Буст: ", bf: "Буст = 2^log₁₀(вода)", n_dewb: "База росы", fps: "Счётчик FPS", anim: "Анимация престижа", an1: "Обычная", an1e: "", an2: "Быстрее в 2 раза", an2e: "", an0: "Выкл", an0e: "", fpso: "Вкл", fpsoe: "", fpsf: "Выкл", fpsfe: "", n_cd: "Дешёвая база росы", lk15: "Нужна роса ур. 15", b1: "Купить 1", bn: "Купить след.", bx: "Купить макс.", rc_name: "Дождливая туча", rc_lv: "Ур. ", rc_lock: "Купите ур. 1, чтобы призвать", rc_on: "Идёт дождь: ", rc_next: "Следующая через ", rc_s: " с", rc_e: "x2 рост травы и роса\nраз в 60 с · ", rc_w: " воды", rc_g: " травы", dq_name: "Урожай росы", dq_d: "Роса ур. ", dq_per: "за каждые 5 ур. росы", dq_now: "Сейчас: x" } };
     var SIMPLE = SET.st === "1";
     document.documentElement.classList.toggle("simple", SIMPLE);
     function t(k) { return T[SET.lang][k]; }
@@ -6977,16 +6988,16 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         function lab() { sBk.children[0].children[0].textContent = t("sl_back"); bPlay.children[0].children[0].textContent = t(has ? "st_cont" : "st_play"); bSl.children[0].children[0].textContent = t("st_slots"); bSet.children[0].children[0].textContent = t("set"); stdm.textContent = t("demo_tag"); bUpd.children[0].children[0].textContent = t("upd"); }
         var stdm = st.querySelector(".stdm");
-        var UPD = { "en": [["Meadow", ["Tap or drag over the field to cut grass", "Upgrades: Growth speed, Meadow size, Touch radius, Grass base", "Buy modes for upgrades: x1, up to the next 15 levels, or as many as you can afford"]], ["Saves and settings", ["3 save slots with a stats preview", "Export and import your save as a code", "Language: English / Russian", "Number notation: Mixed, Scientific, Standard, Engineering", "Settings for prestige animation, all animations, particles and an FPS counter"]], ["Rain and water", ["Start rain: floods the field, resets grass and grass upgrades, and gives water", "Water unlocks a new tab, and the amount of water boosts grass gain", "Dew after the first rain: Dew base upgrade, and the dew level grows while you cut grass", "Rain cloud over the field: temporary x2 growth and dew, with falling drops"]], ["Clouds and steam", ["Turn water into steam", "Small, Medium and Large clouds with their own bonuses", "Steam generation can be started and stopped"]], ["Tornado", ["Worldwide Tornado: a prestige layer that resets clouds, steam and water for bigger bonuses", "Milestones 1-5: Air clover, x30 steam per tornado, Ocean and Tsunami, ocean upgrades, Worldwide Floor", "Air clover: a chance for a clover worth x10 grass"]], ["Ocean", ["Tsunami: donate water to get power", "Ocean volume that grows over time, with its own boost to water", "Ocean milestones and upgrades", "Worldwide Floor: x2 water boost per level"]], ["End of the demo", ["A final page thanking you for playing. The demo is only a rough preview; the beta and full release will come later."]]], "ru": [["Луг", ["Касайтесь поля или проведите по нему, чтобы срезать траву", "Улучшения: Скорость роста, Размер луга, Радиус касания, База травы", "Режимы покупки улучшений: x1, до следующих 15 уровней или максимум, на сколько хватает"]], ["Сохранения и настройки", ["3 слота сохранения с предпросмотром статистики", "Экспорт и импорт сохранения в виде кода", "Язык: English / Русский", "Запись чисел: смешанная, научная, стандартная, инженерная", "Настройки анимации престижа, всех анимаций, частиц и счётчика FPS"]], ["Дождь и вода", ["Запуск дождя: заливает поле, сбрасывает траву и её улучшения и даёт воду", "Вода открывает новую вкладку, а её количество усиливает прирост травы", "Роса после первого дождя: улучшение «База росы», уровень росы растёт, пока вы срезаете траву", "Дождевое облако над полем: временное ускорение роста и росы x2, с падающими каплями"]], ["Облака и пар", ["Превращение воды в пар", "Малые, средние и большие облака со своими бонусами", "Выработку пара можно запускать и останавливать"]], ["Торнадо", ["Мировое торнадо: слой престижа, сбрасывающий облака, пар и воду ради больших бонусов", "Вехи 1-5: Воздушный клевер, x30 пара за торнадо, Океан и Цунами, улучшения океана, Мировой потоп", "Воздушный клевер: шанс появления клевера, который даёт x10 травы"]], ["Океан", ["Цунами: отдавайте воду, чтобы получить силу", "Объём океана, который растёт со временем и усиливает воду", "Вехи и улучшения океана", "Мировой потоп: усиление воды x2 за уровень"]], ["Конец демо", ["Финальная страница с благодарностью за игру. Демо — лишь примерная демонстрация; бета-версии и полный релиз выйдут позже."]]] };
-        var SPN = 2, SPT = { en: ["Spoilers!!", "Below is the rest of the demo content. Tap to choose what to show.", "Show all", "Tap a section to show only it."], ru: ["Спойлеры!!", "Ниже остальное содержимое демо. Нажмите, чтобы выбрать, что показать.", "Показать всё", "Нажмите на раздел, чтобы показать только его."] };
+        var UPD = { "en": [["Meadow", ["Tap or drag over the field to cut grass", "Upgrades: Growth speed, Meadow size, Touch radius, Grass base", "Buy modes for upgrades: x1, up to the next 15 levels, or as many as you can afford"]], ["Saves and settings", ["3 save slots with a stats preview", "Export and import your save as a code", "Language: English / Russian", "Number notation: Mixed, Scientific, Standard, Engineering", "Settings for prestige animation, all animations, particles and an FPS counter"]], ["Rain and water", ["Start rain: floods the field, resets grass and grass upgrades, and gives water", "Water unlocks a new tab, and the amount of water boosts grass gain", "Dew after the first rain: Dew base upgrade, and the dew level grows while you cut grass", "Rain cloud over the field: temporary x2 growth and dew, with falling drops"]], ["Clouds and steam", ["Turn water into steam", "Small, Medium and Large clouds with their own bonuses", "Steam generation can be started and stopped"]], ["Tornado", ["Worldwide Tornado: a prestige layer that resets clouds, steam and water for bigger bonuses", "Milestones 1-5: Air clover, x30 steam per tornado, Ocean and Tsunami, ocean upgrades, Worldwide Floor", "Air clover: a chance for a clover worth x10 grass"]], ["Ocean", ["Tsunami: donate water to get power", "Ocean volume that grows over time, with its own boost to water", "Ocean milestones and upgrades", "Worldwide Floor: x2 water boost per level"]], ["End of the Alpha", ["A final page thanking you for playing. The Alpha is still a work in progress; updates and the full release will come later."]]], "ru": [["Луг", ["Касайтесь поля или проведите по нему, чтобы срезать траву", "Улучшения: Скорость роста, Размер луга, Радиус касания, База травы", "Режимы покупки улучшений: x1, до следующих 15 уровней или максимум, на сколько хватает"]], ["Сохранения и настройки", ["3 слота сохранения с предпросмотром статистики", "Экспорт и импорт сохранения в виде кода", "Язык: English / Русский", "Запись чисел: смешанная, научная, стандартная, инженерная", "Настройки анимации престижа, всех анимаций, частиц и счётчика FPS"]], ["Дождь и вода", ["Запуск дождя: заливает поле, сбрасывает траву и её улучшения и даёт воду", "Вода открывает новую вкладку, а её количество усиливает прирост травы", "Роса после первого дождя: улучшение «База росы», уровень росы растёт, пока вы срезаете траву", "Дождевое облако над полем: временное ускорение роста и росы x2, с падающими каплями"]], ["Облака и пар", ["Превращение воды в пар", "Малые, средние и большие облака со своими бонусами", "Выработку пара можно запускать и останавливать"]], ["Торнадо", ["Мировое торнадо: слой престижа, сбрасывающий облака, пар и воду ради больших бонусов", "Вехи 1-5: Воздушный клевер, x30 пара за торнадо, Океан и Цунами, улучшения океана, Мировой потоп", "Воздушный клевер: шанс появления клевера, который даёт x10 травы"]], ["Океан", ["Цунами: отдавайте воду, чтобы получить силу", "Объём океана, который растёт со временем и усиливает воду", "Вехи и улучшения океана", "Мировой потоп: усиление воды x2 за уровень"]], ["Конец альфы", ["Финальная страница с благодарностью за игру. Альфа ещё в разработке; обновления и полный релиз выйдут позже."]]] };
+        var SPN = 2, SPT = { en: ["Spoilers!!", "Below is the rest of the Alpha content. Tap to choose what to show.", "Show all", "Tap a section to show only it."], ru: ["Спойлеры!!", "Ниже остальное содержимое альфы. Нажмите, чтобы выбрать, что показать.", "Показать всё", "Нажмите на раздел, чтобы показать только его."] };
         var bUpd = mkB(st, "stupd", 7600, function () { openUpd(); });
         var stv = document.createElement("div");
         stv.className = "stver";
-        stv.textContent = "0.1v. Demo";
+        stv.textContent = "0.1v. Alpha";
         st.appendChild(stv);
         var stu = document.createElement("div");
         stu.className = "stu";
-        stu.innerHTML = '<div class="stuw"><div class="up stup"><div class="stut"></div><div class="stuv">0.1v. Demo</div><div class="stub"></div></div></div>';
+        stu.innerHTML = '<div class="stuw"><div class="up stup"><div class="stut"></div><div class="stuv">0.1v. Alpha</div><div class="stub"></div></div></div>';
         st.appendChild(stu);
         var stut = stu.querySelector(".stut"), stub = stu.querySelector(".stub");
         var uBk = mkB(stu.firstChild, "stbk", 7620, function () { closeUpd(); });
