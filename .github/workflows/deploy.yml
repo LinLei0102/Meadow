@@ -1,0 +1,23 @@
+name: Deploy Meadow to itch.io
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Butler
+        uses: jdno/setup-butler@v1
+
+      - name: Deploy
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: butler push . funfun/meadow:html5
