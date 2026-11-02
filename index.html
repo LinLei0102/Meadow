@@ -6184,8 +6184,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             b.type = "button";
             b.className = "up opt";
             b.innerHTML = '<div class="h"><span class="n"></span></div>';
-            b.children[0].children[0].textContent = (dv > 0 ? "+" : "\u2212") + Math.abs(dv);
-            b.onclick = function () { stRate = Math.max(1, stRate + dv); try {
+            b.children[0].children[0].textContent = Math.abs(dv) === 10 ? (dv > 0 ? "x10" : "\u00F710") : (dv > 0 ? "+" : "\u2212") + Math.abs(dv);
+            b.onclick = function () { stRate = Math.abs(dv) === 10 ? (dv > 0 ? Math.min(stRate * 10, 1e15) : Math.max(1, Math.floor(stRate / 10))) : Math.max(1, stRate + dv); try {
                 localStorage.setItem("lug_strate", stRate);
             }
             catch (e) { } ui(); };
@@ -6217,6 +6217,12 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         } };
         p1.appendChild(ci);
         stRb.push(ci);
+        var cap = document.createElement("div");
+        cap.className = "strcap";
+        cap.style.cssText = "text-align:center;font-size:13px;opacity:.75;margin-top:6px";
+        cap.textContent = SET.lang === "ru" ? "Установите своё количество тут." : "Set your amount here.";
+        p1.appendChild(cap);
+        stRb.push(cap);
         var cbm = document.createElement("div");
         cbm.className = "bmr";
         cbm.style.display = "grid"; cbm.style.gridTemplateColumns = "1fr 1fr"; cbm.style.gap = "8px"; cbm.style.width = "100%"; cbm.style.boxSizing = "border-box"; cbm.setAttribute("data-narrow", "1");
@@ -6765,6 +6771,9 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         if (stRb[0] && document.activeElement !== stRb[0]) {
             stRb[0].value = fmt(stRate);
             stRb[0].placeholder = SET.lang === "ru" ? "своё число" : "custom";
+        }
+        if (stRb[1]) {
+            stRb[1].textContent = SET.lang === "ru" ? "Установите своё количество тут." : "Set your amount here.";
         }
         stb.children[1].textContent = t("stc_gd").replace(/\{n\}/g, fmt(stRate)).replace("{a}", fmt(stMin() * stRate * tnSM())).replace("{b}", fmt(100 * stRate * tnSM()));
         stb.children[2].textContent = stOn && stGain ? "+" + fmt(stGain) + " " + t("stc_ps") : (!stOn && S.water < 1 ? t("stc_nw") : "");
