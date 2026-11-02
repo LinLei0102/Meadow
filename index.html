@@ -4353,10 +4353,11 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         if (acc > 12)
             acc = 12;
+        var gs = V("spawn");
         for (var i = 0; i < blades.length; i++) {
             var b = blades[i];
             if (b.g < 1)
-                b.g = Math.min(1, b.g + d * gm / GROW);
+                b.g = Math.min(1, b.g + d * gm * gs / GROW);
         }
     }
     setInterval(gameTick, 33);
