@@ -3667,6 +3667,11 @@ html.simple[data-theme="dark"] #pgW::after {
 </head>
 <body>
 <script>
+/* break_eternity.js 2.1.3 (MIT, Patashu) */
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).Decimal=t()}(this,(function(){"use strict";function e(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function t(e,t){for(var i=0;i<t.length;i++){var r=t[i];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function i(e,i,r){return i&&t(e.prototype,i),r&&t(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}var r=function(){function t(i){e(this,t),this.map=new Map,this.first=void 0,this.last=void 0,this.maxSize=i}return i(t,[{key:"size",get:function(){return this.map.size}},{key:"get",value:function(e){var t=this.map.get(e);if(void 0!==t)return t!==this.first&&(t===this.last?(this.last=t.prev,this.last.next=void 0):(t.prev.next=t.next,t.next.prev=t.prev),t.next=this.first,this.first.prev=t,this.first=t),t.value}},{key:"set",value:function(e,t){if(!(this.maxSize<1)){if(this.map.has(e))throw new Error("Cannot update existing keys in the cache");var i=new n(e,t);for(void 0===this.first?(this.first=i,this.last=i):(i.next=this.first,this.first.prev=i,this.first=i),this.map.set(e,i);this.map.size>this.maxSize;){var r=this.last;this.map.delete(r.key),this.last=r.prev,this.last.next=void 0}}}}]),t}(),n=i((function t(i,r){e(this,t),this.next=void 0,this.prev=void 0,this.key=i,this.value=r})),a=9e15,s=Math.log10(9e15),u=1/9e15,o=function(){for(var e=[],t=-323;t<=308;t++)e.push(Number("1e"+t));return function(t){return e[t+323]}}(),l=[2,Math.E,3,4,5,6,7,8,9,10],h=[[1,1.0891180521811203,1.1789767925673957,1.2701455431742086,1.3632090180450092,1.4587818160364217,1.5575237916251419,1.6601571006859253,1.767485818836978,1.8804192098842727,2],[1,1.1121114330934079,1.231038924931609,1.3583836963111375,1.4960519303993531,1.6463542337511945,1.8121385357018724,1.996971324618307,2.2053895545527546,2.4432574483385254,Math.E],[1,1.1187738849693603,1.2464963939368214,1.38527004705667,1.5376664685821402,1.7068895236551784,1.897001227148399,2.1132403089001035,2.362480153784171,2.6539010333870774,3],[1,1.1367350847096405,1.2889510672956703,1.4606478703324786,1.6570295196661111,1.8850062585672889,2.1539465047453485,2.476829779693097,2.872061932789197,3.3664204535587183,4],[1,1.1494592900767588,1.319708228183931,1.5166291280087583,1.748171114438024,2.0253263297298045,2.3636668498288547,2.7858359149579424,3.3257226212448145,4.035730287722532,5],[1,1.159225940787673,1.343712473580932,1.5611293155111927,1.8221199554561318,2.14183924486326,2.542468319282638,3.0574682501653316,3.7390572020926873,4.6719550537360774,6],[1,1.1670905356972596,1.3632807444991446,1.5979222279405536,1.8842640123816674,2.2416069644878687,2.69893426559423,3.3012632110403577,4.121250340630164,5.281493033448316,7],[1,1.1736630594087796,1.379783782386201,1.6292821855668218,1.9378971836180754,2.3289975651071977,2.8384347394720835,3.5232708454565906,4.478242031114584,5.868592169644505,8],[1,1.1793017514670474,1.394054150657457,1.65664127441059,1.985170999970283,2.4069682290577457,2.9647310119960752,3.7278665320924946,4.814462547283592,6.436522247411611,9],[1,1.1840100246247336,1.4061375836156955,1.6802272208863964,2.026757028388619,2.4770056063449646,3.080525271755482,3.9191964192627284,5.135152840833187,6.989961179534715,10]],g=[[-1,-.9194161097107025,-.8335625019330468,-.7425599821143978,-.6466611521029437,-.5462617907227869,-.4419033816638769,-.3342645487554494,-.224140440909962,-.11241087890006762,0],[-1,-.90603157029014,-.80786507256596,-.7064666939634,-.60294836853664,-.49849837513117,-.39430303318768,-.29147201034755,-.19097820800866,-.09361896280296,0],[-1,-.9021579584316141,-.8005762598234203,-.6964780623319391,-.5911906810998454,-.486050182576545,-.3823089430815083,-.28106046722897615,-.1831906535795894,-.08935809204418144,0],[-1,-.8917227442365535,-.781258746326964,-.6705130326902455,-.5612813129406509,-.4551067709033134,-.35319256652135966,-.2563741554088552,-.1651412821106526,-.0796919581982668,0],[-1,-.8843387974366064,-.7678744063886243,-.6529563724510552,-.5415870994657841,-.4352842206588936,-.33504449124791424,-.24138853420685147,-.15445285440944467,-.07409659641336663,0],[-1,-.8786709358426346,-.7577735191184886,-.6399546189952064,-.527284921869926,-.4211627631006314,-.3223479611761232,-.23107655627789858,-.1472057700818259,-.07035171210706326,0],[-1,-.8740862815291583,-.7497032990976209,-.6297119746181752,-.5161838335958787,-.41036238255751956,-.31277212146489963,-.2233976621705518,-.1418697367979619,-.06762117662323441,0],[-1,-.8702632331800649,-.7430366914122081,-.6213373075161548,-.5072025698095242,-.40171437727184167,-.30517930701410456,-.21736343968190863,-.137710238299109,-.06550774483471955,0],[-1,-.8670016295947213,-.7373984232432306,-.6143173985094293,-.49973884395492807,-.394584953527678,-.2989649949848695,-.21245647317021688,-.13434688362382652,-.0638072667348083,0],[-1,-.8641642839543857,-.732534623168535,-.6083127477059322,-.4934049257184696,-.3885773075899922,-.29376029055315767,-.2083678561173622,-.13155653399373268,-.062401588652553186,0]],f=function(e){return b.fromValue_noAlloc(e)},m=function(e,t,i){return b.fromComponents(e,t,i)},c=function(e,t,i){return b.fromComponents_noNormalize(e,t,i)},v=function(e,t){var i=t+1,r=Math.ceil(Math.log10(Math.abs(e))),n=Math.round(e*Math.pow(10,i-r))*Math.pow(10,r-i);return parseFloat(n.toFixed(Math.max(i-r,0)))},y=function(e){return Math.sign(e)*Math.log10(Math.abs(e))},d=.5671432904097838,N=function(e){var t,i,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1e-10,n=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];if(!Number.isFinite(e))return e;if(n){if(0===e)return e;if(1===e)return d;t=e<10?0:Math.log(e)-Math.log(Math.log(e))}else{if(0===e)return-1/0;t=e<=-.1?-2:Math.log(-e)-Math.log(-Math.log(-e))}for(var a=0;a<100;++a){if(i=(e*Math.exp(-t)+t*t)/(t+1),Math.abs(i-t)<r*Math.abs(i))return i;t=i}throw Error("Iteration failed to converge: ".concat(e.toString()))};function p(e){var t,i,r,n,a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1e-10,s=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];if(!Number.isFinite(e.mag))return new b(e);if(s){if(e.eq(b.dZero))return c(0,0,0);if(e.eq(b.dOne))return b.fromNumber(d);t=b.ln(e)}else{if(e.eq(b.dZero))return new b(b.dNegInf);t=b.ln(e.neg())}for(var u=0;u<100;++u){if(i=t.neg().exp(),r=t.sub(e.mul(i)),n=t.sub(r.div(t.add(1).sub(t.add(2).mul(r).div(b.mul(2,t).add(2))))),b.abs(n.sub(t)).lt(b.abs(n).mul(a)))return n;t=n}throw Error("Iteration failed to converge: ".concat(e.toString()))}var b=function(){function t(i){e(this,t),this.sign=0,this.mag=0,this.layer=0,i instanceof t?this.fromDecimal(i):"number"==typeof i?this.fromNumber(i):"string"==typeof i&&this.fromString(i)}return i(t,[{key:"m",get:function(){if(0===this.sign)return 0;if(0===this.layer){var e,t=Math.floor(Math.log10(this.mag));return e=5e-324===this.mag?5:this.mag/o(t),this.sign*e}if(1===this.layer){var i=this.mag-Math.floor(this.mag);return this.sign*Math.pow(10,i)}return this.sign},set:function(e){this.layer<=2?this.fromMantissaExponent(e,this.e):(this.sign=Math.sign(e),0===this.sign&&(this.layer=0,this.exponent=0))}},{key:"e",get:function(){return 0===this.sign?0:0===this.layer?Math.floor(Math.log10(this.mag)):1===this.layer?Math.floor(this.mag):2===this.layer?Math.floor(Math.sign(this.mag)*Math.pow(10,Math.abs(this.mag))):this.mag*Number.POSITIVE_INFINITY},set:function(e){this.fromMantissaExponent(this.m,e)}},{key:"s",get:function(){return this.sign},set:function(e){0===e?(this.sign=0,this.layer=0,this.mag=0):this.sign=e}},{key:"mantissa",get:function(){return this.m},set:function(e){this.m=e}},{key:"exponent",get:function(){return this.e},set:function(e){this.e=e}},{key:"normalize",value:function(){if(0===this.sign||0===this.mag&&0===this.layer||this.mag===Number.NEGATIVE_INFINITY&&this.layer>0&&Number.isFinite(this.layer))return this.sign=0,this.mag=0,this.layer=0,this;if(0===this.layer&&this.mag<0&&(this.mag=-this.mag,this.sign=-this.sign),this.mag===Number.POSITIVE_INFINITY||this.layer===Number.POSITIVE_INFINITY||this.mag===Number.NEGATIVE_INFINITY||this.layer===Number.NEGATIVE_INFINITY)return this.mag=Number.POSITIVE_INFINITY,this.layer=Number.POSITIVE_INFINITY,this;if(0===this.layer&&this.mag<u)return this.layer+=1,this.mag=Math.log10(this.mag),this;var e=Math.abs(this.mag),t=Math.sign(this.mag);if(e>=a)return this.layer+=1,this.mag=t*Math.log10(e),this;for(;e<s&&this.layer>0;)this.layer-=1,0===this.layer?this.mag=Math.pow(10,this.mag):(this.mag=t*Math.pow(10,e),e=Math.abs(this.mag),t=Math.sign(this.mag));return 0===this.layer&&(this.mag<0?(this.mag=-this.mag,this.sign=-this.sign):0===this.mag&&(this.sign=0)),(Number.isNaN(this.sign)||Number.isNaN(this.layer)||Number.isNaN(this.mag))&&(this.sign=Number.NaN,this.layer=Number.NaN,this.mag=Number.NaN),this}},{key:"fromComponents",value:function(e,t,i){return this.sign=e,this.layer=t,this.mag=i,this.normalize(),this}},{key:"fromComponents_noNormalize",value:function(e,t,i){return this.sign=e,this.layer=t,this.mag=i,this}},{key:"fromMantissaExponent",value:function(e,t){return this.layer=1,this.sign=Math.sign(e),e=Math.abs(e),this.mag=t+Math.log10(e),this.normalize(),this}},{key:"fromMantissaExponent_noNormalize",value:function(e,t){return this.fromMantissaExponent(e,t),this}},{key:"fromDecimal",value:function(e){return this.sign=e.sign,this.layer=e.layer,this.mag=e.mag,this}},{key:"fromNumber",value:function(e){return this.mag=Math.abs(e),this.sign=Math.sign(e),this.layer=0,this.normalize(),this}},{key:"fromString",value:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=e,n=t.fromStringCache.get(r);if(void 0!==n)return this.fromDecimal(n);if("nan"===(e=e.replace(",","")).toLowerCase())return this.fromDecimal(t.dNaN);if("infinity"===e.toLowerCase())return this.fromDecimal(t.dInf);if("-infinity"===e.toLowerCase())return this.fromDecimal(t.dNegInf);var a=e.split("^^^");if(2===a.length){var s=parseFloat(a[0]),u=parseFloat(a[1]),o=a[1].split(";"),l=1;if(2===o.length&&(l=parseFloat(o[1]),isFinite(l)||(l=1)),isFinite(s)&&isFinite(u)){var h=t.pentate(s,u,l,i);return this.sign=h.sign,this.layer=h.layer,this.mag=h.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}}var g=e.split("^^");if(2===g.length){var c=parseFloat(g[0]),v=parseFloat(g[1]),d=g[1].split(";"),N=1;if(2===d.length&&(N=parseFloat(d[1]),isFinite(N)||(N=1)),isFinite(c)&&isFinite(v)){var p=t.tetrate(c,v,N,i);return this.sign=p.sign,this.layer=p.layer,this.mag=p.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}}var b,k,w=e.split("^");if(2===w.length){var M=parseFloat(w[0]),I=parseFloat(w[1]);if(isFinite(M)&&isFinite(I)){var _=t.pow(M,I);return this.sign=_.sign,this.layer=_.layer,this.mag=_.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}}var q=(e=e.trim().toLowerCase()).split("pt");if(2===q.length){b=10;var F=!1;"-"==q[0][0]&&(F=!0,q[0]=q[0].slice(1)),k=parseFloat(q[0]),q[1]=q[1].replace("(",""),q[1]=q[1].replace(")","");var S=parseFloat(q[1]);if(isFinite(S)||(S=1),isFinite(b)&&isFinite(k)){var x=t.tetrate(b,k,S,i);return this.sign=x.sign,this.layer=x.layer,this.mag=x.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),F&&(this.sign*=-1),this}}if(2===(q=e.split("p")).length){b=10;var E=!1;"-"==q[0][0]&&(E=!0,q[0]=q[0].slice(1)),k=parseFloat(q[0]),q[1]=q[1].replace("(",""),q[1]=q[1].replace(")","");var T=parseFloat(q[1]);if(isFinite(T)||(T=1),isFinite(b)&&isFinite(k)){var O=t.tetrate(b,k,T,i);return this.sign=O.sign,this.layer=O.layer,this.mag=O.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),E&&(this.sign*=-1),this}}if(2===(q=e.split("f")).length){b=10;var C=!1;"-"==q[0][0]&&(C=!0,q[0]=q[0].slice(1)),q[0]=q[0].replace("(",""),q[0]=q[0].replace(")","");var z=parseFloat(q[0]);if(q[1]=q[1].replace("(",""),q[1]=q[1].replace(")",""),k=parseFloat(q[1]),isFinite(z)||(z=1),isFinite(b)&&isFinite(k)){var V=t.tetrate(b,k,z,i);return this.sign=V.sign,this.layer=V.layer,this.mag=V.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),C&&(this.sign*=-1),this}}var A=e.split("e"),P=A.length-1;if(0===P){var D=parseFloat(e);if(isFinite(D))return this.fromNumber(D),t.fromStringCache.size>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}else if(1===P){var Z=parseFloat(e);if(isFinite(Z)&&Math.abs(Z)>1e-307)return this.fromNumber(Z),t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}var Y=e.split("e^");if(2===Y.length){this.sign=1,"-"==Y[0].charAt(0)&&(this.sign=-1);for(var L="",G=0;G<Y[1].length;++G){var U=Y[1].charCodeAt(G);if(!(U>=43&&U<=57||101===U)){if(this.layer=parseFloat(L),this.mag=parseFloat(Y[1].substr(G+1)),this.layer<0||this.layer%1!=0){var X=t.tetrate(10,this.layer,this.mag,i);this.sign=X.sign,this.layer=X.layer,this.mag=X.mag}return this.normalize(),t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}L+=Y[1].charAt(G)}}if(P<1)return this.sign=0,this.layer=0,this.mag=0,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this;var W=parseFloat(A[0]);if(0===W)return this.sign=0,this.layer=0,this.mag=0,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this;var j=parseFloat(A[A.length-1]);if(P>=2){var B=parseFloat(A[A.length-2]);isFinite(B)&&(j*=Math.sign(B),j+=y(B))}if(isFinite(W))if(1===P)this.sign=Math.sign(W),this.layer=1,this.mag=j+Math.log10(Math.abs(W));else{if(this.sign=Math.sign(W),this.layer=P,2===P){var R=t.mul(m(1,2,j),f(W));return this.sign=R.sign,this.layer=R.layer,this.mag=R.mag,t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}this.mag=j}else this.sign="-"===A[0]?-1:1,this.layer=P,this.mag=j;return this.normalize(),t.fromStringCache.maxSize>=1&&t.fromStringCache.set(r,t.fromDecimal(this)),this}},{key:"fromValue",value:function(e){return e instanceof t?this.fromDecimal(e):"number"==typeof e?this.fromNumber(e):"string"==typeof e?this.fromString(e):(this.sign=0,this.layer=0,this.mag=0,this)}},{key:"toNumber",value:function(){return this.mag===Number.POSITIVE_INFINITY&&this.layer===Number.POSITIVE_INFINITY&&1===this.sign?Number.POSITIVE_INFINITY:this.mag===Number.POSITIVE_INFINITY&&this.layer===Number.POSITIVE_INFINITY&&-1===this.sign?Number.NEGATIVE_INFINITY:Number.isFinite(this.layer)?0===this.layer?this.sign*this.mag:1===this.layer?this.sign*Math.pow(10,this.mag):this.mag>0?this.sign>0?Number.POSITIVE_INFINITY:Number.NEGATIVE_INFINITY:0:Number.NaN}},{key:"mantissaWithDecimalPlaces",value:function(e){return isNaN(this.m)?Number.NaN:0===this.m?0:v(this.m,e)}},{key:"magnitudeWithDecimalPlaces",value:function(e){return isNaN(this.mag)?Number.NaN:0===this.mag?0:v(this.mag,e)}},{key:"toString",value:function(){return isNaN(this.layer)||isNaN(this.sign)||isNaN(this.mag)?"NaN":this.mag===Number.POSITIVE_INFINITY||this.layer===Number.POSITIVE_INFINITY?1===this.sign?"Infinity":"-Infinity":0===this.layer?this.mag<1e21&&this.mag>1e-7||0===this.mag?(this.sign*this.mag).toString():this.m+"e"+this.e:1===this.layer?this.m+"e"+this.e:this.layer<=5?(-1===this.sign?"-":"")+"e".repeat(this.layer)+this.mag:(-1===this.sign?"-":"")+"(e^"+this.layer+")"+this.mag}},{key:"toExponential",value:function(e){return 0===this.layer?(this.sign*this.mag).toExponential(e):this.toStringWithDecimalPlaces(e)}},{key:"toFixed",value:function(e){return 0===this.layer?(this.sign*this.mag).toFixed(e):this.toStringWithDecimalPlaces(e)}},{key:"toPrecision",value:function(e){return this.e<=-7?this.toExponential(e-1):e>this.e?this.toFixed(e-this.exponent-1):this.toExponential(e-1)}},{key:"valueOf",value:function(){return this.toString()}},{key:"toJSON",value:function(){return this.toString()}},{key:"toStringWithDecimalPlaces",value:function(e){return 0===this.layer?this.mag<1e21&&this.mag>1e-7||0===this.mag?(this.sign*this.mag).toFixed(e):v(this.m,e)+"e"+v(this.e,e):1===this.layer?v(this.m,e)+"e"+v(this.e,e):this.layer<=5?(-1===this.sign?"-":"")+"e".repeat(this.layer)+v(this.mag,e):(-1===this.sign?"-":"")+"(e^"+this.layer+")"+v(this.mag,e)}},{key:"abs",value:function(){return c(0===this.sign?0:1,this.layer,this.mag)}},{key:"neg",value:function(){return c(-this.sign,this.layer,this.mag)}},{key:"negate",value:function(){return this.neg()}},{key:"negated",value:function(){return this.neg()}},{key:"sgn",value:function(){return this.sign}},{key:"round",value:function(){return this.mag<0?c(0,0,0):0===this.layer?m(this.sign,0,Math.round(this.mag)):new t(this)}},{key:"floor",value:function(){return this.mag<0?-1===this.sign?c(-1,0,1):c(0,0,0):-1===this.sign?this.neg().ceil().neg():0===this.layer?m(this.sign,0,Math.floor(this.mag)):new t(this)}},{key:"ceil",value:function(){return this.mag<0?1===this.sign?c(1,0,1):c(0,0,0):-1===this.sign?this.neg().floor().neg():0===this.layer?m(this.sign,0,Math.ceil(this.mag)):new t(this)}},{key:"trunc",value:function(){return this.mag<0?c(0,0,0):0===this.layer?m(this.sign,0,Math.trunc(this.mag)):new t(this)}},{key:"add",value:function(e){var i,r,n=f(e);if(this.eq(t.dInf)&&n.eq(t.dNegInf)||this.eq(t.dNegInf)&&n.eq(t.dInf))return new t(t.dNaN);if(!Number.isFinite(this.layer))return new t(this);if(!Number.isFinite(n.layer))return new t(n);if(0===this.sign)return new t(n);if(0===n.sign)return new t(this);if(this.sign===-n.sign&&this.layer===n.layer&&this.mag===n.mag)return c(0,0,0);if(this.layer>=2||n.layer>=2)return this.maxabs(n);if(t.cmpabs(this,n)>0?(i=new t(this),r=new t(n)):(i=new t(n),r=new t(this)),0===i.layer&&0===r.layer)return t.fromNumber(i.sign*i.mag+r.sign*r.mag);var a=i.layer*Math.sign(i.mag),s=r.layer*Math.sign(r.mag);if(a-s>=2)return i;if(0===a&&-1===s){if(Math.abs(r.mag-Math.log10(i.mag))>17)return i;var u=Math.pow(10,Math.log10(i.mag)-r.mag),o=r.sign+i.sign*u;return m(Math.sign(o),1,r.mag+Math.log10(Math.abs(o)))}if(1===a&&0===s){if(Math.abs(i.mag-Math.log10(r.mag))>17)return i;var l=Math.pow(10,i.mag-Math.log10(r.mag)),h=r.sign+i.sign*l;return m(Math.sign(h),1,Math.log10(r.mag)+Math.log10(Math.abs(h)))}if(Math.abs(i.mag-r.mag)>17)return i;var g=Math.pow(10,i.mag-r.mag),v=r.sign+i.sign*g;return m(Math.sign(v),1,r.mag+Math.log10(Math.abs(v)))}},{key:"plus",value:function(e){return this.add(e)}},{key:"sub",value:function(e){return this.add(f(e).neg())}},{key:"subtract",value:function(e){return this.sub(e)}},{key:"minus",value:function(e){return this.sub(e)}},{key:"mul",value:function(e){var i,r,n=f(e);if(this.eq(t.dInf)&&n.eq(t.dNegInf)||this.eq(t.dNegInf)&&n.eq(t.dInf))return new t(t.dNegInf);if(this.mag==Number.POSITIVE_INFINITY&&n.eq(t.dZero)||this.eq(t.dZero)&&this.mag==Number.POSITIVE_INFINITY)return new t(t.dNaN);if(this.eq(t.dNegInf)&&n.eq(t.dNegInf))return new t(t.dInf);if(!Number.isFinite(this.layer))return new t(this);if(!Number.isFinite(n.layer))return new t(n);if(0===this.sign||0===n.sign)return c(0,0,0);if(this.layer===n.layer&&this.mag===-n.mag)return c(this.sign*n.sign,0,1);if(this.layer>n.layer||this.layer==n.layer&&Math.abs(this.mag)>Math.abs(n.mag)?(i=new t(this),r=new t(n)):(i=new t(n),r=new t(this)),0===i.layer&&0===r.layer)return t.fromNumber(i.sign*r.sign*i.mag*r.mag);if(i.layer>=3||i.layer-r.layer>=2)return m(i.sign*r.sign,i.layer,i.mag);if(1===i.layer&&0===r.layer)return m(i.sign*r.sign,1,i.mag+Math.log10(r.mag));if(1===i.layer&&1===r.layer)return m(i.sign*r.sign,1,i.mag+r.mag);if(2===i.layer&&1===r.layer){var a=m(Math.sign(i.mag),i.layer-1,Math.abs(i.mag)).add(m(Math.sign(r.mag),r.layer-1,Math.abs(r.mag)));return m(i.sign*r.sign,a.layer+1,a.sign*a.mag)}if(2===i.layer&&2===r.layer){var s=m(Math.sign(i.mag),i.layer-1,Math.abs(i.mag)).add(m(Math.sign(r.mag),r.layer-1,Math.abs(r.mag)));return m(i.sign*r.sign,s.layer+1,s.sign*s.mag)}throw Error("Bad arguments to mul: "+this+", "+e)}},{key:"multiply",value:function(e){return this.mul(e)}},{key:"times",value:function(e){return this.mul(e)}},{key:"div",value:function(e){var t=f(e);return this.mul(t.recip())}},{key:"divide",value:function(e){return this.div(e)}},{key:"divideBy",value:function(e){return this.div(e)}},{key:"dividedBy",value:function(e){return this.div(e)}},{key:"recip",value:function(){return 0===this.mag?new t(t.dNaN):this.mag===Number.POSITIVE_INFINITY?c(0,0,0):0===this.layer?m(this.sign,0,1/this.mag):m(this.sign,this.layer,-this.mag)}},{key:"reciprocal",value:function(){return this.recip()}},{key:"reciprocate",value:function(){return this.recip()}},{key:"mod",value:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=f(e),n=r.abs();if(this.eq(t.dZero)||n.eq(t.dZero))return c(0,0,0);if(i){var a=this.abs().mod(n);return-1==this.sign!=(-1==r.sign)&&(a=r.abs().sub(a)),a.mul(r.sign)}var s=this.toNumber(),u=n.toNumber();return isFinite(s)&&isFinite(u)&&0!=s&&0!=u?new t(s%u):this.sub(n).eq(this)?c(0,0,0):n.sub(this).eq(n)?new t(this):-1==this.sign?this.abs().mod(n).neg():this.sub(this.div(n).floor().mul(n))}},{key:"modulo",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];return this.mod(e,t)}},{key:"modular",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];return this.mod(e,t)}},{key:"cmp",value:function(e){var t=f(e);return this.sign>t.sign?1:this.sign<t.sign?-1:this.sign*this.cmpabs(e)}},{key:"cmpabs",value:function(e){var t=f(e),i=this.mag>0?this.layer:-this.layer,r=t.mag>0?t.layer:-t.layer;return i>r?1:i<r?-1:this.mag>t.mag?1:this.mag<t.mag?-1:0}},{key:"compare",value:function(e){return this.cmp(e)}},{key:"isNan",value:function(){return isNaN(this.sign)||isNaN(this.layer)||isNaN(this.mag)}},{key:"isFinite",value:function(e){function t(){return e.apply(this,arguments)}return t.toString=function(){return e.toString()},t}((function(){return isFinite(this.sign)&&isFinite(this.layer)&&isFinite(this.mag)}))},{key:"eq",value:function(e){var t=f(e);return this.sign===t.sign&&this.layer===t.layer&&this.mag===t.mag}},{key:"equals",value:function(e){return this.eq(e)}},{key:"neq",value:function(e){return!this.eq(e)}},{key:"notEquals",value:function(e){return this.neq(e)}},{key:"lt",value:function(e){return-1===this.cmp(e)}},{key:"lte",value:function(e){return!this.gt(e)}},{key:"gt",value:function(e){return 1===this.cmp(e)}},{key:"gte",value:function(e){return!this.lt(e)}},{key:"max",value:function(e){var i=f(e);return this.lt(i)?new t(i):new t(this)}},{key:"min",value:function(e){var i=f(e);return this.gt(i)?new t(i):new t(this)}},{key:"maxabs",value:function(e){var i=f(e);return this.cmpabs(i)<0?new t(i):new t(this)}},{key:"minabs",value:function(e){var i=f(e);return this.cmpabs(i)>0?new t(i):new t(this)}},{key:"clamp",value:function(e,t){return this.max(e).min(t)}},{key:"clampMin",value:function(e){return this.max(e)}},{key:"clampMax",value:function(e){return this.min(e)}},{key:"cmp_tolerance",value:function(e,t){var i=f(e);return this.eq_tolerance(i,t)?0:this.cmp(i)}},{key:"compare_tolerance",value:function(e,t){return this.cmp_tolerance(e,t)}},{key:"eq_tolerance",value:function(e,t){var i=f(e);if(null==t&&(t=1e-7),this.sign!==i.sign)return!1;if(Math.abs(this.layer-i.layer)>1)return!1;var r=this.mag,n=i.mag;return this.layer>i.layer&&(n=y(n)),this.layer<i.layer&&(r=y(r)),Math.abs(r-n)<=t*Math.max(Math.abs(r),Math.abs(n))}},{key:"equals_tolerance",value:function(e,t){return this.eq_tolerance(e,t)}},{key:"neq_tolerance",value:function(e,t){return!this.eq_tolerance(e,t)}},{key:"notEquals_tolerance",value:function(e,t){return this.neq_tolerance(e,t)}},{key:"lt_tolerance",value:function(e,t){var i=f(e);return!this.eq_tolerance(i,t)&&this.lt(i)}},{key:"lte_tolerance",value:function(e,t){var i=f(e);return this.eq_tolerance(i,t)||this.lt(i)}},{key:"gt_tolerance",value:function(e,t){var i=f(e);return!this.eq_tolerance(i,t)&&this.gt(i)}},{key:"gte_tolerance",value:function(e,t){var i=f(e);return this.eq_tolerance(i,t)||this.gt(i)}},{key:"pLog10",value:function(){return this.lt(t.dZero)?c(0,0,0):this.log10()}},{key:"absLog10",value:function(){return 0===this.sign?new t(t.dNaN):this.layer>0?m(Math.sign(this.mag),this.layer-1,Math.abs(this.mag)):m(1,0,Math.log10(this.mag))}},{key:"log10",value:function(){return this.sign<=0?new t(t.dNaN):this.layer>0?m(Math.sign(this.mag),this.layer-1,Math.abs(this.mag)):m(this.sign,0,Math.log10(this.mag))}},{key:"log",value:function(e){return e=f(e),this.sign<=0||e.sign<=0||1===e.sign&&0===e.layer&&1===e.mag?new t(t.dNaN):0===this.layer&&0===e.layer?m(this.sign,0,Math.log(this.mag)/Math.log(e.mag)):t.div(this.log10(),e.log10())}},{key:"log2",value:function(){return this.sign<=0?new t(t.dNaN):0===this.layer?m(this.sign,0,Math.log2(this.mag)):1===this.layer?m(Math.sign(this.mag),0,3.321928094887362*Math.abs(this.mag)):2===this.layer?m(Math.sign(this.mag),1,Math.abs(this.mag)+.5213902276543247):m(Math.sign(this.mag),this.layer-1,Math.abs(this.mag))}},{key:"ln",value:function(){return this.sign<=0?new t(t.dNaN):0===this.layer?m(this.sign,0,Math.log(this.mag)):1===this.layer?m(Math.sign(this.mag),0,2.302585092994046*Math.abs(this.mag)):2===this.layer?m(Math.sign(this.mag),1,Math.abs(this.mag)+.36221568869946325):m(Math.sign(this.mag),this.layer-1,Math.abs(this.mag))}},{key:"logarithm",value:function(e){return this.log(e)}},{key:"pow",value:function(e){var i=f(e),r=new t(this),n=new t(i);if(0===r.sign)return n.eq(0)?c(1,0,1):r;if(1===r.sign&&0===r.layer&&1===r.mag)return r;if(0===n.sign)return c(1,0,1);if(1===n.sign&&0===n.layer&&1===n.mag)return r;var a=r.absLog10().mul(n).pow10();return-1===this.sign?Math.abs(n.toNumber()%2)%2==1?a.neg():Math.abs(n.toNumber()%2)%2==0?a:new t(t.dNaN):a}},{key:"pow10",value:function(){if(this.eq(t.dInf))return new t(t.dInf);if(this.eq(t.dNegInf))return c(0,0,0);if(!Number.isFinite(this.layer)||!Number.isFinite(this.mag))return new t(t.dNaN);var e=new t(this);if(0===e.layer){var i=Math.pow(10,e.sign*e.mag);if(Number.isFinite(i)&&Math.abs(i)>=.1)return m(1,0,i);if(0===e.sign)return c(1,0,1);e=c(e.sign,e.layer+1,Math.log10(e.mag))}return e.sign>0&&e.mag>=0?m(e.sign,e.layer+1,e.mag):e.sign<0&&e.mag>=0?m(-e.sign,e.layer+1,-e.mag):c(1,0,1)}},{key:"pow_base",value:function(e){return f(e).pow(this)}},{key:"root",value:function(e){var t=f(e);return this.lt(0)&&t.mod(2,!0).eq(1)?this.neg().root(t).neg():this.pow(t.recip())}},{key:"factorial",value:function(){return this.mag<0||0===this.layer?this.add(1).gamma():1===this.layer?t.exp(t.mul(this,t.ln(this).sub(1))):t.exp(this)}},{key:"gamma",value:function(){if(this.mag<0)return this.recip();if(0===this.layer){if(this.lt(c(1,0,24)))return t.fromNumber(function(e){if(!isFinite(e))return e;if(e<-50)return e===Math.trunc(e)?Number.NEGATIVE_INFINITY:0;for(var t=1;e<10;)t*=e,++e;var i=.9189385332046727;i+=((e-=1)+.5)*Math.log(e),i-=e;var r=e*e,n=e;return i+=1/(12*n),i-=1/(360*(n*=r)),i+=1/(1260*(n*=r)),i-=1/(1680*(n*=r)),i+=1/(1188*(n*=r)),i-=691/(360360*(n*=r)),i+=7/(1092*(n*=r)),i-=3617/(122400*(n*=r)),Math.exp(i)/t}(this.sign*this.mag));var e=this.mag-1,i=.9189385332046727;i+=(e+.5)*Math.log(e);var r=e*e,n=e,a=12*n,s=1/a,u=(i-=e)+s;if(u===i)return t.exp(i);if((u=(i=u)-(s=1/(a=360*(n*=r))))===i)return t.exp(i);i=u;var o=1/(a=1260*(n*=r));return i+=o,i-=o=1/(a=1680*(n*=r)),t.exp(i)}return 1===this.layer?t.exp(t.mul(this,t.ln(this).sub(1))):t.exp(this)}},{key:"lngamma",value:function(){return this.gamma().ln()}},{key:"exp",value:function(){return this.mag<0?c(1,0,1):0===this.layer&&this.mag<=709.7?t.fromNumber(Math.exp(this.sign*this.mag)):0===this.layer?m(1,1,this.sign*Math.log10(Math.E)*this.mag):1===this.layer?m(1,2,this.sign*(Math.log10(.4342944819032518)+this.mag)):m(1,this.layer+1,this.sign*this.mag)}},{key:"sqr",value:function(){return this.pow(2)}},{key:"sqrt",value:function(){if(0===this.layer)return t.fromNumber(Math.sqrt(this.sign*this.mag));if(1===this.layer)return m(1,2,Math.log10(this.mag)-.3010299956639812);var e=t.div(c(this.sign,this.layer-1,this.mag),c(1,0,2));return e.layer+=1,e.normalize(),e}},{key:"cube",value:function(){return this.pow(3)}},{key:"cbrt",value:function(){return this.lt(0)?this.neg().pow(1/3).neg():this.pow(1/3)}},{key:"tetrate",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:2,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:c(1,0,1),r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if(1===e)return t.pow(this,i);if(0===e)return new t(i);if(this.eq(t.dOne))return c(1,0,1);if(this.eq(-1))return t.pow(this,i);if(e===Number.POSITIVE_INFINITY){var n=this.toNumber();if(n<=1.444667861009766&&n>=.06598803584531254){var a=t.ln(this).neg(),s=a.lambertw().div(a);if(n<1)return s;var u=a.lambertw(!1).div(a);return n>1.444667861009099&&(s=u=t.fromNumber(Math.E)),(i=f(i)).eq(u)?u:i.lt(u)?s:new t(t.dInf)}return new t(n>1.444667861009766?t.dInf:t.dNaN)}if(this.eq(t.dZero)){var o=Math.abs((e+1)%2);return o>1&&(o=2-o),t.fromNumber(o)}if(e<0)return t.iteratedlog(i,this,-e,r);i=new t(i);var l=e,h=l-(e=Math.trunc(e));if(this.gt(t.dZero)&&(this.lt(1)||this.lte(1.444667861009766)&&i.lte(t.ln(this).neg().lambertw(!1).div(t.ln(this).neg())))&&(l>1e4||!r)){var g=Math.min(1e4,e);i=i.eq(t.dOne)?this.pow(h):this.lt(1)?i.pow(1-h).mul(this.pow(i).pow(h)):i.layeradd(h,this);for(var m=0;m<g;++m){var v=i;if(i=this.pow(i),v.eq(i))return i}return l>1e4&&Math.ceil(l)%2==1?this.pow(i):i}0!==h&&(i.eq(t.dOne)?this.gt(10)||r?i=this.pow(h):(i=t.fromNumber(t.tetrate_critical(this.toNumber(),h)),this.lt(2)&&(i=i.sub(1).mul(this.minus(1)).plus(1))):i=this.eq(10)?i.layeradd10(h,r):this.lt(1)?i.pow(1-h).mul(this.pow(i).pow(h)):i.layeradd(h,this,r));for(var y=0;y<e;++y){if(i=this.pow(i),!isFinite(i.layer)||!isFinite(i.mag))return i.normalize();if(i.layer-this.layer>3)return c(i.sign,i.layer+(e-y-1),i.mag);if(y>1e4)return i}return i}},{key:"iteratedexp",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:2,t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:c(1,0,1),i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return this.tetrate(e,t,i)}},{key:"iteratedlog",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:10,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if(i<0)return t.tetrate(e,-i,this,r);e=f(e);var n=t.fromDecimal(this),a=i,s=a-(i=Math.trunc(i));if(n.layer-e.layer>3){var u=Math.min(i,n.layer-e.layer-3);i-=u,n.layer-=u}for(var o=0;o<i;++o){if(n=n.log(e),!isFinite(n.layer)||!isFinite(n.mag))return n.normalize();if(o>1e4)return n}return s>0&&s<1&&(n=e.eq(10)?n.layeradd10(-s,r):n.layeradd(-s,e,r)),n}},{key:"slog",value:function(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:10,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:100,r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],n=.001,a=!1,s=!1,u=this.slog_internal(e,r).toNumber(),o=1;o<i;++o){var l=new t(e).tetrate(u,t.dOne,r),h=l.gt(this);if(o>1&&s!=h&&(a=!0),s=h,a?n/=2:n*=2,u+=n=Math.abs(n)*(h?-1:1),0===n)break}return t.fromNumber(u)}},{key:"slog_internal",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:10,i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];if((e=f(e)).lte(t.dZero))return new t(t.dNaN);if(e.eq(t.dOne))return new t(t.dNaN);if(e.lt(t.dOne))return this.eq(t.dOne)?c(0,0,0):this.eq(t.dZero)?c(-1,0,1):new t(t.dNaN);if(this.mag<0||this.eq(t.dZero))return c(-1,0,1);if(e.lt(1.444667861009766)){var r=t.ln(e).neg(),n=r.lambertw().div(r);if(this.eq(n))return new t(t.dInf);if(this.gt(n))return new t(t.dNaN)}var a=0,s=t.fromDecimal(this);if(s.layer-e.layer>3){var u=s.layer-e.layer-3;a+=u,s.layer-=u}for(var o=0;o<100;++o)if(s.lt(t.dZero))s=t.pow(e,s),a-=1;else{if(s.lte(t.dOne))return i?t.fromNumber(a+s.toNumber()-1):t.fromNumber(a+t.slog_critical(e.toNumber(),s.toNumber()));a+=1,s=t.log(s,e)}return t.fromNumber(a)}},{key:"layeradd10",value:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];e=t.fromValue_noAlloc(e).toNumber();var r=t.fromDecimal(this);if(e>=1){r.mag<0&&r.layer>0?(r.sign=0,r.mag=0,r.layer=0):-1===r.sign&&0==r.layer&&(r.sign=1,r.mag=-r.mag);var n=Math.trunc(e);e-=n,r.layer+=n}if(e<=-1){var a=Math.trunc(e);if(e-=a,r.layer+=a,r.layer<0)for(var s=0;s<100;++s){if(r.layer++,r.mag=Math.log10(r.mag),!isFinite(r.mag))return 0===r.sign&&(r.sign=1),r.layer<0&&(r.layer=0),r.normalize();if(r.layer>=0)break}}for(;r.layer<0;)r.layer++,r.mag=Math.log10(r.mag);return 0===r.sign&&(r.sign=1,0===r.mag&&r.layer>=1&&(r.layer-=1,r.mag=1)),r.normalize(),0!==e?r.layeradd(e,10,i):r}},{key:"layeradd",value:function(e,i){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],n=f(i);if(n.gt(1)&&n.lte(1.444667861009766)){var a=t.excess_slog(this,i,r),s=a[0].toNumber(),u=a[1],o=s+e,l=t.ln(i).neg(),h=l.lambertw().div(l),g=l.lambertw(!1).div(l),m=t.dOne;1==u?m=h.mul(g).sqrt():2==u&&(m=g.mul(2));var c=n.pow(m),v=Math.floor(o),y=o-v,d=m.pow(1-y).mul(c.pow(y));return t.tetrate(n,v,d,r)}var N=this.slog(i,100,r).toNumber(),p=N+e;return p>=0?t.tetrate(i,p,t.dOne,r):Number.isFinite(p)?p>=-1?t.log(t.tetrate(i,p+1,t.dOne,r),i):t.log(t.log(t.tetrate(i,p+2,t.dOne,r),i),i):new t(t.dNaN)}},{key:"lambertw",value:function(){var e=!(arguments.length>0&&void 0!==arguments[0])||arguments[0];return this.lt(-.3678794411710499)?new t(t.dNaN):e?this.abs().lt("1e-300")?new t(this):this.mag<0?t.fromNumber(N(this.toNumber())):0===this.layer?t.fromNumber(N(this.sign*this.mag)):this.lt("eee15")?p(this):this.ln():1===this.sign?new t(t.dNaN):0===this.layer?t.fromNumber(N(this.sign*this.mag,1e-10,!1)):1==this.layer?p(this,1e-10,!1):this.neg().recip().lambertw().neg()}},{key:"ssqrt",value:function(){return this.linear_sroot(2)}},{key:"linear_sroot",value:function(e){if(1==e)return this;if(this.eq(t.dInf))return new t(t.dInf);if(!this.isFinite())return new t(t.dNaN);if(e>0&&e<1)return this.root(e);if(e>-2&&e<-1)return t.fromNumber(e).add(2).pow(this.recip());if(e<=0)return new t(t.dNaN);if(e==Number.POSITIVE_INFINITY){var i=this.toNumber();return i<Math.E&&i>.36787944117144233?this.pow(this.recip()):new t(t.dNaN)}if(this.eq(1))return c(1,0,1);if(this.lt(0))return new t(t.dNaN);if(this.lte("1ee-16"))return new t(e%2==1?this:t.dNaN);if(this.gt(1)){var r=t.dTen;this.gte(t.tetrate(10,e,1,!0))&&(r=this.iteratedlog(10,e-1,!0)),e<=1&&(r=this.root(e));for(var n=t.dZero,a=r.layer,s=r.iteratedlog(10,a,!0),u=s,o=s.div(2),l=!0;l;)o=n.add(s).div(2),t.iteratedexp(10,a,o,!0).tetrate(e,1,!0).gt(this)?s=o:n=o,o.eq(u)?l=!1:u=o;return t.iteratedexp(10,a,o,!0)}for(var h=1,g=m(1,10,1),f=m(1,10,1),v=m(1,10,1),y=m(1,1,-16),d=t.dZero,N=m(1,10,1),p=y.pow10().recip(),b=t.dZero,k=p,w=p,M=Math.ceil(e)%2==0,I=0,_=m(1,10,1),q=!1,F=t.dZero,S=!1;h<4;){if(2==h){if(M)break;v=m(1,10,1),y=g,h=3,N=m(1,10,1),_=m(1,10,1)}for(q=!1;y.neq(v);){if(F=y,y.pow10().recip().tetrate(e,1,!0).eq(1)&&y.pow10().recip().lt(.4))p=y.pow10().recip(),k=y.pow10().recip(),w=y.pow10().recip(),b=t.dZero,I=-1,3==h&&(_=y);else if(y.pow10().recip().tetrate(e,1,!0).eq(y.pow10().recip())&&!M&&y.pow10().recip().lt(.4))p=y.pow10().recip(),k=y.pow10().recip(),w=y.pow10().recip(),b=t.dZero,I=0;else if(y.pow10().recip().tetrate(e,1,!0).eq(y.pow10().recip().mul(2).tetrate(e,1,!0)))p=y.pow10().recip(),k=t.dZero,w=p.mul(2),b=p,I=M?-1:0;else{for(d=y.mul(12e-17),p=y.pow10().recip(),k=y.add(d).pow10().recip(),b=p.sub(k),w=p.add(b);k.tetrate(e,1,!0).eq(p.tetrate(e,1,!0))||w.tetrate(e,1,!0).eq(p.tetrate(e,1,!0))||k.gte(p)||w.lte(p);)d=d.mul(2),k=y.add(d).pow10().recip(),b=p.sub(k),w=p.add(b);if((1==h&&w.tetrate(e,1,!0).gt(p.tetrate(e,1,!0))&&k.tetrate(e,1,!0).gt(p.tetrate(e,1,!0))||3==h&&w.tetrate(e,1,!0).lt(p.tetrate(e,1,!0))&&k.tetrate(e,1,!0).lt(p.tetrate(e,1,!0)))&&(_=y),w.tetrate(e,1,!0).lt(p.tetrate(e,1,!0)))I=-1;else if(M)I=1;else if(3==h&&y.gt_tolerance(g,1e-8))I=0;else{for(;k.tetrate(e,1,!0).eq_tolerance(p.tetrate(e,1,!0),1e-8)||w.tetrate(e,1,!0).eq_tolerance(p.tetrate(e,1,!0),1e-8)||k.gte(p)||w.lte(p);)d=d.mul(2),k=y.add(d).pow10().recip(),b=p.sub(k),w=p.add(b);I=w.tetrate(e,1,!0).sub(p.tetrate(e,1,!0)).lt(p.tetrate(e,1,!0).sub(k.tetrate(e,1,!0)))?0:1}}if(-1==I&&(S=!0),1==h&&1==I||3==h&&0!=I)if(v.eq(m(1,10,1)))y=y.mul(2);else{var x=!1;if(q&&(1==I&&1==h||-1==I&&3==h)&&(x=!0),y=y.add(v).div(2),x)break}else if(v.eq(m(1,10,1)))v=y,y=y.div(2);else{var E=!1;if(q&&(1==I&&1==h||-1==I&&3==h)&&(E=!0),v=v.sub(N),y=y.sub(N),E)break}if(v.sub(y).div(2).abs().gt(N.mul(1.5))&&(q=!0),N=v.sub(y).div(2).abs(),y.gt("1e18"))break;if(y.eq(F))break}if(y.gt("1e18"))break;if(!S)break;if(_==m(1,10,1))break;1==h?g=_:3==h&&(f=_),h++}v=g;for(var T=y=m(1,1,-18),O=t.dZero,C=!0;C;)if(O=v.eq(m(1,10,1))?y.mul(2):v.add(y).div(2),t.pow(10,O).recip().tetrate(e,1,!0).gt(this)?y=O:v=O,O.eq(T)?C=!1:T=O,y.gt("1e18"))return new t(t.dNaN);if(O.eq_tolerance(g,1e-15)){if(f.eq(m(1,10,1)))return new t(t.dNaN);for(v=m(1,10,1),T=y=f,O=t.dZero,C=!0;C;)if(O=v.eq(m(1,10,1))?y.mul(2):v.add(y).div(2),t.pow(10,O).recip().tetrate(e,1,!0).gt(this)?y=O:v=O,O.eq(T)?C=!1:T=O,y.gt("1e18"))return new t(t.dNaN);return O.pow10().recip()}return O.pow10().recip()}},{key:"pentate",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:2,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:c(1,0,1),r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];i=new t(i);var n=e,a=n-(e=Math.floor(e)),s=t.dZero,u=t.dZero;if(0!==a){if(!i.eq(t.dOne))return this.pentate(i.penta_log(this,void 0,r).plus(n).toNumber(),1,r);++e,i=t.fromNumber(a)}if(e>0)for(var o=0;o<e;){if(u=s,s=i,i=this.tetrate(i.toNumber(),t.dOne,r),++o,this.gt(0)&&this.lte(1)&&i.gt(0)&&i.lte(1))return this.tetrate(e-o,i,r);if(i.eq(s)||i.eq(u)&&o%2==e%2)return i.normalize();if(!isFinite(i.layer)||!isFinite(i.mag))return i.normalize();if(o>1e4)return i}else for(var l=0;l<-e;++l){if(s=i,(i=i.slog(this,void 0,r)).eq(s))return i.normalize();if(!isFinite(i.layer)||!isFinite(i.mag))return i.normalize();if(l>100)return i}return i}},{key:"penta_log",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:10,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:100,r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if((e=new t(e)).lte(1))return new t(t.dNaN);if(this.eq(1))return c(0,0,0);if(this.eq(t.dInf))return new t(t.dInf);var n=new t(1),a=0,s=1;if(this.lt(-1)){if(this.lte(-2))return new t(t.dNaN);var u=e.tetrate(this.toNumber(),1,r);if(this.eq(u))return new t(t.dNegInf);if(this.gt(u))return new t(t.dNaN)}if(this.gt(1)){for(;n.lt(this);)if(a++,n=t.tetrate(e,n.toNumber(),1,r),a>1e3)return new t(t.dNaN)}else for(;n.gt(this);)if(a--,n=t.slog(n,e,r),a>100)return new t(t.dNaN);for(var o=1;o<i;++o){var l=e.pentate(a,t.dOne,r);if(l.eq(this))break;var h=l.gt(this);if(a+=s=Math.abs(s)*(h?-1:1),0===(s/=2))break}return t.fromNumber(a)}},{key:"linear_penta_root",value:function(e){return 1==e?this:e<0?new t(t.dNaN):this.eq(t.dInf)?new t(t.dInf):this.isFinite()?e>0&&e<1?this.root(e):this.eq(1)?c(1,0,1):this.lt(0)?new t(t.dNaN):this.lt(1)?this.linear_sroot(e):t.increasingInverse((function(i){return t.pentate(i,e,1,!0)}))(this):new t(t.dNaN)}},{key:"sin",value:function(){return this.mag<0?new t(this):0===this.layer?t.fromNumber(Math.sin(this.sign*this.mag)):c(0,0,0)}},{key:"cos",value:function(){return this.mag<0?c(1,0,1):0===this.layer?t.fromNumber(Math.cos(this.sign*this.mag)):c(0,0,0)}},{key:"tan",value:function(){return this.mag<0?new t(this):0===this.layer?t.fromNumber(Math.tan(this.sign*this.mag)):c(0,0,0)}},{key:"asin",value:function(){return this.mag<0?new t(this):0===this.layer?t.fromNumber(Math.asin(this.sign*this.mag)):new t(t.dNaN)}},{key:"acos",value:function(){return this.mag<0?t.fromNumber(Math.acos(this.toNumber())):0===this.layer?t.fromNumber(Math.acos(this.sign*this.mag)):new t(t.dNaN)}},{key:"atan",value:function(){return this.mag<0?new t(this):0===this.layer?t.fromNumber(Math.atan(this.sign*this.mag)):t.fromNumber(Math.atan(Infinity*this.sign))}},{key:"sinh",value:function(){return this.exp().sub(this.negate().exp()).div(2)}},{key:"cosh",value:function(){return this.exp().add(this.negate().exp()).div(2)}},{key:"tanh",value:function(){return this.sinh().div(this.cosh())}},{key:"asinh",value:function(){return t.ln(this.add(this.sqr().add(1).sqrt()))}},{key:"acosh",value:function(){return t.ln(this.add(this.sqr().sub(1).sqrt()))}},{key:"atanh",value:function(){return this.abs().gte(1)?new t(t.dNaN):t.ln(this.add(1).div(t.fromNumber(1).sub(this))).div(2)}},{key:"ascensionPenalty",value:function(e){return 0===e?new t(this):this.root(t.pow(10,e))}},{key:"egg",value:function(){return this.add(9)}},{key:"lessThanOrEqualTo",value:function(e){return this.cmp(e)<1}},{key:"lessThan",value:function(e){return this.cmp(e)<0}},{key:"greaterThanOrEqualTo",value:function(e){return this.cmp(e)>-1}},{key:"greaterThan",value:function(e){return this.cmp(e)>0}}],[{key:"fromComponents",value:function(e,i,r){return(new t).fromComponents(e,i,r)}},{key:"fromComponents_noNormalize",value:function(e,i,r){return(new t).fromComponents_noNormalize(e,i,r)}},{key:"fromMantissaExponent",value:function(e,i){return(new t).fromMantissaExponent(e,i)}},{key:"fromMantissaExponent_noNormalize",value:function(e,i){return(new t).fromMantissaExponent_noNormalize(e,i)}},{key:"fromDecimal",value:function(e){return(new t).fromDecimal(e)}},{key:"fromNumber",value:function(e){return(new t).fromNumber(e)}},{key:"fromString",value:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];return(new t).fromString(e,i)}},{key:"fromValue",value:function(e){return(new t).fromValue(e)}},{key:"fromValue_noAlloc",value:function(e){if(e instanceof t)return e;if("string"==typeof e){var i=t.fromStringCache.get(e);return void 0!==i?i:t.fromString(e)}return"number"==typeof e?t.fromNumber(e):c(0,0,0)}},{key:"abs",value:function(e){return f(e).abs()}},{key:"neg",value:function(e){return f(e).neg()}},{key:"negate",value:function(e){return f(e).neg()}},{key:"negated",value:function(e){return f(e).neg()}},{key:"sign",value:function(e){return f(e).sign}},{key:"sgn",value:function(e){return f(e).sign}},{key:"round",value:function(e){return f(e).round()}},{key:"floor",value:function(e){return f(e).floor()}},{key:"ceil",value:function(e){return f(e).ceil()}},{key:"trunc",value:function(e){return f(e).trunc()}},{key:"add",value:function(e,t){return f(e).add(t)}},{key:"plus",value:function(e,t){return f(e).add(t)}},{key:"sub",value:function(e,t){return f(e).sub(t)}},{key:"subtract",value:function(e,t){return f(e).sub(t)}},{key:"minus",value:function(e,t){return f(e).sub(t)}},{key:"mul",value:function(e,t){return f(e).mul(t)}},{key:"multiply",value:function(e,t){return f(e).mul(t)}},{key:"times",value:function(e,t){return f(e).mul(t)}},{key:"div",value:function(e,t){return f(e).div(t)}},{key:"divide",value:function(e,t){return f(e).div(t)}},{key:"recip",value:function(e){return f(e).recip()}},{key:"reciprocal",value:function(e){return f(e).recip()}},{key:"reciprocate",value:function(e){return f(e).reciprocate()}},{key:"mod",value:function(e,t){var i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return f(e).mod(t,i)}},{key:"modulo",value:function(e,t){var i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return f(e).modulo(t,i)}},{key:"modular",value:function(e,t){var i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return f(e).modular(t,i)}},{key:"cmp",value:function(e,t){return f(e).cmp(t)}},{key:"cmpabs",value:function(e,t){return f(e).cmpabs(t)}},{key:"compare",value:function(e,t){return f(e).cmp(t)}},{key:"isNaN",value:function(e){function t(t){return e.apply(this,arguments)}return t.toString=function(){return e.toString()},t}((function(e){return e=f(e),isNaN(e.sign)||isNaN(e.layer)||isNaN(e.mag)}))},{key:"isFinite",value:function(e){function t(t){return e.apply(this,arguments)}return t.toString=function(){return e.toString()},t}((function(e){return e=f(e),isFinite(e.sign)&&isFinite(e.layer)&&isFinite(e.mag)}))},{key:"eq",value:function(e,t){return f(e).eq(t)}},{key:"equals",value:function(e,t){return f(e).eq(t)}},{key:"neq",value:function(e,t){return f(e).neq(t)}},{key:"notEquals",value:function(e,t){return f(e).notEquals(t)}},{key:"lt",value:function(e,t){return f(e).lt(t)}},{key:"lte",value:function(e,t){return f(e).lte(t)}},{key:"gt",value:function(e,t){return f(e).gt(t)}},{key:"gte",value:function(e,t){return f(e).gte(t)}},{key:"max",value:function(e,t){return f(e).max(t)}},{key:"min",value:function(e,t){return f(e).min(t)}},{key:"minabs",value:function(e,t){return f(e).minabs(t)}},{key:"maxabs",value:function(e,t){return f(e).maxabs(t)}},{key:"clamp",value:function(e,t,i){return f(e).clamp(t,i)}},{key:"clampMin",value:function(e,t){return f(e).clampMin(t)}},{key:"clampMax",value:function(e,t){return f(e).clampMax(t)}},{key:"cmp_tolerance",value:function(e,t,i){return f(e).cmp_tolerance(t,i)}},{key:"compare_tolerance",value:function(e,t,i){return f(e).cmp_tolerance(t,i)}},{key:"eq_tolerance",value:function(e,t,i){return f(e).eq_tolerance(t,i)}},{key:"equals_tolerance",value:function(e,t,i){return f(e).eq_tolerance(t,i)}},{key:"neq_tolerance",value:function(e,t,i){return f(e).neq_tolerance(t,i)}},{key:"notEquals_tolerance",value:function(e,t,i){return f(e).notEquals_tolerance(t,i)}},{key:"lt_tolerance",value:function(e,t,i){return f(e).lt_tolerance(t,i)}},{key:"lte_tolerance",value:function(e,t,i){return f(e).lte_tolerance(t,i)}},{key:"gt_tolerance",value:function(e,t,i){return f(e).gt_tolerance(t,i)}},{key:"gte_tolerance",value:function(e,t,i){return f(e).gte_tolerance(t,i)}},{key:"pLog10",value:function(e){return f(e).pLog10()}},{key:"absLog10",value:function(e){return f(e).absLog10()}},{key:"log10",value:function(e){return f(e).log10()}},{key:"log",value:function(e,t){return f(e).log(t)}},{key:"log2",value:function(e){return f(e).log2()}},{key:"ln",value:function(e){return f(e).ln()}},{key:"logarithm",value:function(e,t){return f(e).logarithm(t)}},{key:"pow",value:function(e,t){return f(e).pow(t)}},{key:"pow10",value:function(e){return f(e).pow10()}},{key:"root",value:function(e,t){return f(e).root(t)}},{key:"factorial",value:function(e,t){return f(e).factorial()}},{key:"gamma",value:function(e,t){return f(e).gamma()}},{key:"lngamma",value:function(e,t){return f(e).lngamma()}},{key:"exp",value:function(e){return f(e).exp()}},{key:"sqr",value:function(e){return f(e).sqr()}},{key:"sqrt",value:function(e){return f(e).sqrt()}},{key:"cube",value:function(e){return f(e).cube()}},{key:"cbrt",value:function(e){return f(e).cbrt()}},{key:"tetrate",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:2,i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:c(1,0,1),r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return f(e).tetrate(t,i,r)}},{key:"iteratedexp",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:2,i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:c(1,0,1),r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return f(e).iteratedexp(t,i,r)}},{key:"iteratedlog",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:10,i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return f(e).iteratedlog(t,i,r)}},{key:"layeradd10",value:function(e,t){var i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return f(e).layeradd10(t,i)}},{key:"layeradd",value:function(e,t){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return f(e).layeradd(t,i,r)}},{key:"slog",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:10,i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return f(e).slog(t,100,i)}},{key:"lambertw",value:function(e,t){return f(e).lambertw(t)}},{key:"ssqrt",value:function(e){return f(e).ssqrt()}},{key:"linear_sroot",value:function(e,t){return f(e).linear_sroot(t)}},{key:"pentate",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:2,i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:c(1,0,1),r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return f(e).pentate(t,i,r)}},{key:"penta_log",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:10,i=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return f(e).penta_log(t,100,i)}},{key:"linear_penta_root",value:function(e,t){return f(e).linear_penta_root(t)}},{key:"sin",value:function(e){return f(e).sin()}},{key:"cos",value:function(e){return f(e).cos()}},{key:"tan",value:function(e){return f(e).tan()}},{key:"asin",value:function(e){return f(e).asin()}},{key:"acos",value:function(e){return f(e).acos()}},{key:"atan",value:function(e){return f(e).atan()}},{key:"sinh",value:function(e){return f(e).sinh()}},{key:"cosh",value:function(e){return f(e).cosh()}},{key:"tanh",value:function(e){return f(e).tanh()}},{key:"asinh",value:function(e){return f(e).asinh()}},{key:"acosh",value:function(e){return f(e).acosh()}},{key:"atanh",value:function(e){return f(e).atanh()}},{key:"affordGeometricSeries",value:function(e,t,i,r){return this.affordGeometricSeries_core(f(e),f(t),f(i),r)}},{key:"sumGeometricSeries",value:function(e,t,i,r){return this.sumGeometricSeries_core(e,f(t),f(i),r)}},{key:"affordArithmeticSeries",value:function(e,t,i,r){return this.affordArithmeticSeries_core(f(e),f(t),f(i),f(r))}},{key:"sumArithmeticSeries",value:function(e,t,i,r){return this.sumArithmeticSeries_core(f(e),f(t),f(i),f(r))}},{key:"efficiencyOfPurchase",value:function(e,t,i){return this.efficiencyOfPurchase_core(f(e),f(t),f(i))}},{key:"randomDecimalForTesting",value:function(e){if(20*Math.random()<1)return c(0,0,0);var t=Math.random()>.5?1:-1;if(20*Math.random()<1)return c(t,0,1);var i=Math.floor(Math.random()*(e+1)),r=0===i?616*Math.random()-308:16*Math.random();Math.random()>.9&&(r=Math.trunc(r));var n=Math.pow(10,r);return Math.random()>.9&&(n=Math.trunc(n)),m(t,i,n)}},{key:"affordGeometricSeries_core",value:function(e,i,r,n){var a=i.mul(r.pow(n));return t.floor(e.div(a).mul(r.sub(1)).add(1).log10().div(r.log10()))}},{key:"sumGeometricSeries_core",value:function(e,i,r,n){return i.mul(r.pow(n)).mul(t.sub(1,r.pow(e))).div(t.sub(1,r))}},{key:"affordArithmeticSeries_core",value:function(e,t,i,r){var n=t.add(r.mul(i)).sub(i.div(2)),a=n.pow(2);return n.neg().add(a.add(i.mul(e).mul(2)).sqrt()).div(i).floor()}},{key:"sumArithmeticSeries_core",value:function(e,t,i,r){var n=t.add(r.mul(i));return e.div(2).mul(n.mul(2).plus(e.sub(1).mul(i)))}},{key:"efficiencyOfPurchase_core",value:function(e,t,i){return e.div(t).add(e.div(i))}},{key:"slog_critical",value:function(e,i){return e>10?i-1:t.critical_section(e,i,g)}},{key:"tetrate_critical",value:function(e,i){return t.critical_section(e,i,h)}},{key:"critical_section",value:function(e,t,i){(t*=10)<0&&(t=0),t>10&&(t=10),e<2&&(e=2),e>10&&(e=10);for(var r=0,n=0,a=0;a<l.length;++a){if(l[a]==e){r=i[a][Math.floor(t)],n=i[a][Math.ceil(t)];break}if(l[a]<e&&l[a+1]>e){var s=(e-l[a])/(l[a+1]-l[a]);r=i[a][Math.floor(t)]*(1-s)+i[a+1][Math.floor(t)]*s,n=i[a][Math.ceil(t)]*(1-s)+i[a+1][Math.ceil(t)]*s;break}}var u=t-Math.floor(t);return r<=0||n<=0?r*(1-u)+n*u:Math.pow(e,Math.log(r)/Math.log(e)*(1-u)+Math.log(n)/Math.log(e)*u)}},{key:"excess_slog",value:function(e,i){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];e=f(e);var n=i=f(i);if(1==(i=i.toNumber())||i<=0)return[new t(t.dNaN),0];if(i>1.444667861009766)return[e.slog(i,100,r),0];var a=t.ln(i).neg(),s=a.lambertw().div(a),u=t.dInf;if(i>1&&(u=a.lambertw(!1).div(a)),i>1.444667861009099&&(s=u=t.fromNumber(Math.E)),e.lt(s))return[e.slog(i,100,r),0];if(e.eq(s))return[new t(t.dInf),0];if(e.eq(u))return[new t(t.dNegInf),2];if(e.gt(u)){var o=u.mul(2),l=n.pow(o),h=0;if(e.gte(o)&&e.lt(l))h=0;else if(e.gte(l)){var g=l;for(h=1;g.lt(e);)if(h+=1,(g=n.pow(g)).layer>3){var m=Math.floor(e.layer-g.layer+1);g=n.iteratedexp(m,g,r),h+=m}g.gt(e)&&(g=g.log(i),h-=1)}else if(e.lt(o)){var c=o;for(h=0;c.gt(e);)c=c.log(i),h-=1}for(var v=0,y=0,d=.5,N=o,p=t.dZero;d>1e-16;){if(y=v+d,N=o.pow(1-y).mul(l.pow(y)),(p=t.iteratedexp(i,h,N)).eq(e))return[new t(h+y),2];p.lt(e)&&(v+=d),d/=2}return p.neq_tolerance(e,1e-7)?[new t(t.dNaN),0]:[new t(h+v),2]}if(e.lt(u)&&e.gt(s)){var b=s.mul(u).sqrt(),k=n.pow(b),w=0;if(e.lte(b)&&e.gt(k))w=0;else if(e.lte(k)){var M=k;for(w=1;M.gt(e);)M=n.pow(M),w+=1;M.lt(e)&&(M=M.log(i),w-=1)}else if(e.gt(b)){var I=b;for(w=0;I.lt(e);)I=I.log(i),w-=1}for(var _=0,q=0,F=.5,S=b,x=t.dZero;F>1e-16;){if(q=_+F,S=b.pow(1-q).mul(k.pow(q)),(x=t.iteratedexp(i,w,S)).eq(e))return[new t(w+q),1];x.gt(e)&&(_+=F),F/=2}return x.neq_tolerance(e,1e-7)?[new t(t.dNaN),0]:[new t(w+_),1]}throw new Error("Unhandled behavior in excess_slog")}},{key:"increasingInverse",value:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:120,n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:t.dLayerMax.neg(),s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:t.dLayerMax,o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:t.dLayerMax.neg(),l=arguments.length>6&&void 0!==arguments[6]?arguments[6]:t.dLayerMax;return function(h){if(h=new t(h),n=new t(n),s=new t(s),o=new t(o),l=new t(l),h.isNan()||s.lt(n)||h.lt(o)||h.gt(l))return new t(t.dNaN);var g=function(e){return new t(e)},f=!0;if(s.lt(0))f=!1;else if(n.gt(0))f=!0;else{var m=e(t.dZero);if(m.eq(h))return c(0,0,0);f=h.gt(m),i&&(f=!f)}var v,y=f;if(f){if(s.lt(u))f=!0;else if(n.gt(u))f=!1;else{var d=e(new t(u));f=h.lt(d),i&&(f=!f)}if(f){v=!0;var N=t.pow(10,a).recip();if(s.lt(N))f=!1;else if(n.gt(N))f=!0;else{var p=e(new t(N));f=h.gt(p),i&&(f=!f)}if(f)g=function(e){return t.pow(10,e).recip()};else{var b=t.tetrate(10,a);if(s.lt(b))f=!1;else if(n.gt(b))f=!0;else{var k=e(new t(b));f=h.gt(k),i&&(f=!f)}g=f?function(e){return t.tetrate(10,new t(e).toNumber()).recip()}:function(e){return new t(e).gt(Math.log10(Number.MAX_VALUE))?t.dZero:t.tetrate(10,t.pow(10,e).toNumber()).recip()}}}else{if(v=!1,s.lt(a))f=!0;else if(n.gt(a))f=!1;else{var w=e(new t(a));f=h.lt(w),i&&(f=!f)}if(f)g=function(e){return new t(e)};else{var M=t.pow(10,a);if(s.lt(M))f=!0;else if(n.gt(M))f=!1;else{var I=e(new t(M));f=h.lt(I),i&&(f=!f)}if(f)g=function(e){return t.pow(10,e)};else{var _=t.tetrate(10,a);if(s.lt(_))f=!0;else if(n.gt(_))f=!1;else{var q=e(new t(_));f=h.lt(q),i&&(f=!f)}g=f?function(e){return t.tetrate(10,new t(e).toNumber())}:function(e){return new t(e).gt(Math.log10(Number.MAX_VALUE))?t.dInf:t.tetrate(10,t.pow(10,e).toNumber())}}}}}else{if(v=!0,s.lt(-u))f=!1;else if(n.gt(-u))f=!0;else{var F=e(new t(-u));f=h.gt(F),i&&(f=!f)}if(f){var S=t.pow(10,a).recip().neg();if(s.lt(S))f=!0;else if(n.gt(S))f=!1;else{var x=e(new t(S));f=h.lt(x),i&&(f=!f)}if(f)g=function(e){return t.pow(10,e).recip().neg()};else{var E=t.tetrate(10,a).neg();if(s.lt(E))f=!0;else if(n.gt(E))f=!1;else{var T=e(new t(E));f=h.lt(T),i&&(f=!f)}g=f?function(e){return t.tetrate(10,new t(e).toNumber()).recip().neg()}:function(e){return new t(e).gt(Math.log10(Number.MAX_VALUE))?t.dZero:t.tetrate(10,t.pow(10,e).toNumber()).recip().neg()}}}else{if(v=!1,s.lt(-a))f=!1;else if(n.gt(-a))f=!0;else{var O=e(new t(-a));f=h.gt(O),i&&(f=!f)}if(f)g=function(e){return t.neg(e)};else{var C=t.pow(10,a).neg();if(s.lt(C))f=!1;else if(n.gt(C))f=!0;else{var z=e(new t(C));f=h.gt(z),i&&(f=!f)}if(f)g=function(e){return t.pow(10,e).neg()};else{var V=t.tetrate(10,a).neg();if(s.lt(V))f=!1;else if(n.gt(V))f=!0;else{var A=e(new t(V));f=h.gt(A),i&&(f=!f)}g=f?function(e){return t.tetrate(10,new t(e).toNumber()).neg()}:function(e){return new t(e).gt(Math.log10(Number.MAX_VALUE))?t.dNegInf:t.tetrate(10,t.pow(10,e).toNumber()).neg()}}}}}for(var P=y!=v!=i,D=P?function(e,i){return t.gt(e,i)}:function(e,i){return t.lt(e,i)},Z=.001,Y=!1,L=!1,G=1,U=t.dOne,X=0,W=!1,j=1;j<r;++j){W=!1,X=G,(U=g(G)).gt(s)&&(U=s,W=!0),U.lt(n)&&(U=n,W=!0);var B=e(U);if(B.eq(h)&&!W)break;var R=D(B,h);if(j>1&&L!=R&&(Y=!0),L=R,Y?Z/=2:Z*=2,R!=P&&U.eq(s)||R==P&&U.eq(n))return new t(t.dNaN);if(G+=Z=Math.abs(Z)*(R?-1:1),0===Z||X==G)break}return g(G)}}}]),t}();return b.dZero=c(0,0,0),b.dOne=c(1,0,1),b.dNegOne=c(-1,0,1),b.dTwo=c(1,0,2),b.dTen=c(1,0,10),b.dNaN=c(Number.NaN,Number.NaN,Number.NaN),b.dInf=c(1,Number.POSITIVE_INFINITY,Number.POSITIVE_INFINITY),b.dNegInf=c(-1,Number.POSITIVE_INFINITY,Number.POSITIVE_INFINITY),b.dNumberMax=m(1,0,Number.MAX_VALUE),b.dNumberMin=m(1,0,Number.MIN_VALUE),b.dLayerSafeMax=m(1,Number.MAX_SAFE_INTEGER,a-1),b.dLayerSafeMin=m(1,Number.MAX_SAFE_INTEGER,-(a-1)),b.dLayerMax=m(1,Number.MAX_VALUE,a-1),b.dLayerMin=m(1,Number.MAX_VALUE,-(a-1)),b.fromStringCache=new r(1023),f=b.fromValue_noAlloc,m=b.fromComponents,c=b.fromComponents_noNormalize,b.fromMantissaExponent,b.fromMantissaExponent_noNormalize,b}));
+
+</script>
+<script>
 // ---- Large embedded data (images and long text), moved out of the code ----
 const IMAGE_3_1 = "data:image/png;base64,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";
 const IMAGE_3_2 = "data:image/png;base64,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";
@@ -3873,22 +3878,22 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     ];
     var TS_MIN = 1e18;
     function tsB() { return MS && S.oc >= MS[1] ? 1000 : 5000; }
-    function tsPow(d) { return d >= TS_MIN ? 1 + Math.log(d / TS_MIN) / Math.log(tsB()) : 0; }
-    function ocWM() { var A = S.oc, b = A > 1 ? Math.pow(MS && A >= MS[5] ? 2 : 1.5, Math.log2(A)) : 1; if (MS && A >= MS[2])
-        b *= 100; if (MS && A >= MS[6])
-        b *= 2500; return b; }
+    function tsPow(d) { d = new Decimal(d); return d.gte(TS_MIN) ? 1 + d.div(TS_MIN).ln().toNumber() / Math.log(tsB()) : 0; }
+    function ocWM() { var A = S.oc, b = A.gt(1) ? A.pow(Math.log2(MS && A >= MS[5] ? 2 : 1.5)) : new Decimal(1); if (MS && A >= MS[2])
+        b = b.mul(100); if (MS && A >= MS[6])
+        b = b.mul(2500); return b; }
     function stPct() { return MS && S.oc >= MS[2] ? 5 : 1; }
-    function ocBoost(P) { return Math.pow(2, P) * (S.oc >= MS[1] && rcOn() ? 10 : 1); }
+    function ocBoost(P) { return Decimal.pow(2, P).mul(S.oc >= MS[1] && rcOn() ? 10 : 1); }
     function ocBase() { return Math.round(((S.oc >= 50 ? 0.975 : 0.95) + 0.001 * S.ocu + 0.001 * S.ocu5) * 1000) / 1000; }
     function ocX() { return 1 + S.ocu3 + (MS && S.oc >= MS[5] ? 90 : 0); }
     function ocK() { return -Math.log(ocBase()) / ocX(); }
     function ocE() { var b = String(ocBase()), r = SET.lang === "ru", tx = t("oc_e"), X = ocX(); tx = tx.replace(r ? "0,95" : "0.95", r ? b.replace(".", ",") : b); if (X > 1)
         tx = tx.replace(r ? "Каждый м³ замедляет" : "Each m³ slows", r ? "Каждые " + X + " м³ замедляют" : "Every " + X + " m³ slow"); return tx; }
-    function ocVU(v) { return v >= 1e9 ? ocF(v / 1e9) + " " + t("ms_km") : ocF(v) + " " + t("oc_u1"); }
-    function ocRU(r) { return r >= 1e9 ? ocF(r / 1e9) + " " + t("ms_km") + "/" + (SET.lang === "ru" ? "\u0441" : "s") : ocF(r) + " " + t("oc_u3"); }
-    function ocRate(P, A) { return ocBoost(P) * Math.exp(-ocK() * A); }
-    function ocF(v) { if (v >= 1000)
-        return fmt(v); var r; if (v >= 10)
+    function ocVU(v) { v = bigN(v); return v.gte(1e9) ? ocF(v.div(1e9)) + " " + t("ms_km") : ocF(v) + " " + t("oc_u1"); }
+    function ocRU(r) { r = bigN(r); return r.gte(1e9) ? ocF(r.div(1e9)) + " " + t("ms_km") + "/" + (SET.lang === "ru" ? "\u0441" : "s") : ocF(r) + " " + t("oc_u3"); }
+    function ocRate(P, A) { return ocBoost(P).mul(Decimal.pow(Math.E, bigN(A).mul(-ocK()))); }
+    function ocF(v) { v = bigN(v); if (v.gte(1000))
+        return fmt(v); v = v.toNumber(); var r; if (v >= 10)
         r = Math.round(v * 10) / 10;
     else if (v >= 1)
         r = Math.round(v * 100) / 100;
@@ -3903,29 +3908,35 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     function stMin() { return 20 + 15 * (S.tn >= 1 ? 1 : 0); }
     function dewMx(d) { return d.id === "dewb" ? d.mx + 30 * S.ocu2 : d.mx; }
     function cwMx(k, m) { return k === "cd" ? m + 3 * (S.tn >= 1 ? 1 : 0) + 3 * S.ocu2 : m; }
-    function gPw(x) { return MS && S.oc >= MS[4] ? Math.pow(x * cMul(), 1.25) : x; }
-    function cMul() { var m = tMul(); return 1 + 0.25 * m * S.c1 + 5 * m * S.c2 + 100 * m * S.c3; }
+    function gPw(x) { x = new Decimal(x); return MS && S.oc >= MS[4] ? x.mul(cMul()).pow(1.25) : x; }
+    function cMul() { var m = tMul(); return Decimal.add(1, S.c1.mul(0.25 * m)).add(S.c2.mul(5 * m)).add(S.c3.mul(100 * m)); }
     var GOALS = [1000];
     var WG_MX = 50;
     function wgCost() { return Math.floor(Math.pow(3, S.wg)); }
     function flMul() { return Math.pow(2, S.fl); }
     function wgMul() { return Math.pow(2, S.wg); }
-    function wMul() { return S.water >= 1 ? Math.max(1, Math.pow(2, Math.log10(S.water))) : 1; }
+    function wMul() { return S.water.gte(1) ? Decimal.max(1, Decimal.pow(2, S.water.log10().toNumber())) : new Decimal(1); }
     var DG_MX = 50;
     function dgCost() { return Math.pow(2, S.dg); }
     function dgMul() { return Math.pow(1.5, S.dg); }
     function dm(v) { return v < 1000 ? String(Math.round(v * 100) / 100) : fmt(v); }
-    var S = { v: VER, tn: 0, tl: false, ac: 0, steam: 0, c1: 0, c2: 0, c3: 0, w2d: false, grass: 0, total: 0, wu: false, water: 0, tsd: 0, oc: 0, ocu: 0, ocu2: 0, ocu3: 0, ocu4: 0, ocu5: 0, fl: 0, dewOn: false, rained: false, dewXP: 0, dewLv: 0, wg: 0, dg: 0, cs: 0, cm: 0, cr: 0, cb: 0, cd: 0, d10: false, d15: false, rc: 0, rcAt: 0, dq: 0, up: { spawn: 0, max: 0, rad: 0, boost: 0, dewb: 0 } };
+    function bigN(v) { return v instanceof Decimal ? v : new Decimal(v); }
+    function numLike(v) { return typeof v === "number" || (typeof v === "string" && v !== "" && !new Decimal(v).isNan()); }
+    function bigD(v) { var d; try { d = new Decimal(v === undefined || v === null ? 0 : v); } catch (e) { return new Decimal(0); } return (d.isNan() || d.lt(0)) ? new Decimal(0) : d; }
+    function rd2(d) { return d.lt(1e12) ? new Decimal(Math.round(d.toNumber() * 100) / 100) : d; }
+    var BIGK = ["grass", "total", "water", "steam", "tsd", "oc", "c1", "c2", "c3"];
+    var OC_MAX = new Decimal(5e14);
+    var S = { v: VER, tn: 0, tl: false, ac: 0, steam: new Decimal(0), c1: new Decimal(0), c2: new Decimal(0), c3: new Decimal(0), w2d: false, grass: new Decimal(0), total: new Decimal(0), wu: false, water: new Decimal(0), tsd: new Decimal(0), oc: new Decimal(0), ocu: 0, ocu2: 0, ocu3: 0, ocu4: 0, ocu5: 0, fl: 0, dewOn: false, rained: false, dewXP: 0, dewLv: 0, wg: 0, dg: 0, cs: 0, cm: 0, cr: 0, cb: 0, cd: 0, d10: false, d15: false, rc: 0, rcAt: 0, dq: 0, up: { spawn: 0, max: 0, rad: 0, boost: 0, dewb: 0 } };
     var S0 = JSON.parse(JSON.stringify(S));
     try {
         var raw = LOADSAVE ? localStorage.getItem(KEY) : null;
         if (raw) {
             var p = JSON.parse(raw);
-            if (p && typeof p.grass === "number") {
-                S.grass = p.grass;
-                S.total = typeof p.total === "number" ? p.total : p.grass;
+            if (p && numLike(p.grass)) {
+                S.grass = bigD(p.grass);
+                S.total = numLike(p.total) ? bigD(p.total) : S.grass;
                 S.wu = !!p.wu;
-                S.water = +p.water || 0;
+                S.water = bigD(p.water);
                 S.dewOn = !!p.dewOn;
                 S.dewXP = +p.dewXP || 0;
                 S.dewLv = Math.max(0, Math.floor(+p.dewLv || 0));
@@ -3943,8 +3954,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                 S.rcAt = +p.rcAt || 0;
                 S.dq = Math.max(0, Math.min(6, +p.dq | 0));
                 S.w2d = !!p.w2d;
-                S.tsd = isFinite(+p.tsd) ? Math.max(0, +p.tsd) : 0;
-                S.oc = isFinite(+p.oc) ? Math.min(5e14, Math.max(0, +p.oc)) : 0;
+                S.tsd = bigD(p.tsd);
+                S.oc = Decimal.min(OC_MAX, bigD(p.oc));
                 S.ocu = Math.max(0, Math.min(24, +p.ocu | 0));
                 S.ocu2 = Math.max(0, Math.min(4, +p.ocu2 | 0));
                 S.ocu3 = Math.max(0, Math.min(9, +p.ocu3 | 0));
@@ -3952,10 +3963,10 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                 S.ocu5 = Math.max(0, Math.min(1, +p.ocu5 | 0));
                 S.fl = Math.max(0, Math.min(100, +p.fl | 0));
                 S.cd = Math.min(S.cd, cwMx("cd", 5));
-                S.steam = isFinite(+p.steam) ? Math.max(0, +p.steam) : 0;
-                S.c1 = Math.max(0, Math.floor(+p.c1 || 0));
-                S.c2 = Math.max(0, Math.floor(+p.c2 || 0));
-                S.c3 = Math.max(0, Math.floor(+p.c3 || 0));
+                S.steam = bigD(p.steam);
+                S.c1 = bigD(p.c1).floor();
+                S.c2 = bigD(p.c2).floor();
+                S.c3 = bigD(p.c3).floor();
                 S.d10 = !!p.d10;
                 S.d15 = !!p.d15;
                 S.rained = !!p.rained || S.dewOn;
@@ -3970,10 +3981,44 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     }
     catch (e) { } }
     var SUF1 = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"], SO = ["", "U", "D", "T", "Qa", "Qi", "Sx", "Sp", "O", "N"], ST = ["", "Dc", "Vg", "Tg", "Qg", "Qq", "Sg", "Sq", "Og", "Ng"], SH = ["", "Ce", "Dn", "Tc", "Qe", "Qu", "Sc", "Si", "Oe", "Ne"];
+    function sufN(n) { if (n < 1000)
+        return SO[n % 10] + ST[Math.floor(n / 10) % 10] + SH[Math.floor(n / 100)]; var hi = Math.floor(n / 1000), lo = n % 1000; return (hi > 1 ? sufN(hi) : "") + "Mi" + (lo ? sufN(lo) : ""); }
     function suf(e) { if (e < SUF1.length)
-        return SUF1[e]; var n = e - 1; return SO[n % 10] + ST[Math.floor(n / 10) % 10] + SH[Math.floor(n / 100)]; }
+        return SUF1[e]; return sufN(e - 1); }
     function sci(n) { return n.toExponential(2).replace("+", ""); }
+    function fmtSciD(L) { var ex = Math.floor(L), m = Math.pow(10, L - ex), r = m.toFixed(2); if (r === "10.00") { r = "1.00"; ex++; } return r + "e" + ex; }
+    function fmtD(n) {
+        var L = n.log10().toNumber();
+        if (!isFinite(L))
+            return "Infinity";
+        if (L >= 1e15)
+            return "e" + fmtD(new Decimal(L));
+        if (SET.not === "sci" || (SET.not === "mix" && L >= 303))
+            return fmtSciD(L);
+        var e = Math.floor(L / 3), m = Math.pow(10, L - e * 3);
+        if (m >= 1000) {
+            m /= 1000;
+            e++;
+        }
+        var r = m.toFixed(m < 10 ? 2 : m < 100 ? 1 : 0);
+        if (parseFloat(r) >= 1000) {
+            m /= 1000;
+            e++;
+            r = m.toFixed(2);
+        }
+        if (e > 3e14)
+            return fmtSciD(L);
+        return SET.not === "eng" ? r + "e" + e * 3 : r + suf(e);
+    }
     function fmt(n) {
+        if (typeof n === "string")
+            n = new Decimal(n);
+        if (n instanceof Decimal) {
+            if (n.lt(1e300))
+                n = n.toNumber();
+            else
+                return fmtD(n);
+        }
         if (n < 1000)
             return n % 1 === 0 ? String(n) : n < 10 ? String(parseFloat(n.toFixed(3))) : n.toFixed(1);
         if (!isFinite(n) || SET.not === "sci" || (SET.not === "mix" && n >= 1e303))
@@ -3991,20 +4036,26 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         return SET.not === "eng" ? r + "e" + e * 3 : r + suf(e);
     }
+    function costDiv(d) { return d.id === "spawn" ? Math.pow(2, S.cs) : d.id === "max" ? Math.pow(2, S.cm) : d.id === "rad" ? Math.pow(2, S.cr) : d.id === "boost" ? Math.pow(2, S.cb) : d.id === "dewb" ? Math.pow(3, S.cd) : 1; }
+    function costL(d, l) {
+        var dv = costDiv(d), c = d.base * Math.pow(d.g, l);
+        if (d.id === "boost") {
+            var e5 = d.base * Math.pow(1.5, 10);
+            c = l <= 10 ? d.base * Math.pow(1.5, l) : (l <= 300 ? e5 * Math.pow(d.g, l - 10) : e5 * Math.pow(d.g, 290) * Math.pow(Math.pow(d.g, 1.5), l - 300));
+        }
+        c /= dv;
+        if (isFinite(c) && c < 1e300)
+            return new Decimal(Math.max(1, Math.floor(c)));
+        var r;
+        if (d.id === "boost") {
+            var E5 = Decimal.pow(1.5, 10).mul(d.base);
+            r = l <= 10 ? Decimal.pow(1.5, l).mul(d.base) : (l <= 300 ? E5.mul(Decimal.pow(d.g, l - 10)) : E5.mul(Decimal.pow(d.g, 290)).mul(Decimal.pow(Math.pow(d.g, 1.5), l - 300)));
+        }
+        else
+            r = Decimal.pow(d.g, l).mul(d.base);
+        return Decimal.max(1, r.div(dv).floor());
+    }
     function cost(d) { return costL(d, S.up[d.id]); }
-    function costL(d, l) { var c = d.base * Math.pow(d.g, l); if (d.id === "boost") {
-        var e5 = d.base * Math.pow(1.5, 10);
-        c = l <= 10 ? d.base * Math.pow(1.5, l) : (l <= 300 ? e5 * Math.pow(d.g, l - 10) : e5 * Math.pow(d.g, 290) * Math.pow(Math.pow(d.g, 1.5), l - 300));
-    } if (d.id === "spawn")
-        c /= Math.pow(2, S.cs);
-    else if (d.id === "max")
-        c /= Math.pow(2, S.cm);
-    else if (d.id === "rad")
-        c /= Math.pow(2, S.cr);
-    else if (d.id === "boost")
-        c /= Math.pow(2, S.cb);
-    else if (d.id === "dewb")
-        c /= Math.pow(3, S.cd); return Math.max(1, Math.floor(c)); }
     var VC = {};
     DEFS.forEach(function (d) { VC[d.id] = { d: d, l: -1, v: 0 }; });
     function V(id) { var c = VC[id], l = S.up[id]; if (c.l !== l) {
@@ -4107,13 +4158,18 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     function dewReq(l) { return Math.floor(100 * Math.pow(1.5, l)); }
     var RK = Math.log(1.5) + Math.log(2.5) / 3;
     function rainGain() { var g = S.grass; if (!(g >= 1000))
-        return 0; var L = Math.log10(g / 1000); return Math.max(1, Math.floor(100 * (1 + Math.log(g / 1000) / Math.log(3)) * Math.exp(L * RK) * cMul() * tnWM() * ocWM() * flMul() + 1e-7) / 100); }
-    function w2(v) { return v < 1000 ? v.toFixed(2) : fmt(v); }
+        return 0; var q = g.div(1000), L = q.log10().toNumber(), a = 1 + q.ln().toNumber() / Math.log(3), mm = cMul().mul(tnWM()).mul(ocWM()).mul(flMul()); if (L * RK < 300 && mm.lt(1e100)) {
+        mm = mm.toNumber();
+        return new Decimal(Math.max(1, Math.floor(100 * a * Math.exp(L * RK) * mm + 1e-7) / 100));
+    } return Decimal.max(1, Decimal.pow(10, L * RK / Math.LN10).mul(mm.mul(100 * a)).add(1e-7).floor().div(100)); }
+    function w2(v) { if (typeof v === "string")
+        v = new Decimal(v); if (v instanceof Decimal && v.lt(1000))
+        v = v.toNumber(); return v < 1000 ? v.toFixed(2) : fmt(v); }
     function rain() { var n = rainGain(); if (!n)
         return; if (!S.rained) {
         S.rained = true;
         gGrow();
-    } S.water = Math.round((S.water + n) * 100) / 100; S.grass = 0; DEFS.forEach(function (d) { S.up[d.id] = 0; }); S.dewOn = true; S.dewXP = 0; S.dewLv = 0; blades = []; for (var i = 0; i < 8; i++)
+    } S.water = rd2(S.water.add(n)); S.grass = new Decimal(0); DEFS.forEach(function (d) { S.up[d.id] = 0; }); S.dewOn = true; S.dewXP = 0; S.dewLv = 0; blades = []; for (var i = 0; i < 8; i++)
         blades.push(mk(1)); texts = []; acc = 0; save(); ui(); }
     function hit(x, y) {
         var R = V("rad") * RU * ZF, n = 0, nc = 0, k = V("boost"), keep = [];
@@ -4132,7 +4188,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         if (n) {
             blades = keep;
-            var gain = gPw((n + 9 * nc) * k * (1 + S.dewLv) * wgMul() * wMul() * dqMul());
+            var gain = gPw(wMul().mul((n + 9 * nc) * k * (1 + S.dewLv) * wgMul() * dqMul()));
             if (S.dewOn) {
                 S.dewXP += n * V("dewb") * dgMul() * (rcOn() ? 2 : 1);
                 while (S.dewXP >= dewReq(S.dewLv)) {
@@ -4140,8 +4196,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                     S.dewLv++;
                 }
             }
-            S.grass += gain;
-            S.total += gain;
+            S.grass = S.grass.add(gain);
+            S.total = S.total.add(gain);
             if (SET.fxp !== "0" && texts.length < 40)
                 texts.push({ x: x, y: y - R * .6, t: 0, s: "+" + fmt(gain) });
         }
@@ -4737,8 +4793,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         b.className = "up";
         b.type = "button";
         b.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"><span class="cp"></span><i class="gi">' + GI(d.id) + '</i><span class="cl"></span></span>';
-        b.onclick = function () { var p = plan(d); if (p.n > 0 && S.grass >= p.t) {
-            S.grass -= p.t;
+        b.onclick = function () { var p = plan(d); if (p.n > 0 && S.grass.gte(p.t)) {
+            S.grass = S.grass.sub(p.t);
             S.up[d.id] += p.n;
             save();
             ui();
@@ -4747,15 +4803,15 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         btns[d.id] = b;
     });
     function plan(d) {
-        var l = S.up[d.id], room = dewMx(d) - l, n = 0, tot = 0, lim, c;
+        var l = S.up[d.id], room = dewMx(d) - l, n = 0, tot = new Decimal(0), lim, c;
         if (room <= 0)
-            return { n: 0, t: 0 };
+            return { n: 0, t: new Decimal(0) };
         lim = SET.bm === "n" ? Math.min(room, 15 - l % 15) : (SET.bm === "x" ? room : 1);
         for (; n < lim; n++) {
             c = costL(d, l + n);
-            if (SET.bm === "x" && tot + c > S.grass)
+            if (SET.bm === "x" && tot.add(c).gt(S.grass))
                 break;
-            tot += c;
+            tot = tot.add(c);
         }
         if (n === 0) {
             n = 1;
@@ -5004,7 +5060,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     wgb.type = "button";
     wgb.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"><span class="cp"></span><i class="gi">' + WIT.replace(/@/g, "wgi") + '</i><span class="cl"></span></span>';
     wgb.onclick = function () { var p = wplan(S.wg, WG_MX, wgC); if (p.n > 0 && S.water >= p.t) {
-        S.water = Math.round((S.water - p.t) * 100) / 100;
+        S.water = rd2(S.water.sub(p.t));
         S.wg += p.n;
         save();
         ui();
@@ -5021,7 +5077,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     dgb.type = "button";
     dgb.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"><span class="cp"></span><i class="gi">' + WIT.replace(/@/g, "dgi") + '</i><span class="cl"></span></span>';
     dgb.onclick = function () { var p = wplan(S.dg, DG_MX, dgC); if (p.n > 0 && S.water >= p.t) {
-        S.water = Math.round((S.water - p.t) * 100) / 100;
+        S.water = rd2(S.water.sub(p.t));
         S.dg += p.n;
         save();
         ui();
@@ -5034,7 +5090,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         drawDg();
     var cwb = {};
     [["cs", 5, "spawn", 5, 10, "n_cs"], ["cm", 2.5, "max", 2.5, 10, "n_cm"], ["cr", 2.5, "rad", 2.5, 10, "n_cr"], ["cb", 5, "boost", 5, 60, "n_cb"], ["cd", 4, "dewb", 4, 5, "n_cd"]].forEach(function (o, ix) { var key = o[0], gr = o[1], ic = o[2], b = document.createElement("button"); b.className = "up"; b.type = "button"; b.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"><span class="cp"></span><i class="gi">' + WIT.replace(/@/g, key + "i") + '</i><span class="cl"></span></span>'; b.onclick = function () { var p = wplan(S[key], cwMx(key, o[4]), function (i) { return cwCost2(key, gr, i); }); if (S.d10 && (key !== "cd" || S.d15) && p.n > 0 && S.water >= p.t) {
-        S.water = Math.round((S.water - p.t) * 100) / 100;
+        S.water = rd2(S.water.sub(p.t));
         S[key] += p.n;
         save();
         ui();
@@ -5406,7 +5462,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         svFz(); svMsg.textContent = m; svMsg.style.display = m ? "block" : "none"; }
     function svEnc() { save(); var j = JSON.stringify(S); return btoa(unescape(encodeURIComponent(j))); }
     function svDec(c) { c = String(c || "").replace(/\s+/g, ""); if (!c)
-        throw 0; var o = JSON.parse(decodeURIComponent(escape(atob(c)))); if (!o || typeof o !== "object" || typeof o.grass !== "number")
+        throw 0; var o = JSON.parse(decodeURIComponent(escape(atob(c)))); if (!o || typeof o !== "object" || !numLike(o.grass))
         throw 0; return o; }
     function svUpd() {
         svLab.textContent = svT("Save", "Сохранение");
@@ -5623,22 +5679,23 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     var stgB = [], stgArm = -1, stgT = 0;
     function setStage(n) {
         Object.keys(S0).forEach(function (k) { S[k] = JSON.parse(JSON.stringify(S0[k])); });
+        BIGK.forEach(function (k) { S[k] = bigD(S[k]); });
         DEFS.forEach(function (d) { S.up[d.id] = 0; });
         if (n >= 1) {
             S.wu = true;
-            S.grass = 1000;
-            S.total = 1000;
+            S.grass = new Decimal(1000);
+            S.total = new Decimal(1000);
         }
         if (n >= 2) {
-            S.grass = 1e8;
-            S.total = 1e8;
-            S.water = 1000;
+            S.grass = new Decimal(1e8);
+            S.total = new Decimal(1e8);
+            S.water = new Decimal(1000);
             S.rained = true;
             S.dewOn = true;
             S.w2d = true;
         }
         stOn = false;
-        stGain = 0;
+        stGain = new Decimal(0);
         blades = [];
         texts = [];
         acc = 0;
@@ -5720,10 +5777,10 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         if (!eaOn && document.body.classList.contains("e"))
             document.getElementById("bMeadow").click();
-        document.getElementById("score").textContent = fmt(Math.floor(S.grass));
+        document.getElementById("score").textContent = fmt(S.grass.floor());
         if (fullH && fieldH() !== lastH)
             applyF();
-        document.getElementById("sub").textContent = t("blade") + fmt(gPw(V("boost") * (1 + S.dewLv) * wgMul() * wMul() * dqMul())) + t("onf") + blades.filter(function (b) { return b.g >= 1; }).length + "/" + V("max");
+        document.getElementById("sub").textContent = t("blade") + fmt(gPw(wMul().mul(V("boost") * (1 + S.dewLv) * wgMul() * dqMul()))) + t("onf") + blades.filter(function (b) { return b.g >= 1; }).length + "/" + V("max");
         var gi = 0;
         while (gi < GOALS.length && S.grass >= GOALS[gi])
             gi++;
@@ -5750,7 +5807,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                 S.tl = true;
                 save();
             }
-            var st2 = !S.w2d ? 2 : (!S.tl ? 3 : (S.tn < 3 ? 4 : (S.tsd < TS_MIN ? 5 : (S.oc < MS[1] ? 6 : (S.oc < MS[3] ? 7 : (S.oc < MS[5] ? 8 : (S.oc < MS[6] ? 9 : (S.oc < MS[7] ? 10 : 11)))))))), pv2, k2, h2, x2, u2 = t("f2"), IW = function (n) { return '<i class="di">' + WIT.replace(/@/g, n) + "</i>"; }, IG = function (n) { return '<i class="di">' + GI(n) + "</i>"; }, IT = function (n) { return '<i class="di">' + HX(TNI.replace(/@/g, n)) + "</i>"; }, IO = function (n) { return '<i class="di">' + HX(OCI.replace(/@/g, n)) + "</i>"; }, OV = function (v, n) { return v >= 1e9 ? ocF(v / 1e9) + " " + t("ms_km") + IO(n) : ocF(v) + " " + t("oc_u1") + IO(n); }, OF = function (v, n) { return v >= 1e9 ? (Number.isInteger(v / 1e9) ? msN(v / 1e9) : ocF(v / 1e9)) + " " + t("ms_km") + IO(n) : msN(v) + " " + t("oc_u1") + IO(n); };
+            var st2 = !S.w2d ? 2 : (!S.tl ? 3 : (S.tn < 3 ? 4 : (S.tsd < TS_MIN ? 5 : (S.oc < MS[1] ? 6 : (S.oc < MS[3] ? 7 : (S.oc < MS[5] ? 8 : (S.oc < MS[6] ? 9 : (S.oc < MS[7] ? 10 : 11)))))))), pv2, k2, h2, x2, u2 = t("f2"), IW = function (n) { return '<i class="di">' + WIT.replace(/@/g, n) + "</i>"; }, IG = function (n) { return '<i class="di">' + GI(n) + "</i>"; }, IT = function (n) { return '<i class="di">' + HX(TNI.replace(/@/g, n)) + "</i>"; }, IO = function (n) { return '<i class="di">' + HX(OCI.replace(/@/g, n)) + "</i>"; }, OV = function (v, n) { return v >= 1e9 ? ocF(bigN(v).div(1e9)) + " " + t("ms_km") + IO(n) : ocF(v) + " " + t("oc_u1") + IO(n); }, OF = function (v, n) { return v >= 1e9 ? (Number.isInteger(v / 1e9) ? msN(v / 1e9) : ocF(v / 1e9)) + " " + t("ms_km") + IO(n) : msN(v) + " " + t("oc_u1") + IO(n); };
             if (st2 === 2) {
                 pv2 = (g2 + w2p) / 2 * 100;
                 k2 = "2|" + fmt(GOAL2.water) + "|" + fmt(GOAL2.grass);
@@ -5820,7 +5877,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         document.getElementById("wscore").textContent = w2(S.water);
         document.getElementById("wfm").textContent = t("bf");
-        (function () { var m = Math.round(wMul() * 100) / 100, ms = m < 1000 ? String(m) : fmt(m); if (SET.lang === "ru")
+        (function () { var wmd = wMul(), m = wmd.lt(1e6) ? Math.round(wmd.toNumber() * 100) / 100 : wmd, ms = m < 1000 ? String(m) : fmt(m); if (SET.lang === "ru")
             ms = ms.replace(".", ","); var k = t("bst") + ms; if (k !== wsubk) {
             wsubk = k;
             document.getElementById("wsub").innerHTML = t("bst") + ms + "x" + '<i class="di">' + GI("wsg") + "</i>";
@@ -5833,7 +5890,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         document.getElementById("rd").textContent = t("rd");
         document.getElementById("rn").textContent = t("rn") + fmt(1000) + "+" + t("rg");
         document.getElementById("rs").textContent = t("rs");
-        document.getElementById("rf").textContent = t("rf") + (S.c1 + S.c2 + S.c3 > 0 ? " · " + t("stc_cl") + " x" + mulS(cMul()) : "") + (S.tn >= 3 ? " · " + t("rf_tn") + " x" + mulS(tnWM()) : "") + (S.oc > 1 ? " · " + t("rf_oc") + " x" + mulS(ocWM()) : "");
+        document.getElementById("rf").textContent = t("rf") + (S.c1.add(S.c2).add(S.c3).gt(0) ? " · " + t("stc_cl") + " x" + mulS(cMul()) : "") + (S.tn >= 3 ? " · " + t("rf_tn") + " x" + mulS(tnWM()) : "") + (S.oc > 1 ? " · " + t("rf_oc") + " x" + mulS(ocWM()) : "");
         rb.querySelector(".n").textContent = t("rb") + ", +" + w2(rg || 1);
         rb.classList.toggle("off", !rg || raining);
         document.body.classList.toggle("wu", !!S.wu);
@@ -5857,7 +5914,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             cs.children[0].textContent = mxd ? t("max") + l : fmt(c);
             cs.children[1].style.display = mxd ? "none" : "";
             cs.children[2].textContent = mxd ? "" : t("lv") + l + (n > 1 ? "→" + (l + n) : "") + "/" + dewMx(d);
-            b.classList.toggle("off", mxd || S.grass < c);
+            b.classList.toggle("off", mxd || S.grass.lt(c));
         });
         bmBtns.forEach(function (x) { x.b.classList.toggle("sel", SET[x.key] === x.o.v); x.b.children[0].children[0].textContent = t(x.o.k); });
     }
@@ -5880,11 +5937,11 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             return;
         var k = rcCost(l);
         if (rcCan(k)) {
-            S.c1 -= k.c;
-            S.c2 -= k.m || 0;
-            S.c3 -= k.L || 0;
-            S.water = Math.round((S.water - k.w) * 100) / 100;
-            S.grass -= k.g;
+            S.c1 = S.c1.sub(k.c);
+            S.c2 = S.c2.sub(k.m || 0);
+            S.c3 = S.c3.sub(k.L || 0);
+            S.water = rd2(S.water.sub(k.w));
+            S.grass = S.grass.sub(k.g);
             S.rc = l + 1;
             if (l === 0)
                 S.rcAt = Date.now();
@@ -5920,10 +5977,10 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     function dqCan(k) { return S.dewLv >= k.d && S.c1 >= k.c && S.c2 >= (k.m || 0) && S.c3 >= (k.L || 0) && S.grass >= k.g; }
     function dqBuy() { var l = S.dq; if (l >= 6)
         return; var k = dqCost(l); if (dqCan(k)) {
-        S.c1 -= k.c;
-        S.c2 -= k.m || 0;
-        S.c3 -= k.L || 0;
-        S.grass -= k.g;
+        S.c1 = S.c1.sub(k.c);
+        S.c2 = S.c2.sub(k.m || 0);
+        S.c3 = S.c3.sub(k.L || 0);
+        S.grass = S.grass.sub(k.g);
         S.dq = l + 1;
         save();
         ui();
@@ -5944,20 +6001,20 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         dqb.classList.toggle("off", m || !dqCan(k));
     }
-    var stOn = false, stAcc = 0, stLast = performance.now(), stGain = 0, stRate = 1, stRb = [], stb = null, stn = null, sts = null, stm = null, stcn = null, stcs = null, stf = null, stc = [];
+    var stOn = false, stAcc = 0, stLast = performance.now(), stGain = new Decimal(0), stRate = new Decimal(1), stRb = [], stb = null, stn = null, sts = null, stm = null, stcn = null, stcs = null, stf = null, stc = [];
     var TNI = TEXT_6_16;
-    function tnCost() { var n = S.tn || 0; return { c: 1000 * Math.pow(10, n), m: 500 * Math.pow(10, n), L: 100 * Math.pow(10, n), s: n < 1 ? 1e11 : (n < 2 ? 1e17 : (n >= 4 ? 1e35 : 1e23 * Math.pow(1000, n - 2) * (n >= 3 ? 1000 : 1))) }; }
-    function tnCan(k) { return S.c1 >= k.c && S.c2 >= k.m && S.c3 >= k.L && S.steam >= k.s; }
+    function tnCost() { var n = S.tn || 0; return { c: 1000 * Math.pow(10, n), m: 500 * Math.pow(10, n), L: 100 * Math.pow(10, n), s: new Decimal(n < 1 ? 1e11 : (n < 2 ? 1e17 : (n >= 4 ? 1e35 : 1e23 * Math.pow(1000, n - 2) * (n >= 3 ? 1000 : 1)))) }; }
+    function tnCan(k) { return S.c1 >= k.c && S.c2 >= k.m && S.c3 >= k.L && S.steam.gte(k.s); }
     function tnBuy() { if (S.tn >= 5 || !S.tl)
         return; var k = tnCost(); if (!tnCan(k))
-        return; S.tn++; S.c1 = 0; S.c2 = 0; S.c3 = 0; S.steam = 0; S.water = 0; S.rc = Math.min(S.rc, 1); if (S.rc >= 1)
-        S.rcAt = Date.now(); S.dq = 0; stOn = false; stGain = 0; save(); ui(); }
-    function mulS3(v) { var m = Math.round(v * 1000) / 1000, r = m < 1000 ? String(m) : fmt(m); return SET.lang === "ru" ? r.replace(".", ",") : r; }
+        return; S.tn++; S.c1 = new Decimal(0); S.c2 = new Decimal(0); S.c3 = new Decimal(0); S.steam = new Decimal(0); S.water = new Decimal(0); S.rc = Math.min(S.rc, 1); if (S.rc >= 1)
+        S.rcAt = Date.now(); S.dq = 0; stOn = false; stGain = new Decimal(0); save(); ui(); }
+    function mulS3(v) { if (v instanceof Decimal) { if (v.gte(1e15)) { var q0 = fmt(v); return SET.lang === "ru" ? q0.replace(".", ",") : q0; } v = v.toNumber(); } var m = Math.round(v * 1000) / 1000, r = m < 1000 ? String(m) : fmt(m); return SET.lang === "ru" ? r.replace(".", ",") : r; }
     var tnb = null, tnn = null, tns = null, tnm = null, tnP = null, tlk = null, tnCk = "";
     function tnUi() {
         if (!tnb)
             return;
-        if (!S.tl && S.water >= 1e9) {
+        if (!S.tl && S.water.gte(1e9)) {
             S.tl = true;
             save();
         }
@@ -5966,7 +6023,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         tns.textContent = lk ? t("tn_lock") : (S.tn > 0 ? t("tn_cnt") + S.tn + "/5" : t("tn_off"));
         tnb.children[0].children[0].textContent = lk ? t("tn_lock") : t("tn_mk");
         tnb.children[1].textContent = lk ? t("tn_lke") : (S.tn >= 1 ? t("tn_e2") + (S.tn >= 2 ? "\n" + t("tn_x1") + (S.tn >= 3 ? t("tn_x2") : "") : "") : t("tn_e"));
-        var cst = lk ? rcP(false, fmt(1e9) + t("rc_w")) : (m ? t("max") + S.tn : clAll(k) + "<br>" + rcP(S.steam >= k.s, fmt(k.s) + " " + t("stc_ps").replace(/\/.*$/, "")));
+        var cst = lk ? rcP(false, fmt(1e9) + t("rc_w")) : (m ? t("max") + S.tn : clAll(k) + "<br>" + rcP(S.steam.gte(k.s), fmt(k.s) + " " + t("stc_ps").replace(/\/.*$/, "")));
         if (cst !== tnCk) {
             tnCk = cst;
             tnb.children[2].innerHTML = cst;
@@ -5995,7 +6052,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     function flBuy() { if (!(S.oc >= MS[3]))
         return; var l = S.fl; if (l >= 100)
         return; var c = flCost(l); if (S.water >= c) {
-        S.water -= c;
+        S.water = rd2(S.water.sub(c));
         S.fl = l + 1;
         save();
         ui();
@@ -6026,9 +6083,9 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     function acBuy() { if (S.tn < 1)
         return; var l = S.ac; if (l >= 5)
         return; var k = acCost(l); if (acCan(k)) {
-        S.c2 -= k.m || 0;
-        S.c3 -= k.L || 0;
-        S.grass -= k.g;
+        S.c2 = S.c2.sub(k.m || 0);
+        S.c3 = S.c3.sub(k.L || 0);
+        S.grass = S.grass.sub(k.g);
         S.ac = l + 1;
         save();
         ui();
@@ -6054,38 +6111,51 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         acb.classList.toggle("off", m || !acCan(k));
     }
-    function stTier(n) { if (n < 100)
-        return 1; var d = Math.floor(Math.log10(n)); if (Math.pow(10, d) > n)
-        d--; if (Math.pow(10, d + 1) <= n)
-        d++; return Math.pow(10, d); }
+    function stTier(n) { n = bigN(n); if (n.lt(100))
+        return new Decimal(1); var d = Math.floor(n.log10().toNumber()); if (new Decimal("1e" + d).gt(n))
+        d--; if (new Decimal("1e" + (d + 1)).lte(n))
+        d++; return new Decimal("1e" + d); }
+    function stB(c, s) { c = bigN(c); s = bigN(s); var x = c.m * Math.pow(10, c.e - s.e); return Math.floor(c.lt(1e15) ? x : x + Math.max(1e-12, Math.abs(c.e) * 1e-14)); }
     function stG() { return Math.round((3 - 0.1 * S.ocu4) * 10) / 10; }
-    function stCP(base, own) { if (own < 100)
-        return base; var G = stG(), s = stTier(own), d = Math.round(Math.log10(s)); var m = Math.pow(G, 9 * (d - 2)) * Math.pow(G, Math.floor(own / s)) * Math.pow(10, Math.max(0, d - 2)); return base * m; }
+    function stCP(base, own) {
+        own = bigN(own);
+        if (own.lt(100))
+            return new Decimal(base);
+        var G = stG(), s = stTier(own), d = Math.round(s.log10().toNumber()), a = 9 * (d - 2), b = stB(own, s), e = Math.max(0, d - 2);
+        var m = Math.pow(G, a) * Math.pow(G, b) * Math.pow(10, e) * base;
+        if (isFinite(m) && m < 1e300)
+            return new Decimal(m);
+        return Decimal.pow(G, a + b).mul(Decimal.pow(10, e)).mul(base);
+    }
     function stBuyC(k, base) {
-        var own = S[k], n = 0;
+        var own = S[k], cur = own;
         if (SET.bmc === "x") {
             var st = S.steam;
             for (var g = 0; g < 5000; g++) {
-                var p = stCP(base, own + n), stp = Math.max(100, stTier(own + n)), room = stp - ((own + n) % stp), q = Math.min(room, Math.floor(st / p));
-                if (q < 1)
+                if (cur.lt(1e15))
+                    cur = cur.round();
+                var p = stCP(base, cur), stp = Decimal.max(100, stTier(cur)), b = stB(cur, stp), room = stp.mul(b + 1).sub(cur).ceil(), q = Decimal.min(room, st.div(p).floor());
+                if (q.lt(1))
                     break;
-                st = Math.max(0, st - q * p);
-                n += q;
-                if (q < room)
+                st = Decimal.max(0, st.sub(p.mul(q)));
+                if (q.lt(room)) {
+                    cur = cur.add(q);
                     break;
+                }
+                cur = stp.mul(b + 1);
             }
-            if (n < 1)
+            if (cur.lte(own))
                 return;
-            S.steam = Math.max(0, st);
+            S.steam = Decimal.max(0, st);
         }
         else {
             var p0 = stCP(base, own);
-            if (S.steam < p0)
+            if (S.steam.lt(p0))
                 return;
-            S.steam = Math.max(0, S.steam - p0);
-            n = 1;
+            S.steam = Decimal.max(0, S.steam.sub(p0));
+            cur = own.add(1);
         }
-        S[k] += n;
+        S[k] = cur;
         save();
         ui();
     }
@@ -6094,7 +6164,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         if (!stSM) {
             stSM = {};
             var lo = {};
-            for (var e = 0; e <= 101; e++) {
+            for (var e = 0; e <= 3002; e++) {
                 var k = suf(e);
                 if (!(k in stSM))
                     stSM[k] = e;
@@ -6106,20 +6176,20 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         var m = String(str).trim().replace(/\s+/g, "").replace(",", ".").match(/^(\d*\.?\d+(?:e[+-]?\d+)?)([a-z]*)$/i);
         if (!m)
-            return 0;
-        var n = parseFloat(m[1]), sf = m[2], e = 0;
+            return new Decimal(0);
+        var n = new Decimal(m[1]), sf = m[2], e = 0;
         if (sf) {
             if (sf in stSM && sf !== "__lo")
                 e = stSM[sf];
             else if (sf.toLowerCase() in stSM.__lo)
                 e = stSM.__lo[sf.toLowerCase()];
             else
-                return 0;
+                return new Decimal(0);
         }
-        n = Math.floor(n * Math.pow(10, e * 3));
-        return isFinite(n) ? n : 0;
+        n = n.mul(Decimal.pow(10, e * 3)).floor();
+        return n.isNan() || !n.isFinite() ? new Decimal(0) : n;
     }
-    function mulS(v) { var m = Math.round(v * 100) / 100, r = m < 1000 ? String(m) : fmt(m); return SET.lang === "ru" ? r.replace(".", ",") : r; }
+    function mulS(v) { if (v instanceof Decimal) { if (v.gte(1e15)) { var q0 = fmt(v); return SET.lang === "ru" ? q0.replace(".", ",") : q0; } v = v.toNumber(); } var m = Math.round(v * 100) / 100, r = m < 1000 ? String(m) : fmt(m); return SET.lang === "ru" ? r.replace(".", ",") : r; }
     (function () {
         var sw = document.getElementById("wside"), gr = document.createElement("div");
         gr.id = "stg";
@@ -6165,15 +6235,15 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         stb = mkb(p1, 31501, STI, "stb", function () { if (stOn) {
             stOn = false;
         }
-        else if (S.water >= 1) {
+        else if (S.water.gte(1)) {
             stOn = true;
             stAcc = 1;
             stLast = performance.now();
         } ui(); });
         try {
-            var sr = parseFloat(localStorage.getItem("lug_strate"));
-            if (sr >= 1 && isFinite(sr))
-                stRate = Math.floor(sr);
+            var sr = new Decimal(localStorage.getItem("lug_strate"));
+            if (!sr.isNan() && sr.gte(1) && sr.lt("ee15"))
+                stRate = sr.floor();
         }
         catch (e) { }
         var rr = document.createElement("div");
@@ -6185,7 +6255,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             b.className = "up opt";
             b.innerHTML = '<div class="h"><span class="n"></span></div>';
             b.children[0].children[0].textContent = Math.abs(dv) === 10 ? (dv > 0 ? "x10" : "\u00F710") : (dv > 0 ? "+" : "\u2212") + Math.abs(dv);
-            b.onclick = function () { stRate = Math.abs(dv) === 10 ? (dv > 0 ? Math.min(stRate * 10, 1e15) : Math.max(1, Math.floor(stRate / 10))) : Math.max(1, stRate + dv); try {
+            b.onclick = function () { stRate = Math.abs(dv) === 10 ? (dv > 0 ? Decimal.min(stRate.mul(10), Decimal.max(stRate, 1e15)) : Decimal.max(1, stRate.div(10).floor())) : Decimal.max(1, stRate.add(dv)); try {
                 localStorage.setItem("lug_strate", stRate);
             }
             catch (e) { } ui(); };
@@ -6202,7 +6272,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         ci.autocomplete = "off";
         ci.className = "strc";
         ci.placeholder = SET.lang === "ru" ? "своё число" : "custom";
-        function setR() { var v = stParse(ci.value); if (v >= 1) {
+        function setR() { var v = stParse(ci.value); if (v.gte(1)) {
             stRate = v;
             try {
                 localStorage.setItem("lug_strate", stRate);
@@ -6386,7 +6456,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         msW.style.transform = "translateY(" + (200 - 205 * vis) + "px)";
         msT1.textContent = t("ms_n") + (cur + 1);
-        msT2.textContent = all ? "\u2713" : ocF(v >= 1e9 ? v / 1e9 : v) + " / " + ocF(tg >= 1e9 ? tg / 1e9 : tg);
+        msT2.textContent = all ? "\u2713" : ocF(S.oc.gte(1e9) ? S.oc.div(1e9) : S.oc) + " / " + ocF(tg >= 1e9 ? tg / 1e9 : tg);
         msT3.textContent = all ? "" : (tg >= 1e9 ? t("ms_km") : t("oc_u1"));
         if (msPrevN >= 0 && n > msPrevN) {
             msS.classList.remove("pop");
@@ -6464,8 +6534,8 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         tsBt.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"></span>';
         lfTs.appendChild(tsBt);
         tsBt.onclick = function () { if (S.water >= TS_MIN) {
-            S.tsd += S.water;
-            S.water = 0;
+            S.tsd = S.tsd.add(S.water);
+            S.water = new Decimal(0);
             save();
             ui();
         } };
@@ -6485,7 +6555,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         ouBt.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"></span>';
         ouPg.appendChild(ouBt);
         ouBt.onclick = function () { var c = ouCost(S.ocu); if (S.ocu < ouMax() && S.water >= c) {
-            S.water -= c;
+            S.water = rd2(S.water.sub(c));
             S.ocu++;
             save();
             ui();
@@ -6501,7 +6571,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         ouBt2.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"></span>';
         ouPg.appendChild(ouBt2);
         ouBt2.onclick = function () { var c = ouCost2(S.ocu2); if (S.ocu2 < 4 && S.water >= c) {
-            S.water -= c;
+            S.water = rd2(S.water.sub(c));
             S.ocu2++;
             save();
             ui();
@@ -6517,7 +6587,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         ouBt3.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"></span>';
         ouPg.appendChild(ouBt3);
         ouBt3.onclick = function () { var c = ouCost3(S.ocu3); if (S.ocu3 < 9 && S.water >= c) {
-            S.water -= c;
+            S.water = rd2(S.water.sub(c));
             S.ocu3++;
             save();
             ui();
@@ -6533,7 +6603,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         ouBt4.innerHTML = '<div class="h"><span class="n"></span></div><span class="e"></span><span class="c"></span>';
         ouPg.appendChild(ouBt4);
         ouBt4.onclick = function () { var c = ouCost4(S.ocu4); if (S.ocu4 < 10 && S.water >= c) {
-            S.water -= c;
+            S.water = rd2(S.water.sub(c));
             S.ocu4++;
             save();
             ui();
@@ -6565,7 +6635,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         else
             drLk5();
         ouBt5.onclick = function () { var c = ouCost5(); if (S.oc >= MS[6] && S.ocu >= 24 && S.ocu5 < 1 && S.water >= c) {
-            S.water -= c;
+            S.water = rd2(S.water.sub(c));
             S.ocu5++;
             save();
             ui();
@@ -6669,7 +6739,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         else
             lfStale = true;
         if (ocSt)
-            ocSt.textContent = t("oc_v") + fmt(Math.floor(S.oc * 1000)) + " " + t("oc_u2") + "\n" + t("oc_r") + ocRU(ocRate(pw, S.oc)) + " (" + t("oc_b") + ocF(ocBoost(pw)) + " = 2^" + tsFm(pw) + (S.oc >= MS[1] && rcOn() ? " × 10" : "") + ")\n" + ocE();
+            ocSt.textContent = t("oc_v") + fmt(S.oc.mul(1000).floor()) + " " + t("oc_u2") + "\n" + t("oc_r") + ocRU(ocRate(pw, S.oc)) + " (" + t("oc_b") + ocF(ocBoost(pw)) + " = 2^" + tsFm(pw) + (S.oc >= MS[1] && rcOn() ? " × 10" : "") + ")\n" + ocE();
         msUi();
         if (ocBw) {
             if (lfVis()) {
@@ -6696,7 +6766,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         tsDd.textContent = t("tsdd") + (S.tsd > 0 ? w2(S.tsd) : "0") + "\n" + (can ? t("tsgv") + w2(S.water) : t("tsmn") + fmt(TS_MIN));
         tsBt.children[0].children[0].textContent = t("tsb");
         tsBt.children[1].textContent = "";
-        tsBt.children[2].textContent = can ? t("tsp") + tsFm(pw) + " → " + tsFm(tsPow(S.tsd + S.water)) : "";
+        tsBt.children[2].textContent = can ? t("tsp") + tsFm(pw) + " → " + tsFm(tsPow(S.tsd.add(S.water))) : "";
         tsBt.classList.toggle("off", !can);
         if (ouPg) {
             var ouOn = S.tn >= 4;
@@ -6751,7 +6821,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     function stUpd() {
         if (!stb)
             return;
-        stn.textContent = fmt(Math.max(0, Math.floor(S.steam)));
+        stn.textContent = fmt(S.steam.floor());
         sts.textContent = t("stc_water") + w2(S.water);
         var psF = sts.parentNode.querySelector(".sff");
         if (!psF) {
@@ -6762,10 +6832,10 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         var psOn = S.oc >= MS[1] && S.water > 0;
         psF.style.display = psOn ? "" : "none";
         if (psOn) {
-            var psR = S.water * 0.01 * stPct() * ((stMin() + 100) / 2) * tnSM();
+            var psR = S.water.mul(0.01 * stPct() * ((stMin() + 100) / 2) * tnSM());
             psF.textContent = (SET.lang === "ru" ? "+" + fmt(psR) + " пара/с (" + stPct() + "% воды)" : "+" + fmt(psR) + " steam/s (" + stPct() + "% of water)");
         }
-        stcn.textContent = fmt(S.c1 + S.c2 + S.c3);
+        stcn.textContent = fmt(S.c1.add(S.c2).add(S.c3));
         stcs.textContent = t("stc_n1") + " " + fmt(S.c1) + " · " + t("stc_n2") + " " + fmt(S.c2) + " · " + t("stc_n3") + " " + fmt(S.c3);
         stb.children[0].children[0].textContent = stOn ? t("stc_stop") : t("stc_gen");
         if (stRb[0] && document.activeElement !== stRb[0]) {
@@ -6775,16 +6845,16 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         if (stRb[1]) {
             stRb[1].textContent = SET.lang === "ru" ? "Установите своё количество тут." : "Set your amount here.";
         }
-        stb.children[1].textContent = t("stc_gd").replace(/\{n\}/g, fmt(stRate)).replace("{a}", fmt(stMin() * stRate * tnSM())).replace("{b}", fmt(100 * stRate * tnSM()));
-        stb.children[2].textContent = stOn && stGain ? "+" + fmt(stGain) + " " + t("stc_ps") : (!stOn && S.water < 1 ? t("stc_nw") : "");
-        stb.classList.toggle("off", !stOn && S.water < 1);
+        stb.children[1].textContent = t("stc_gd").replace(/\{n\}/g, fmt(stRate)).replace("{a}", fmt(stRate.mul(stMin() * tnSM()))).replace("{b}", fmt(stRate.mul(100 * tnSM())));
+        stb.children[2].textContent = stOn && stGain.gt(0) ? "+" + fmt(stGain) + " " + t("stc_ps") : (!stOn && S.water.lt(1) ? t("stc_nw") : "");
+        stb.classList.toggle("off", !stOn && S.water.lt(1));
         stc.forEach(function (c) {
             var b = c.b;
             b.children[0].children[0].textContent = t("stc_c" + c.i);
             b.children[1].textContent = "+x" + mulS3(c.m * tMul()) + " " + t("stc_w");
             var cp = stCP(c.cost, S[c.k]);
             b.children[2].textContent = fmt(cp) + " " + t("stc_ps").replace(/\/.*$/, "");
-            b.classList.toggle("off", S.steam < cp);
+            b.classList.toggle("off", S.steam.lt(cp));
         });
         stm.textContent = t("stc_tot") + "x" + mulS(cMul()) + " " + t("stc_w");
         stf.textContent = "1 + " + mulS3(0.25 * tMul()) + " · " + t("stc_n1") + " + " + mulS3(5 * tMul()) + " · " + t("stc_n2") + " + " + mulS3(100 * tMul()) + " · " + t("stc_n3");
@@ -6804,17 +6874,17 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         var g = 0;
         while (stAcc >= 1 && g++ < 3) {
             stAcc -= 1;
-            if (S.water >= 1) {
-                var u = Math.min(stRate, Math.floor(S.water));
-                S.water = Math.round((S.water - u) * 100) / 100;
-                var kk = Math.min(u, 5), bs = Math.floor(u / kk);
-                stGain = 0;
+            if (S.water.gte(1)) {
+                var u = Decimal.min(stRate, S.water.floor());
+                S.water = rd2(S.water.sub(u));
+                var kk = Math.max(1, Math.min(u.toNumber(), 5)), bs = u.div(kk).floor();
+                stGain = new Decimal(0);
                 for (var q = 0; q < kk; q++) {
-                    var am = q === kk - 1 ? u - bs * (kk - 1) : bs;
-                    stGain += am * (stMin() + Math.random() * (100 - stMin()));
+                    var am = q === kk - 1 ? u.sub(bs.mul(kk - 1)) : bs;
+                    stGain = stGain.add(am.mul(stMin() + Math.random() * (100 - stMin())));
                 }
-                stGain = Math.round(stGain * tnSM());
-                S.steam += stGain;
+                stGain = stGain.mul(tnSM()).round();
+                S.steam = S.steam.add(stGain);
             }
             else {
                 stOn = false;
@@ -6828,15 +6898,20 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
     }, 100);
     var psLast = performance.now(), psUi = 0;
     setInterval(function () { var now = performance.now(), d = Math.min(2, (now - psLast) / 1000); psLast = now; if (document.hidden && d <= 0)
-        return; if (!(S.oc >= MS[1]) || !(S.water > 0))
-        return; S.steam += S.water * 0.01 * stPct() * ((stMin() + 100) / 2) * tnSM() * d; psUi += d; if (psUi >= 1) {
+        return; if (!(S.oc >= MS[1]) || !S.water.gt(0))
+        return; S.steam = S.steam.add(S.water.mul(0.01 * stPct() * ((stMin() + 100) / 2) * tnSM() * d)); psUi += d; if (psUi >= 1) {
         psUi = 0;
         ui();
     } }, 100);
     var ocLast = performance.now();
     setInterval(function () { var now = performance.now(), d = Math.min(60, (now - ocLast) / 1000); ocLast = now; var P = tsPow(S.tsd); if (P < 1 || !(d > 0))
-        return; var k = ocK(), n = k > 0 ? Math.log(Math.exp(k * S.oc) + k * ocBoost(P) * d) / k : S.oc + ocBoost(P) * d; if (isFinite(n) && n >= S.oc)
-        S.oc = Math.min(n, 5e14); }, 100);
+        return; var k = ocK(), n; if (k > 0) {
+        var a = S.oc.mul(k).toNumber(), lb = Math.log(k * d) + P * Math.LN2 + (S.oc >= MS[1] && rcOn() ? Math.LN10 : 0), mx = Math.max(a, lb);
+        n = new Decimal((mx + Math.log1p(Math.exp(-Math.abs(a - lb)))) / k);
+    }
+    else
+        n = S.oc.add(ocBoost(P).mul(d)); if (n.isFinite() && n.gte(S.oc))
+        S.oc = Decimal.min(n, OC_MAX); }, 100);
     var _uiTm = null, _svTm = null;
     window.__resched = function () { clearInterval(_uiTm); clearInterval(_svTm); _uiTm = setInterval(ui, SET.ui); _svTm = setInterval(save, SET.as * 1000); };
     window.__resched();
@@ -7057,16 +7132,16 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
         }
         function lab() { sBk.children[0].children[0].textContent = t("sl_back"); bPlay.children[0].children[0].textContent = t(has ? "st_cont" : "st_play"); bSl.children[0].children[0].textContent = t("st_slots"); bSet.children[0].children[0].textContent = t("set"); stdm.textContent = t("demo_tag"); bUpd.children[0].children[0].textContent = t("upd"); }
         var stdm = st.querySelector(".stdm");
-        var UPD = { "en": [["0.1.01v. Small rebalance of the game start", ["Growth speed boost: +0.125 -> +0.2", "Grass base cost growth: 1.8x -> 1.5x (only for the first 10 levels)", "Fixed grass growth animation speed."]], ["Meadow", ["Tap or drag over the field to cut grass", "Upgrades: Growth speed, Meadow size, Touch radius, Grass base", "Buy modes for upgrades: x1, up to the next 15 levels, or as many as you can afford"]], ["Saves and settings", ["3 save slots with a stats preview", "Export and import your save as a code", "Language: English / Russian", "Number notation: Mixed, Scientific, Standard, Engineering", "Settings for prestige animation, all animations, particles and an FPS counter"]], ["Rain and water", ["Start rain: floods the field, resets grass and grass upgrades, and gives water", "Water unlocks a new tab, and the amount of water boosts grass gain", "Dew after the first rain: Dew base upgrade, and the dew level grows while you cut grass", "Rain cloud over the field: temporary x2 growth and dew, with falling drops"]], ["Clouds and steam", ["Turn water into steam", "Small, Medium and Large clouds with their own bonuses", "Steam generation can be started and stopped"]], ["Tornado", ["Worldwide Tornado: a prestige layer that resets clouds, steam and water for bigger bonuses", "Milestones 1-5: Air clover, x30 steam per tornado, Ocean and Tsunami, ocean upgrades, Worldwide Floor", "Air clover: a chance for a clover worth x10 grass"]], ["Ocean", ["Tsunami: donate water to get power", "Ocean volume that grows over time, with its own boost to water", "Ocean milestones and upgrades", "Worldwide Floor: x2 water boost per level"]], ["End of the Alpha", ["A final page thanking you for playing. The Alpha is still a work in progress; updates and the full release will come later."]]], "ru": [["0.1.01v. Небольшой ребаланс начала игры", ["Буст Скорости роста: +0,125 -> +0,2", "Рост цены Базы травы: 1,8x -> 1,5x (только для первых 10 уровней)", "Исправлена скорость анимации роста травы."]], ["Луг", ["Касайтесь поля или проведите по нему, чтобы срезать траву", "Улучшения: Скорость роста, Размер луга, Радиус касания, База травы", "Режимы покупки улучшений: x1, до следующих 15 уровней или максимум, на сколько хватает"]], ["Сохранения и настройки", ["3 слота сохранения с предпросмотром статистики", "Экспорт и импорт сохранения в виде кода", "Язык: English / Русский", "Запись чисел: смешанная, научная, стандартная, инженерная", "Настройки анимации престижа, всех анимаций, частиц и счётчика FPS"]], ["Дождь и вода", ["Запуск дождя: заливает поле, сбрасывает траву и её улучшения и даёт воду", "Вода открывает новую вкладку, а её количество усиливает прирост травы", "Роса после первого дождя: улучшение «База росы», уровень росы растёт, пока вы срезаете траву", "Дождевое облако над полем: временное ускорение роста и росы x2, с падающими каплями"]], ["Облака и пар", ["Превращение воды в пар", "Малые, средние и большие облака со своими бонусами", "Выработку пара можно запускать и останавливать"]], ["Торнадо", ["Мировое торнадо: слой престижа, сбрасывающий облака, пар и воду ради больших бонусов", "Вехи 1-5: Воздушный клевер, x30 пара за торнадо, Океан и Цунами, улучшения океана, Мировой потоп", "Воздушный клевер: шанс появления клевера, который даёт x10 травы"]], ["Океан", ["Цунами: отдавайте воду, чтобы получить силу", "Объём океана, который растёт со временем и усиливает воду", "Вехи и улучшения океана", "Мировой потоп: усиление воды x2 за уровень"]], ["Конец альфы", ["Финальная страница с благодарностью за игру. Альфа ещё в разработке; обновления и полный релиз выйдут позже."]]] };
+        var UPD = { "en": [["0.1.02v. Break Eternity support", ["Added support for Break Eternity library"]], ["0.1.01v. Small rebalance of the game start", ["Growth speed boost: +0.125 -> +0.2", "Grass base cost growth: 1.8x -> 1.5x (only for the first 10 levels)", "Fixed grass growth animation speed."]], ["Meadow", ["Tap or drag over the field to cut grass", "Upgrades: Growth speed, Meadow size, Touch radius, Grass base", "Buy modes for upgrades: x1, up to the next 15 levels, or as many as you can afford"]], ["Saves and settings", ["3 save slots with a stats preview", "Export and import your save as a code", "Language: English / Russian", "Number notation: Mixed, Scientific, Standard, Engineering", "Settings for prestige animation, all animations, particles and an FPS counter"]], ["Rain and water", ["Start rain: floods the field, resets grass and grass upgrades, and gives water", "Water unlocks a new tab, and the amount of water boosts grass gain", "Dew after the first rain: Dew base upgrade, and the dew level grows while you cut grass", "Rain cloud over the field: temporary x2 growth and dew, with falling drops"]], ["Clouds and steam", ["Turn water into steam", "Small, Medium and Large clouds with their own bonuses", "Steam generation can be started and stopped"]], ["Tornado", ["Worldwide Tornado: a prestige layer that resets clouds, steam and water for bigger bonuses", "Milestones 1-5: Air clover, x30 steam per tornado, Ocean and Tsunami, ocean upgrades, Worldwide Floor", "Air clover: a chance for a clover worth x10 grass"]], ["Ocean", ["Tsunami: donate water to get power", "Ocean volume that grows over time, with its own boost to water", "Ocean milestones and upgrades", "Worldwide Floor: x2 water boost per level"]], ["End of the Alpha", ["A final page thanking you for playing. The Alpha is still a work in progress; updates and the full release will come later."]]], "ru": [["0.1.02v. Поддержка Break Eternity", ["Добавлена поддержка библиотеки Break Eternity"]], ["0.1.01v. Небольшой ребаланс начала игры", ["Буст Скорости роста: +0,125 -> +0,2", "Рост цены Базы травы: 1,8x -> 1,5x (только для первых 10 уровней)", "Исправлена скорость анимации роста травы."]], ["Луг", ["Касайтесь поля или проведите по нему, чтобы срезать траву", "Улучшения: Скорость роста, Размер луга, Радиус касания, База травы", "Режимы покупки улучшений: x1, до следующих 15 уровней или максимум, на сколько хватает"]], ["Сохранения и настройки", ["3 слота сохранения с предпросмотром статистики", "Экспорт и импорт сохранения в виде кода", "Язык: English / Русский", "Запись чисел: смешанная, научная, стандартная, инженерная", "Настройки анимации престижа, всех анимаций, частиц и счётчика FPS"]], ["Дождь и вода", ["Запуск дождя: заливает поле, сбрасывает траву и её улучшения и даёт воду", "Вода открывает новую вкладку, а её количество усиливает прирост травы", "Роса после первого дождя: улучшение «База росы», уровень росы растёт, пока вы срезаете траву", "Дождевое облако над полем: временное ускорение роста и росы x2, с падающими каплями"]], ["Облака и пар", ["Превращение воды в пар", "Малые, средние и большие облака со своими бонусами", "Выработку пара можно запускать и останавливать"]], ["Торнадо", ["Мировое торнадо: слой престижа, сбрасывающий облака, пар и воду ради больших бонусов", "Вехи 1-5: Воздушный клевер, x30 пара за торнадо, Океан и Цунами, улучшения океана, Мировой потоп", "Воздушный клевер: шанс появления клевера, который даёт x10 травы"]], ["Океан", ["Цунами: отдавайте воду, чтобы получить силу", "Объём океана, который растёт со временем и усиливает воду", "Вехи и улучшения океана", "Мировой потоп: усиление воды x2 за уровень"]], ["Конец альфы", ["Финальная страница с благодарностью за игру. Альфа ещё в разработке; обновления и полный релиз выйдут позже."]]] };
         var SPN = 3, SPT = { en: ["Spoilers!!", "Below is the rest of the Alpha content. Tap to choose what to show.", "Show all", "Tap a section to show only it."], ru: ["Спойлеры!!", "Ниже остальное содержимое альфы. Нажмите, чтобы выбрать, что показать.", "Показать всё", "Нажмите на раздел, чтобы показать только его."] };
         var bUpd = mkB(st, "stupd", 7600, function () { openUpd(); });
         var stv = document.createElement("div");
         stv.className = "stver";
-        stv.textContent = "0.1.01v. Alpha";
+        stv.textContent = "0.1.02v. Alpha";
         st.appendChild(stv);
         var stu = document.createElement("div");
         stu.className = "stu";
-        stu.innerHTML = '<div class="stuw"><div class="up stup"><div class="stut"></div><div class="stuv">0.1.01v. Alpha</div><div class="stub"></div></div></div>';
+        stu.innerHTML = '<div class="stuw"><div class="up stup"><div class="stut"></div><div class="stuv">0.1.02v. Alpha</div><div class="stub"></div></div></div>';
         st.appendChild(stu);
         var stut = stu.querySelector(".stut"), stub = stu.querySelector(".stub");
         var uBk = mkB(stu.firstChild, "stbk", 7620, function () { closeUpd(); });
@@ -7191,7 +7266,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
             iN = 0;
             rN = 0;
             var g = S.grass, tn = S.tn, c1 = "", c2 = "", c3 = "";
-            var base = V("boost"), dl = 1 + S.dewLv, wg = wgMul(), wm = wMul(), dq = dqMul(), per = gPw(base * dl * wg * wm * dq);
+            var base = V("boost"), dl = 1 + S.dewLv, wg = wgMul(), wm = wMul(), dq = dqMul(), per = gPw(wm.mul(base * dl * wg * dq));
             c1 += panel("g", "blade", 1, Q("Grass", "Трава"), "+" + nm(per), Q("Each cut blade gives this much grass: base × all multipliers below.", "Каждая срезанная травинка даёт столько травы: база × все множители ниже."), row("boost", Q("Grass base", "База травы"), Q("upgrade level " + S.up.boost, "улучшение, ур. " + S.up.boost), nm(base)) +
                 rowIf(S.dewOn || S.dewLv > 0, "dew", Q("Dew level", "Уровень росы"), Q("dew lv " + S.dewLv + " → 1 + level", "роса ур. " + S.dewLv + " → 1 + уровень"), X(dl), S.dewLv > 0 ? "on" : "") +
                 rowIf(S.wu || S.wg > 0, "wg", Q("Water grass", "Водная трава"), Q("upgrade level " + S.wg + " · x2 per level", "улучшение, ур. " + S.wg + " · x2 за уровень"), X(wg), S.wg > 0 ? "on" : "") +
@@ -7201,7 +7276,7 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                 rowIf(S.rc > 0, "rain", Q("Rain cloud", "Дождливая туча"), Q("doubles growth speed while it is over the field", "удваивает скорость роста, пока над полем"), rcOn() ? "x2" : "x1", rcOn() ? "on" : "") +
                 rowIf(S.oc >= MS[4], "c1", Q("Cloud boost", "Буст облаков"), Q("same boost as for rain · needs ocean milestone 5", "тот же буст, что и у дождя · нужна веха океана 5"), S.oc >= MS[4] ? X(cMul()) : "x1", S.oc >= MS[4] ? "on" : "") +
                 rowIf(S.oc >= MS[4], "ocean", Q("Ocean milestone 5", "Веха океана 5"), Q("grass gain ^1.25 (after all multipliers, incl. clouds)", "прирост травы ^1,25 (после всех множителей, включая облака)"), S.oc >= MS[4] ? "^1.25" : "^1", S.oc >= MS[4] ? "on" : ""));
-            var wr = rainGain(), L = g >= 1000 ? Math.log10(g / 1000) : 0, t1 = g >= 1000 ? 1 + Math.log(g / 1000) / Math.log(3) : 1, t2 = Math.pow(1.5, L), t3 = Math.pow(2.5, L / 3), cm = cMul(), tw = tnWM(), ow = ocWM();
+            var gq = g.div(1000), wr = rainGain(), L = g >= 1000 ? gq.log10().toNumber() : 0, t1 = g >= 1000 ? 1 + gq.ln().toNumber() / Math.log(3) : 1, t2 = Decimal.pow(1.5, L), t3 = Decimal.pow(2.5, L / 3), cm = cMul(), tw = tnWM(), ow = ocWM();
             c2 += panel("w", "drop", 2, Q("Water", "Вода"), g >= 1000 ? "+" + w2(wr) : Q("need " + fmt(1000) + " grass", "нужно " + fmt(1000) + " травы"), Q("Water you get from the next rain. All factors are multiplied: with " + fmt(g) + " grass.", "Вода за следующий дождь. Все множители перемножаются: при " + fmt(g) + " травы."), row("blade", Q("Grass: 1 + log₃", "Трава: 1 + log₃"), "1 + log₃(grass / 1000)", nm(t1)) +
                 row("blade", Q("Grass: 1.5^log₁₀", "Трава: 1.5^log₁₀"), "1.5^log₁₀(grass / 1000)", X(t2)) +
                 row("blade", Q("Grass: 2.5^log₁₀₀₀", "Трава: 2.5^log₁₀₀₀"), "2.5^log₁₀₀₀(grass / 1000)", X(t3)) +
@@ -7214,20 +7289,20 @@ const TEXT_6_28 = "<svg viewBox='-3 -3 106 106' aria-hidden='true'><image href='
                 row("dg", Q("More dew", "Больше росы"), Q("upgrade level " + S.dg + " · x1.5 per level", "улучшение, ур. " + S.dg + " · x1,5 за уровень"), X(dg), S.dg > 0 ? "on" : "") +
                 rowIf(S.rc > 0, "rain", Q("Rain cloud", "Дождливая туча"), Q("doubles dew while it is over the field", "удваивает росу, пока над полем"), "x" + rc, rc > 1 ? "on" : "") +
                 row("blade", Q("Grass from dew", "Трава от росы"), Q("each dew level adds +1 to the grass multiplier", "каждый уровень росы даёт +1 к множителю травы"), X(dl), S.dewLv > 0 ? "on" : ""), !S.dewOn);
-            var sm = stMin(), ts = tnSM(), m15 = tMul(), have = S.steam > 0 || S.c1 + S.c2 + S.c3 > 0 || tn > 0;
+            var sm = stMin(), ts = tnSM(), m15 = tMul(), have = S.steam.gt(0) || S.c1.add(S.c2).add(S.c3).gt(0) || tn > 0;
             c3 += panel("s", "steam", 4, Q("Steam", "Пар"), X(ts), Q("Steam is made from water you spend.", "Пар делается из тратимой воды."), row("steam", Q("Steam per water", "Пар за воду"), Q("random in this range per spent water", "случайно в этом диапазоне за тратимую воду"), sm + "–100") +
                 rowIf(S.tl || tn > 0, "tornado", Q("Tornado", "Торнадо"), Q("x30 per tornado from the 2nd (" + tn + " created)", "x30 за торнадо со 2-го (создано " + tn + ")"), X(ts), ts > 1 ? "on" : "") +
                 (S.oc >= MS[1] ? row("steam", Q("Passive steam", "Пассивный пар"), Q("per second from current water, water is not spent", "в секунду от текущей воды, вода не тратится"), stPct() + "%", "on") : ""), !have);
             var c4 = "";
-            c4 += panel("cl", "cloud", 5, Q("Clouds", "Облака"), X(cm), Q("Clouds boost the water you get from rain.", "Облака усиливают воду, которую даёт дождь."), row("c1", Q("Small clouds", "Малые облака"), Q(fmt(S.c1) + " pcs · +0.25 each", "шт.: " + fmt(S.c1) + " · +0,25 каждое"), "+" + nm(0.25 * m15 * S.c1), S.c1 > 0 ? "on" : "") +
-                row("c2", Q("Medium clouds", "Средние облака"), Q(fmt(S.c2) + " pcs · +5 each", "шт.: " + fmt(S.c2) + " · +5 каждое"), "+" + nm(5 * m15 * S.c2), S.c2 > 0 ? "on" : "") +
-                row("c3", Q("Large clouds", "Большие облака"), Q(fmt(S.c3) + " pcs · +100 each", "шт.: " + fmt(S.c3) + " · +100 каждое"), "+" + nm(100 * m15 * S.c3), S.c3 > 0 ? "on" : "") +
+            c4 += panel("cl", "cloud", 5, Q("Clouds", "Облака"), X(cm), Q("Clouds boost the water you get from rain.", "Облака усиливают воду, которую даёт дождь."), row("c1", Q("Small clouds", "Малые облака"), Q(fmt(S.c1) + " pcs · +0.25 each", "шт.: " + fmt(S.c1) + " · +0,25 каждое"), "+" + nm(S.c1.mul(0.25 * m15)), S.c1 > 0 ? "on" : "") +
+                row("c2", Q("Medium clouds", "Средние облака"), Q(fmt(S.c2) + " pcs · +5 each", "шт.: " + fmt(S.c2) + " · +5 каждое"), "+" + nm(S.c2.mul(5 * m15)), S.c2 > 0 ? "on" : "") +
+                row("c3", Q("Large clouds", "Большие облака"), Q(fmt(S.c3) + " pcs · +100 each", "шт.: " + fmt(S.c3) + " · +100 каждое"), "+" + nm(S.c3.mul(100 * m15)), S.c3 > 0 ? "on" : "") +
                 rowIf(tn > 0, "tornado", Q("Tornado on clouds", "Торнадо на облака"), Q("+50% to all cloud boosts after the 1st tornado", "+50% ко всем бустам облаков после 1-го торнадо"), X(m15), m15 > 1 ? "on" : "") +
                 row("cloud", Q("Total clouds boost to water", "Итого буст воды от облаков"), "1 + S + M + L", X(cm), cm > 1 ? "on" : ""), !have);
-            var P = tsPow(S.tsd), ob = Math.pow(2, P), o10 = (S.oc >= MS[1] && rcOn()) ? 10 : 1, sl = Math.exp(-ocK() * S.oc), rate = ocBoost(P) * sl, mu = Q("m³/s", "м³/с");
+            var P = tsPow(S.tsd), ob = Decimal.pow(2, P), o10 = (S.oc >= MS[1] && rcOn()) ? 10 : 1, sl = Decimal.pow(Math.E, S.oc.mul(-ocK())), rate = ocBoost(P).mul(sl), mu = Q("m³/s", "м³/с");
             c2 += panel("o", "ocean", 6, Q("Ocean volume", "Объём океана"), ocRU(rate), Q("How fast the ocean fills. Volume now: " + ocVU(S.oc) + ".", "Как быстро заполняется океан. Сейчас: " + ocVU(S.oc) + "."), row("tsu", Q("Tsunami power", "Сила цунами"), Q("2^power, power " + nm(P), "2^сила, сила " + nm(P)), X(ob), ob > 1 ? "on" : "") +
                 rowIf(S.oc >= MS[1] && S.rc > 0, "rain", Q("Rain cloud over ocean", "Туча над океаном"), Q("x10 while the rain cloud is over the field (milestone 2)", "x10, пока туча над полем (веха 2)"), X(o10), o10 > 1 ? "on" : "") +
-                row("ou1", Q("Slowdown by volume", "Замедление от объёма"), Q("x" + ocBase() + " per " + ocX() + " m³", "x" + String(ocBase()).replace(".", ",") + " за " + ocX() + " м³"), "÷" + nm(sl > 0 ? 1 / sl : Math.exp(ocK() * S.oc)), sl < 1 ? "on" : "") +
+                row("ou1", Q("Slowdown by volume", "Замедление от объёма"), Q("x" + ocBase() + " per " + ocX() + " m³", "x" + String(ocBase()).replace(".", ",") + " за " + ocX() + " м³"), "÷" + nm(Decimal.pow(Math.E, S.oc.mul(ocK()))), sl < 1 ? "on" : "") +
                 row("ocean", Q("Fill speed", "Скорость заполнения"), Q("boost × slowdown", "буст × замедление"), ocRU(rate), "on") +
                 row("drop", Q("Boost to water", "Буст к воде"), Q((S.oc >= MS[5] ? "2" : "1.5") + "^log₂(m³)" + (S.oc >= MS[2] ? " · x100 milestone" : "") + (S.oc >= MS[6] ? " · x2.50K milestone" : ""), (S.oc >= MS[5] ? "2" : "1,5") + "^log₂(м³)" + (S.oc >= MS[2] ? " · веха x100" : "") + (S.oc >= MS[6] ? " · веха x2,50K" : "")), X(ow), ow > 1 ? "on" : ""), !(P >= 1 || S.oc > 0));
             return '<div class="xs-c">' + c1 + '</div><div class="xs-c">' + c2 + '</div><div class="xs-c">' + c3 + c4 + '</div>';
