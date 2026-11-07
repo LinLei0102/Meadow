@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>导入存档 · 草甸</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 40px 20px;
+    background: radial-gradient(circle at 50% 0%, #1d3a22, #0b120c 70%);
+    color: #e6f2e6; font: 16px/1.7 "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; gap: 18px;
+  }
+  .card { width: min(620px, 100%); background: #131d14; border: 2px solid #2f4a33; border-radius: 14px; padding: 26px 26px 22px; }
+  h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: 1px; }
+  .sub { margin: 0 0 18px; color: #9fb8a3; font-size: 14px; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0 0 20px; font-size: 14px; }
+  dt { color: #8aa88f; }
+  dd { margin: 0; color: #d6e8d8; }
+  button {
+    width: 100%; padding: 13px 18px; font: inherit; font-weight: 700; cursor: pointer;
+    color: #0d1a0f; background: #9be04e; border: 0; border-radius: 10px;
+  }
+  button:hover { background: #aeea6a; }
+  code, textarea { font-family: ui-monospace, Consolas, monospace; }
+  textarea { width: 100%; height: 120px; margin-top: 8px; resize: vertical; font-size: 12px;
+    background: #0a110b; color: #9fb8a3; border: 1px solid #2f4a33; border-radius: 8px; padding: 8px; }
+  .warn { color: #ffb98f; font-size: 13px; margin: 12px 0 0; }
+  .ok { color: #9be04e; }
+  .hide { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>完美毕业存档</h1>
+  <p class="sub">Meadow / 草甸 · 0.1.02v · 第 1 号存档位</p>
+  <dl>
+    <dt>进度</dt><dd>第 10 关「完成」——海洋 5e14 m³，内测内容通关</dd>
+    <dt>草地升级</dt><dd>生长速度 50 · 草地大小 90 · 触碰半径 40 · 基础草量 600 · 基础露水 180</dd>
+    <dt>水体升级</dt><dd>水草 50 · 露水增益 50 · 四项廉价升级满级</dd>
+    <dt>海洋</dt><dd>体积 5e14 · 五项臭氧升级满级</dd>
+    <dt>其它</dt><dd>龙卷风 5 · 空气三叶草 5 · 雨云 5 · 露水收获 6 · Worldwide Floor 100 · 露水 Lv15</dd>
+  </dl>
+  <button id="go">写入存档 → 打开游戏</button>
+  <p class="warn" id="msg">注意：会覆盖第 1 号存档位，其他存档位不受影响。</p>
+  <p><a href="#" id="toggle" style="color:#8aa88f;font-size:13px">手动方式（控制台粘贴）</a></p>
+  <div id="manual" class="hide">
+    <p class="sub" style="margin:6px 0 0">打开游戏后按 F12 → Console，粘贴下面这行回车：</p>
+    <textarea readonly id="snip">localStorage.setItem('lug_save_v1', JSON.stringify({"v":1,"tn":5,"tl":true,"ac":5,"steam":"1e24","c1":"100","c2":"100","c3":"100","w2d":true,"grass":"1e24","total":"1e24","wu":true,"water":"1e24","tsd":"1e24","oc":"5e14","ocu":24,"ocu2":4,"ocu3":9,"ocu4":10,"ocu5":1,"fl":100,"dewOn":true,"rained":true,"dewXP":0,"dewLv":15,"wg":50,"dg":50,"cs":10,"cm":10,"cr":10,"cb":60,"cd":20,"d10":true,"d15":true,"rc":5,"rcAt":1794056667831,"dq":6,"up":{"spawn":50,"max":90,"rad":40,"boost":600,"dewb":180}})); localStorage.setItem('lug_slot_v1','1'); location.reload();</textarea>
+  </div>
+</div>
+<script>
+  var SAVE = {"v":1,"tn":5,"tl":true,"ac":5,"steam":"1e24","c1":"100","c2":"100","c3":"100","w2d":true,"grass":"1e24","total":"1e24","wu":true,"water":"1e24","tsd":"1e24","oc":"5e14","ocu":24,"ocu2":4,"ocu3":9,"ocu4":10,"ocu5":1,"fl":100,"dewOn":true,"rained":true,"dewXP":0,"dewLv":15,"wg":50,"dg":50,"cs":10,"cm":10,"cr":10,"cb":60,"cd":20,"d10":true,"d15":true,"rc":5,"rcAt":1794056667831,"dq":6,"up":{"spawn":50,"max":90,"rad":40,"boost":600,"dewb":180}};
+  document.getElementById('toggle').onclick = function (e) {
+    e.preventDefault();
+    document.getElementById('manual').classList.toggle('hide');
+    var t = document.getElementById('snip');
+    if (!document.getElementById('manual').classList.contains('hide')) { t.focus(); t.select(); }
+  };
+  document.getElementById('go').onclick = function () {
+    try {
+      localStorage.setItem('lug_save_v1', JSON.stringify(SAVE));
+      localStorage.setItem('lug_slot_v1', '1');
+      location.href = '../docs/index.html';
+    } catch (e) {
+      document.getElementById('manual').classList.remove('hide');
+      document.getElementById('msg').textContent = '写入失败：' + e.message + '（浏览器可能禁用了本地存储）';
+      document.getElementById('msg').className = 'warn';
+    }
+  };
+</script>
+</body>
+</html>
