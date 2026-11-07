@@ -1,0 +1,14 @@
+import puppeteer from 'puppeteer-core';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const b = await puppeteer.launch({ executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', headless:'new', args:['--no-sandbox','--disable-gpu','--hide-scrollbars'], defaultViewport:{width:620,height:1000} });
+const p = await b.newPage();
+await p.evaluateOnNewDocument(()=>{ localStorage.setItem('lug_settings_v1', JSON.stringify({lang:'zh'})); });
+await p.goto('file:///' + path.join(ROOT,'docs','index.html').replace(/\\/g,'/'), {waitUntil:'load'});
+await new Promise(r=>setTimeout(r,3000));
+await p.evaluate(()=>{ const el=[...document.querySelectorAll('button')].find(e=>e.textContent.trim()==='更新日志'); el&&el.click(); });
+await new Promise(r=>setTimeout(r,1200));
+await p.screenshot({path:path.join(ROOT,'shots','08-updates.png')});
+console.log(await p.evaluate(()=>document.body.innerText.slice(0,700)));
+await b.close();

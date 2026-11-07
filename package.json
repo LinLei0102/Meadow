@@ -1,0 +1,14 @@
+{
+  "name": "meadow-cn",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Meadow 简体中文补丁（构建式叠加，不改动上游源码）",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "shot": "node tools/shot.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.0.0"
+  }
+}
