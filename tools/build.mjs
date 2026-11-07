@@ -90,6 +90,19 @@ if (missing.length) warnings.push(`上游新增/未翻译 ${missing.length} 条�
 if (stale.length) warnings.push(`译文中多余 ${stale.length} 条（上游已删）: ${stale.join(', ')}`);
 
 // ────────────────────── 2. 注入运行期运行时（helpers） ──────────────────────
+// 标题字形：游戏内嵌的 Comic Sans 无中文字形，系统黑体又和手绘调性不搭。
+// 取霞鹜文楷（OFL-1.1）子集出「草甸」两字，仅 1.1KB，直接内联，产物仍是单文件离线可用。
+const fontPath = path.join(ROOT, 'i18n', 'fonts', 'meadow-title-zh.woff2');
+let fontFace = '';
+if (fs.existsSync(fontPath)) {
+  const b64 = fs.readFileSync(fontPath).toString('base64');
+  fontFace =
+    `@font-face{font-family:"MeadowZhTitle";` +
+    `src:url(data:font/woff2;base64,${b64}) format("woff2");font-weight:400;font-display:block;}`;
+} else {
+  warnings.push('未找到 i18n/fonts/meadow-title-zh.woff2，标题回落到系统黑体');
+}
+
 const runtime = `<script id="zh-i18n">
 /* Meadow 中文补丁 — 构建期注入，源码未改动 */
 window.__ZH_I18N__ = ${JSON.stringify(helpers.exact)};
@@ -103,8 +116,21 @@ window.__ZH__ = function (s) {
   for (var i = 0; i < P.length; i++) if (P[i][0].test(s)) return s.replace(P[i][0], P[i][1]);
   return null;
 };
+/* 标签页标题跟随语言：游戏启动时会把 <html lang> 设成当前语言（5748 行） */
+(function () {
+  var TITLE = { zh: "草甸 Meadow" };
+  var sync = function () {
+    var l = document.documentElement.lang || "";
+    document.title = /^zh/i.test(l) && TITLE.zh ? TITLE.zh : "Meadow";
+  };
+  new MutationObserver(sync).observe(document.documentElement, {
+    attributes: true, attributeFilter: ["lang"],
+  });
+  sync();
+})();
 </script>
 <style id="zh-i18n-style">
+${fontFace}
 /* 内嵌 Comic Sans 子集不含中日韩字形，补一层 CJK 字体栈 */
 :lang(zh) body, :lang(zh) button, :lang(zh) input, :lang(zh) textarea,
 :lang(zh) h1, :lang(zh) h2, :lang(zh) p, :lang(zh) div, :lang(zh) span {
@@ -114,6 +140,23 @@ window.__ZH__ = function (s) {
                sans-serif;
 }
 :lang(zh) .e, :lang(zh) p { line-height: 1.45; }
+
+/* 正式译名「草甸」：Logo 里同时放拉丁与中文两套字形，由 :lang() 切换。
+   这样英文/俄文玩家的标题仍是原版 Meadow，纯 CSS 完成，无脚本、无闪烁。 */
+html:lang(zh) #start .sttl .lgw-zh text {
+  font-family: "MeadowZhTitle", "Comic Sans MS", sans-serif;
+  font-weight: 400;
+}
+#start .sttl .lgw-zh { display: none; }
+html:lang(zh) #start .sttl .lgw-en { display: none; }
+html:lang(zh) #start .sttl .lgw-zh { display: inline; }
+/* 汉字笔画密，原始 18px 光晕会糊成一团，中文单独收细 */
+html:lang(zh) #start .sttl .lgw-zh .lgg tspan { stroke-width: 10px; opacity: .24; }
+/* 关键：拉丁字母笔画疏，描边层是加分的；汉字每一笔都会被再勾一遍轮廓，
+   密笔画（如「甸」里的田）会变成一坨网格噪点，所以中文整层去掉，
+   改用一层极轻的投影保住"上墨"的立体感。 */
+html:lang(zh) #start .sttl .lgw-zh .lgo { display: none; }
+html:lang(zh) #start .sttl .lgw-zh .lgf tspan { filter: drop-shadow(0 3px 0 rgba(0, 0, 0, .38)); }
 </style>
 `;
 replaceOnce('注入运行时脚本与 CJK 字体样式', '</head>', runtime + '</head>');
@@ -190,7 +233,68 @@ replaceN('秒单位(画布/倒计时/自动保存)', ': " s")', ': " 秒")', 4);
 replaceN('分钟单位(自动保存)', ': " min")', ': " 分")', 1);
 replaceN('蒸汽产出速率', '" steam/s (" + stPct() + "% of water)"', '" 蒸汽/秒（占水量 " + stPct() + "%）"', 1);
 
-// ───────────────────────── 9. 输出 ─────────────────────────
+// ───────────────────── 9. 正式译名：草甸 ─────────────────────
+// 「Meadow」的正式中文译名。草甸是植物学/地理学里 meadow 的对应词（区别于「草原」steppe），
+// 两字简短、字形对称，且与游戏内已用的「草地」（field，指你收割的那片）区分开。
+const NAME_ZH = '草甸';
+// 两个字的取色沿用原 Logo 的调色板首位：#9be04e 嫩草绿 + #7ec4ee 露水蓝（游戏只有草与水两种资源）
+const LOGO_ZH = {
+  chars: [['草', '#9be04e'], ['甸', '#7ec4ee']],
+  // 原拉丁字形为 100px；汉字笔画更满，且只有两字，需放大并拉开字距才撑得住版面
+  size: 122,
+  y: 104,
+  ls: 14,
+};
+
+replaceOnce('页面标题改为译名', '<title>Meadow</title>', `<title>${NAME_ZH} Meadow</title>`);
+replaceOnce(
+  'Logo 无障碍名',
+  '<div class="sttl" role="img" aria-label="Meadow">',
+  `<div class="sttl" role="img" aria-label="Meadow ${NAME_ZH}">`
+);
+replaceOnce(
+  '导航键无障碍名',
+  'id="bMeadow" type="button" aria-label="Meadow"',
+  `id="bMeadow" type="button" aria-label="${NAME_ZH}"`
+);
+
+// Logo 在 SVG 里是 <text>+<tspan> 而非手绘路径，可以换字。
+// 保留原拉丁三层不动，另建一层中文，用 .lgw-en / .lgw-zh 由 CSS 按语言切换。
+{
+  const open = html.indexOf('<svg class="lgsvg" viewBox="0 0 380 110"');
+  if (open < 0) throw new Error('[锚点缺失] 启动页 Logo（svg.lgsvg）');
+  const tagEnd = html.indexOf('>', open) + 1;
+  const close = html.indexOf('</svg>', tagEnd);
+  const inner = html.slice(tagEnd, close);
+
+  const defsEnd = inner.indexOf('</defs>');
+  if (defsEnd < 0) throw new Error('[Logo 结构变化] 缺少 <defs>');
+  const defs = inner.slice(0, defsEnd + '</defs>'.length);
+  const latin = inner.slice(defsEnd + '</defs>'.length);
+
+  const layers = latin.match(/<text class="(?:lgg|lgf|lgo)"[^>]*>[\s\S]*?<\/text>/g) || [];
+  if (layers.length !== 3 || !latin.includes('x="190" y="84"'))
+    throw new Error(`[Logo 结构变化] 期望 3 个 <text> 且坐标 190/84，实际 ${layers.length} 个`);
+
+  const spans = LOGO_ZH.chars
+    .map(([c, col]) => `<tspan style="--c:${col}">${c}</tspan>`)
+    .join('');
+  // 用内联 style 而不是 font-size 属性：后者是 SVG 表现属性，优先级低于
+  // `.sttl text { font-size: 100px }` 这条 CSS，会被覆盖回去。
+  const zhLayer = (cls) =>
+    `<text class="${cls}" x="190" y="${LOGO_ZH.y}" text-anchor="middle"` +
+    ` style="font-size:${LOGO_ZH.size}px;letter-spacing:${LOGO_ZH.ls}px">${spans}</text>`;
+
+  const zh = `<g filter="url(#lgGlow)">${zhLayer('lgg')}</g>${zhLayer('lgf')}${zhLayer('lgo')}`;
+  html =
+    html.slice(0, tagEnd) +
+    defs +
+    `<g class="lgw lgw-en">${latin}</g><g class="lgw lgw-zh">${zh}</g>` +
+    html.slice(close);
+  applied.push(`启动页 Logo 换成「${NAME_ZH}」（CSS 按语言切换）`);
+}
+
+// ───────────────────────── 10. 输出 ─────────────────────────
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.writeFileSync(OUT, html, 'utf8');
 

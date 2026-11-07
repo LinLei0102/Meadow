@@ -1,6 +1,6 @@
-# Meadow · 简体中文版
+# 草甸 Meadow · 简体中文版
 
-Meadow 的简体中文汉化。采用**构建期叠加**的方式实现：仓库根目录的 `index.html`（上游原版）保持原样，中文以独立补丁的形式在构建时注入，产出 `docs/index.html`。
+「Meadow」的正式中文译名定为**草甸**，本仓库是它的简体中文汉化。采用**构建期叠加**的方式实现：仓库根目录的 `index.html`（上游原版）保持原样，中文以独立补丁的形式在构建时注入，产出 `docs/index.html`。
 
 这样做的好处是：上游更新时 `git merge origin/main` 不会产生冲突，重新跑一次构建即可拿到新版中文。
 
@@ -10,6 +10,24 @@ Meadow 的简体中文汉化。采用**构建期叠加**的方式实现：仓库
 
 打开后默认**跟随浏览器语言**：中文环境自动进中文，其他环境是英文，可在「设置 → 语言」里随时切换 English / Русский / 简体中文。
 
+## 关于译名
+
+正式译名：**草甸**
+
+- **词义**：草甸是植物学 / 地理学中 meadow 的对应词（与「草原」steppe 相对），指湿润、以多年生草本为主的地段——正是游戏里那片会长草、会下雨、会被淹的地方。
+- **区隔**：游戏内已有「草地」一词专指你收割的那片田（`field`，如「位于草地上方时，生长速度翻倍」）。译名用「草甸」，界面里的「草地」不必改动，两个概念不打架。
+- **字形**：两字等宽、左右对称，单独做标题不塌；再长的译法（「青青草地」「芳草甸」）在启动页会挤，这个刚好。
+
+译名在三处生效，且都只对中文界面：
+
+| 位置 | 中文 | 英文 / 俄文 |
+|---|---|---|
+| 窗口标题 | `草甸 Meadow` | `Meadow` |
+| 启动页手写标题 | 草甸（两字，草绿 / 露水蓝） | 原版六字母彩色 Meadow |
+| 无障碍标签 | 草甸 | 原版 |
+
+标题在源码里是 `<svg><text>` 而不是手绘路径，所以可以换字：两套字形同时存在于 Logo 中，由 `:lang(zh)` 纯 CSS 切换——没有脚本参与，切换语言时不闪烁，英文与俄文玩家看到的仍是原版。
+
 ## 目录结构
 
 ```
@@ -18,10 +36,13 @@ docs/index.html     ← 构建产物：中文版成品
 i18n/zh.json        主 UI 文案（185 条）
 i18n/zh-helpers.json  存档面板 / 统计面板文案（102 条，含正则规则）
 i18n/zh-upd.json    更新日志（9 组）
+i18n/fonts/         标题字形：霞鹜文楷子集（仅「草甸」两字，1.1KB，OFL-1.1）
 tools/build.mjs     构建脚本：锚点替换
 tools/shot.mjs      用本机 Edge 无头截图（排版自查）
 tools/langtest.mjs  zh / en / ru 三语回归测试
 tools/overflow.mjs  文本溢出检测
+tools/shot-name.mjs 译名 / 窗口标题专项检查
+tools/shot-logo.mjs 启动页标题放大特写（挑字号字距用）
 ```
 
 ## 重新构建
@@ -57,10 +78,25 @@ npm run build            # 重新套用中文补丁
 
 ## 已知限制
 
-- 标题「Meadow」是手绘 SVG 路径，无法文本化，保留原名。
 - 底部导航为纯图标，无文字。
-- 内嵌的 Comic Sans 字体子集不含中日韩字形，中文回落到系统字体（微软雅黑 / 苹方 / Noto Sans SC）。样式作用域限定在 `:lang(zh)`，不影响英文与俄文的原始观感。
+- 内嵌的 Comic Sans 字体子集不含中日韩字形，正文中文回落到系统字体（微软雅黑 / 苹方 / Noto Sans SC）。样式作用域限定在 `:lang(zh)`，不影响英文与俄文的原始观感。
+- 启动页标题的两个字形是**固定的**：改译名要同时改 `tools/build.mjs` 里的 `NAME_ZH` / `LOGO_ZH`，并重新用 fontTools 子集出新字（见下）。
+
+## 改译名 / 换字
+
+```bash
+# 1. 改 build.mjs 顶部常量
+#    NAME_ZH = '草甸'，LOGO_ZH.chars = [['草','#9be04e'], ['甸','#7ec4ee']]
+# 2. 重新子集标题字形（需 pip install fonttools brotli）
+pip install fonttools brotli
+python -m fontTools.subset 你的字体.ttf --text="新译名" --flavor=woff2 \
+  --output-file=i18n/fonts/meadow-title-zh.woff2 --no-hinting --desubroutinize
+# 3. 重建
+npm run build
+```
+
+标题字形当前取自[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)（SIL OFL-1.1，允许子集化为 web 字体），许可证见 `i18n/fonts/OFL.txt`。若把字形文件删掉，构建会自动回落到系统黑体并给出提示，不会失败。
 
 ## 版权
 
-游戏本体版权归原作者所有。本仓库仅包含中文文本、构建脚本与构建产物。
+游戏本体版权归原作者所有。本仓库仅包含中文文本、标题字形子集、构建脚本与构建产物。
