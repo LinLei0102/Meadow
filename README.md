@@ -55,13 +55,32 @@ node tools/verify-save.mjs   # 注入浏览器，断言满级 / 通关 / 回写�
 node tools/test-import.mjs   # 端到端验证导入页，并确认不碰其他存档位
 ```
 
+## 汉化覆盖了哪几层
+
+游戏的语言系统不是一本字典，而是四层，全部覆盖：
+
+| 层 | 覆盖方式 | 规模 |
+|---|---|---|
+| `T` 字典 + `t()` | 新增 `zh` 语言包 | 185 条 |
+| `svT()` / `Q()` 两个文案 helper | 各在函数头部插入中文分支 | 95 + 22 条查表 |
+| `cond ? "俄文" : "英文"` 内联三元 | 构建时机械改写成「中文查表，否则回落英文」 | 30 处 |
+| `UPD[]` / `SPT[]` 语言数组 | 各加一个 `zh` 数组 | 9 组 + 4 条 |
+
+内联三元那 30 处最容易漏：存档栏位的统计卡、海洋升级面板、海洋描述里的动态数字都藏在这里，只改字典是看不到中文的。构建脚本只认「俄文侧确实含西里尔字母」的三元，俄文分支原样保留，所以 en / ru 行为逐字不变。
+
+漏译是**可测的**，不用靠肉眼：
+
+```bash
+node tools/audit-zh.mjs   # 走遍 9 个界面收集可见文本与无障碍名，有漏译退出码 1
+```
+
 ## 目录结构
 
 ```
 index.html          ← 上游原版（请勿直接修改）
 docs/index.html     ← 构建产物：中文版成品
 i18n/zh.json        主 UI 文案（185 条）
-i18n/zh-helpers.json  存档面板 / 统计面板文案（102 条，含正则规则）
+i18n/zh-helpers.json  helper 与内联三元的中文查表（95 条精确 + 22 条正则）
 i18n/zh-upd.json    更新日志（9 组）
 i18n/fonts/         标题字形：霞鹜文楷子集（仅「草甸」两字，1.1KB，OFL-1.1）
 save/perfect.json   完美毕业存档（0.1.02v）
@@ -70,6 +89,7 @@ tools/make-save.mjs 生成存档与导入页
 tools/verify-save.mjs  存档验收：注入浏览器断言满级与通关
 tools/test-import.mjs  导入页端到端测试
 tools/build.mjs     构建脚本：锚点替换
+tools/audit-zh.mjs  中文完整性审计：走遍全部界面，报告漏译（有漏译则退出码 1）
 tools/shot.mjs      用本机 Edge 无头截图（排版自查）
 tools/langtest.mjs  zh / en / ru 三语回归测试
 tools/overflow.mjs  文本溢出检测

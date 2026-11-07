@@ -116,16 +116,41 @@ window.__ZH__ = function (s) {
   for (var i = 0; i < P.length; i++) if (P[i][0].test(s)) return s.replace(P[i][0], P[i][1]);
   return null;
 };
-/* 标签页标题跟随语言：游戏启动时会把 <html lang> 设成当前语言（5748 行） */
+/* 语言感知版查表：非中文环境返回 null，调用方原样使用英文，不改变 en/ru 行为 */
+window.__ZHL__ = function (s) {
+  if (!/^zh/i.test(document.documentElement.lang || "")) return null;
+  return window.__ZH__(s);
+};
+/* 页面标题与纯图标控件的无障碍名跟随语言。
+   游戏启动时会把 <html lang> 设成当前语言（5748 行），这里监听它。 */
 (function () {
   var TITLE = { zh: "草甸 Meadow" };
+  /* def 一律取上游原始值，切回英文 / 俄文时能逐字还原 */
+  var ARIA = {
+    "sttl":    { zh: "Meadow 草甸", def: "Meadow" },
+    "wnext":   { zh: "下一页", def: "Next" },
+    "wback":   { zh: "返回", def: "Back" },
+    "wprev":   { zh: "上一页", def: "Left page" },
+    "bGear":   { zh: "设置", def: "Settings" },
+    "bStat":   { zh: "统计", def: "Statistics" },
+    "bMeadow": { zh: "草甸", def: "Meadow" },
+    "bWater":  { zh: "水体", def: "Water" },
+    "bEarth":  { zh: "地球", def: "Earth" },
+  };
+  var isZh = function () { return /^zh/i.test(document.documentElement.lang || ""); };
   var sync = function () {
-    var l = document.documentElement.lang || "";
-    document.title = /^zh/i.test(l) && TITLE.zh ? TITLE.zh : "Meadow";
+    var zh = isZh();
+    document.title = zh ? TITLE.zh : "Meadow";
+    for (var k in ARIA) {
+      var e = document.getElementById(k) || document.querySelector("." + k);
+      if (e) e.setAttribute("aria-label", zh ? ARIA[k].zh : ARIA[k].def);
+    }
   };
   new MutationObserver(sync).observe(document.documentElement, {
     attributes: true, attributeFilter: ["lang"],
   });
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", sync);
   sync();
 })();
 </script>
@@ -233,6 +258,58 @@ replaceN('秒单位(画布/倒计时/自动保存)', ': " s")', ': " 秒")', 4);
 replaceN('分钟单位(自动保存)', ': " min")', ': " 分")', 1);
 replaceN('蒸汽产出速率', '" steam/s (" + stPct() + "% of water)"', '" 蒸汽/秒（占水量 " + stPct() + "%）"', 1);
 
+// ──────── 8b. `cond ? "俄文" : "英文"` 的内联三元：插入 zh 分支 ────────
+// 游戏里有成批这种写法（存档统计卡、海洋升级面板、海洋描述…），上一版按
+// `SET.lang === "ru"` 抓上下文时窗口太短，漏掉了后半截字符串，导致这些地方一直是英文。
+// 这里改成机械改造：只认「俄文侧确实含西里尔字母」且「英文侧仍是纯英文」的三元，
+// 俄文分支原样保留，英文分支换成「中文环境查表、否则回落英文」。
+const SKIP_PAIRS = new Set([
+  'Each m³ slows', // 被 ocE() 当作字符串匹配键用，见下面的专项补丁
+]);
+const pairMissed = [];
+let pairCount = 0;
+html = html.replace(
+  /([A-Za-z_$][\w$]*)\s*\?\s*"((?:[^"\\]|\\.)*)"\s*:\s*"((?:[^"\\]|\\.)*)"/g,
+  (m, cond, ruSide, enSide) => {
+    if (!/[А-Яа-я]/.test(ruSide)) return m;           // 俄文侧没有西里尔字母，不是语言分支
+    if (!/[A-Za-z]{2,}/.test(enSide)) return m;        // 英文侧无单词（纯符号 / 空串），无需翻译
+    if (/[一-龥]/.test(enSide)) return m;              // 已替换过
+    let key;
+    try { key = eval(`"${enSide}"`); } catch { return m; } // 解转义，与运行期字符串对齐
+    if (SKIP_PAIRS.has(key)) return m;
+    if (!Object.prototype.hasOwnProperty.call(helpers.exact, key)) {
+      pairMissed.push(key);
+      return m;                                        // 词典里没有就原样保留，回落英文
+    }
+    pairCount++;
+    return `${cond} ? "${ruSide}" : (window.__ZHL__("${enSide}") || "${enSide}")`;
+  }
+);
+applied.push(`内联三元插入 zh 分支 ×${pairCount}`);
+if (pairMissed.length)
+  warnings.push(`内联三元缺少译文 ${pairMissed.length} 条（这些位置将回落英文）: ${[...new Set(pairMissed)].join(' | ')}`);
+
+// 海洋描述：ocE() 用英文原文做匹配键，中文正文永远匹配不上，
+// 导致「减速水」升级后描述不更新成「每 N m³ 减速一次」。
+replaceOnce(
+  '海洋描述：减速周期占位替换支持 zh',
+  'tx = tx.replace(r ? "Каждый м³ замедляет" : "Each m³ slows", r ? "Каждые " + X + " м³ замедляют" : "Every " + X + " m³ slow");',
+  'tx = SET.lang === "zh" ? tx.replace("每 m³ 使填充减速", "每 " + X + " m³ 减速一次") : tx.replace(r ? "Каждый м³ замедляет" : "Each m³ slows", r ? "Каждые " + X + " м³ замедляют" : "Every " + X + " m³ slow");'
+);
+
+// 统计页三条公式是硬编码英文实参（上游对 ru 也不翻译），用 Q() 包一层让中文走词典。
+// 锚点带上 nm(tN) 尾巴：光用公式字面量的话，词典注入的 JSON 里也有一份同样的键。
+for (const [f, tail] of [
+  ['1 + log₃(grass / 1000)', 'nm(t1)'],
+  ['1.5^log₁₀(grass / 1000)', 'X(t2)'],
+  ['2.5^log₁₀₀₀(grass / 1000)', 'X(t3)'],
+])
+  replaceOnce(
+    `统计公式「${f}」`,
+    `"${f}", ${tail})`,
+    `Q("${f}", "${f}"), ${tail})`
+  );
+
 // ───────────────────── 9. 正式译名：草甸 ─────────────────────
 // 「Meadow」的正式中文译名。草甸是植物学/地理学里 meadow 的对应词（区别于「草原」steppe），
 // 两字简短、字形对称，且与游戏内已用的「草地」（field，指你收割的那片）区分开。
@@ -247,16 +324,8 @@ const LOGO_ZH = {
 };
 
 replaceOnce('页面标题改为译名', '<title>Meadow</title>', `<title>${NAME_ZH} Meadow</title>`);
-replaceOnce(
-  'Logo 无障碍名',
-  '<div class="sttl" role="img" aria-label="Meadow">',
-  `<div class="sttl" role="img" aria-label="Meadow ${NAME_ZH}">`
-);
-replaceOnce(
-  '导航键无障碍名',
-  'id="bMeadow" type="button" aria-label="Meadow"',
-  `id="bMeadow" type="button" aria-label="${NAME_ZH}"`
-);
+// 无障碍名不在这里静态改：顶部运行时脚本会按当前语言设置（含英文/俄文还原），
+// 否则英文玩家用读屏软件会听到中文。
 
 // Logo 在 SVG 里是 <text>+<tspan> 而非手绘路径，可以换字。
 // 保留原拉丁三层不动，另建一层中文，用 .lgw-en / .lgw-zh 由 CSS 按语言切换。
